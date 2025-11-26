@@ -152,16 +152,14 @@ textarea {
   text-decoration: none;
 }
 
-.logo span {
-  display: inline-flex;
-  width: 42px;
+.logo__image img {
   height: 42px;
-  border-radius: 12px;
-  background: var(--color-text);
-  color: var(--color-bg);
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
+}
+
+@media (min-width: 769px) {
+  .logo__image img {
+    height: 21px;
+  }
 }
 
 .nav__links {
