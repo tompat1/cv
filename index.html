@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Personal portfolio website showcasing selected work, case studies, and background."
+    />
+    <title>Thomas Rynell - Product Designer & Frontend Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav container">
+        <a class="logo" href="#">
+          <span>TR</span>
+          <div>
+            <strong>Thomas Rynell</strong>
+            <small>Product Designer & Frontend Dev</small>
+          </div>
+        </a>
+        <button class="nav__toggle" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav__links">
+          <li><a href="#work">Work</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li>
+            <button id="themeToggle" class="btn btn--ghost">Toggle theme</button>
+          </li>
+        </ul>
+        <a class="btn btn--primary nav__cta" href="#contact">Let's work</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero container">
+        <div class="hero__copy">
+          <p class="eyebrow">Currently open for new projects (Jan 2026)</p>
+          <h1>
+            Building human-centered products with
+            <span class="highlight">clarity, craft, and care.</span>
+          </h1>
+          <p class="lead">
+            I help SaaS teams translate complex challenges into elegant journeys.
+            Over the last 8+ years, I've shipped product experiences used by
+            millions at tech startups, fintech scale-ups, and design-led agencies.
+          </p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#work">See selected work</a>
+            <a class="btn btn--ghost" href="#contact">Book intro call</a>
+          </div>
+          <dl class="hero__stats">
+            <div>
+              <dt>10+</dt>
+              <dd>Products launched end-to-end</dd>
+            </div>
+            <div>
+              <dt>60%</dt>
+              <dd>Avg. uplift in key KPIs shipped</dd>
+            </div>
+            <div>
+              <dt>8 yrs</dt>
+              <dd>Hybrid product & design experience</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="hero__media">
+          <div class="portrait">
+            <img
+              src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80"
+              alt="Portrait of Thomas Rynell"
+            />
+          </div>
+          <ul class="focus-list">
+            <li>Product strategy & discovery</li>
+            <li>Design systems & prototyping</li>
+            <li>Accessible frontend engineering</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="work" class="section section--alt">
+        <div class="container section__header">
+          <div>
+            <p class="eyebrow">Selected Work</p>
+            <h2>Recent partnerships & impact.</h2>
+          </div>
+          <a class="btn btn--ghost" href="#">View PDF case studies</a>
+        </div>
+        <div class="container grid grid--3">
+          <article class="card project-card">
+            <div class="card__meta">
+              <span class="pill">Fintech</span>
+              <time datetime="2024-09">2024</time>
+            </div>
+            <h3>FlowPay Intelligence</h3>
+            <p>
+              Led discovery to redesign the payments insights suite, improving
+              merchant retention by 18% through clearer forecasting experiences.
+            </p>
+            <ul>
+              <li>Product workshops</li>
+              <li>Design system foundations</li>
+              <li>React prototype build</li>
+            </ul>
+            <a href="#" class="card__link">Read case study -></a>
+          </article>
+
+          <article class="card project-card">
+            <div class="card__meta">
+              <span class="pill">Climate SaaS</span>
+              <time datetime="2023-05">2023</time>
+            </div>
+            <h3>Circulate Analytics</h3>
+            <p>
+              Shipped a scenario planning tool that allowed sustainability leads
+              to model impact in minutes, cutting reporting time by 40%.
+            </p>
+            <ul>
+              <li>Journey mapping</li>
+              <li>High fidelity UI</li>
+              <li>Frontend handoff</li>
+            </ul>
+            <a href="#" class="card__link">Read case study -></a>
+          </article>
+
+          <article class="card project-card">
+            <div class="card__meta">
+              <span class="pill">Health Tech</span>
+              <time datetime="2022-02">2022</time>
+            </div>
+            <h3>Northwind Care</h3>
+            <p>
+              Designed the clinician hub experience and built the responsive UI
+              kit powering twelve cross-platform apps.
+            </p>
+            <ul>
+              <li>Experience vision</li>
+              <li>Design ops</li>
+              <li>Component engineering</li>
+            </ul>
+            <a href="#" class="card__link">Read case study -></a>
+          </article>
+        </div>
+      </section>
+
+      <section id="services" class="section">
+        <div class="container section__header">
+          <div>
+            <p class="eyebrow">Capabilities</p>
+            <h2>Where I plug in.</h2>
+          </div>
+          <p class="muted">
+            Embedded with founders, product leads, and multi-functional teams.
+          </p>
+        </div>
+        <div class="container grid grid--3">
+          <article class="card service-card">
+            <h3>Product Discovery</h3>
+            <p>
+              Align business outcomes with user needs through co-creation
+              workshops, field research, and strategy roadmaps.
+            </p>
+            <ul>
+              <li>Problem framing</li>
+              <li>Jobs-to-be-done studies</li>
+              <li>Opportunity solution trees</li>
+            </ul>
+          </article>
+          <article class="card service-card">
+            <h3>Design Systems</h3>
+            <p>
+              Scale a cohesive visual language with token-driven components,
+              documentation, and governance practices.
+            </p>
+            <ul>
+              <li>Multi-brand systems</li>
+              <li>Accessibility audits</li>
+              <li>Figma &lt;&gt; code parity</li>
+            </ul>
+          </article>
+          <article class="card service-card">
+            <h3>Product Execution</h3>
+            <p>
+              Pair with engineering to deliver polished experiences - rapid
+              prototyping, implementation support, and QA.
+            </p>
+            <ul>
+              <li>Interactive prototypes</li>
+              <li>Design QA</li>
+              <li>Frontend engineering</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="experience" class="section section--alt">
+        <div class="container section__header">
+          <div>
+            <p class="eyebrow">Experience</p>
+            <h2>A hybrid path across design & engineering.</h2>
+          </div>
+          <a class="btn btn--ghost" href="#">Download full resume</a>
+        </div>
+        <div class="container timeline">
+          <article>
+            <h3>Lead Product Designer &middot; Flowater</h3>
+            <p class="muted">2022-Present &middot; Stockholm (Hybrid)</p>
+            <p>
+              Partnering with product and ML teams to ship a new analytics suite,
+              while guiding the design system across 5 squads.
+            </p>
+          </article>
+          <article>
+            <h3>Senior UX Engineer &middot; Scout Labs</h3>
+            <p class="muted">2020-2022 &middot; Remote</p>
+            <p>
+              Bridged product design and frontend, prototyping complex flows and
+              translating them into TypeScript / React component libraries.
+            </p>
+          </article>
+          <article>
+            <h3>Product Designer &middot; Northwind Digital</h3>
+            <p class="muted">2017-2020 &middot; Gothenburg</p>
+            <p>
+              Led discovery and delivery on a mix of healthcare and civic
+              innovation projects, focused on interaction design and research.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container testimonials">
+          <div>
+            <p class="eyebrow">Testimonials</p>
+            <h2>Trusted by product leaders.</h2>
+          </div>
+          <div class="testimonial-grid">
+            <figure class="card quote">
+              <blockquote>
+                "Thomas has a rare ability to move seamlessly from fuzzy problem
+                spaces to shippable solutions. He's our go-to for 0->1 product bets."
+              </blockquote>
+              <figcaption>
+                <strong>Eva Magnusson</strong>, VP Product @ FlowPay
+              </figcaption>
+            </figure>
+            <figure class="card quote">
+              <blockquote>
+                "He builds alignment fast, prototypes relentlessly, and ensures the
+                final build feels just as polished as the Figma file."
+              </blockquote>
+              <figcaption>
+                <strong>Hugo Ferreira</strong>, CTO @ Circulate
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--alt newsletter">
+        <div class="container">
+          <div>
+            <p class="eyebrow">Dispatch</p>
+            <h2>Monthly notes on product craft.</h2>
+            <p>
+              A short read on product thinking, design systems, and practical
+              shipping. Zero spam, unsubscribe anytime.
+            </p>
+          </div>
+          <form class="newsletter__form">
+            <label for="newsletter-email" class="sr-only">Email address</label>
+            <input
+              type="email"
+              id="newsletter-email"
+              name="email"
+              placeholder="you@email.com"
+              required
+            />
+            <button class="btn btn--primary" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact" class="site-footer">
+      <div class="container footer__grid">
+        <div>
+          <h3>Let's shape the next release.</h3>
+          <p class="muted">
+            Send a note to <a href="mailto:hello@thomasrynell.com">hello@thomasrynell.com</a>
+            or connect on the platforms below.
+          </p>
+        </div>
+        <div class="footer__actions">
+          <a class="btn btn--primary" href="mailto:hello@thomasrynell.com">
+            Start a project
+          </a>
+          <ul class="socials">
+            <li><a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a></li>
+            <li><a href="https://github.com" target="_blank" rel="noreferrer">GitHub</a></li>
+            <li><a href="https://dribbble.com" target="_blank" rel="noreferrer">Dribbble</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="container footer__meta">
+        <small>&copy; <span id="currentYear"></span> Thomas Rynell. Crafted in Stockholm.</small>
+        <button id="backToTop" class="btn btn--ghost btn--small">Back to top &uarr;</button>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
+
