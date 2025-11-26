@@ -1,42 +1,56 @@
 import './styles.css';
 
-const docEl = document.documentElement;
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 const THEME_KEY = 'tr-theme';
+const getRoot = () => document.documentElement;
+const getThemeToggle = () => document.getElementById('themeToggle');
 
-const themeToggle = document.getElementById('themeToggle');
-const backToTop = document.getElementById('backToTop');
-const currentYearEl = document.getElementById('currentYear');
-
-const setTheme = (nextTheme) => {
-  docEl.setAttribute('data-theme', nextTheme);
+export const setTheme = (nextTheme) => {
+  const root = getRoot();
+  root.setAttribute('data-theme', nextTheme);
   localStorage.setItem(THEME_KEY, nextTheme);
-};
 
-const initTheme = () => {
-  const stored = localStorage.getItem(THEME_KEY);
-  if (stored) {
-    setTheme(stored);
-  } else if (prefersDark.matches) {
-    setTheme('dark');
-  } else {
-    setTheme('light');
+  const toggle = getThemeToggle();
+  if (toggle) {
+    toggle.setAttribute('aria-pressed', nextTheme === 'dark' ? 'true' : 'false');
   }
 };
 
-const toggleTheme = () => {
-  const cur = docEl.getAttribute('data-theme');
-  setTheme(cur === 'dark' ? 'light' : 'dark');
+export const getPreferredTheme = () => {
+  if (typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  return 'light';
 };
 
-const initBackToTop = () => {
+export const initTheme = () => {
+  const stored = localStorage.getItem(THEME_KEY);
+  if (stored) {
+    setTheme(stored);
+  } else {
+    setTheme(getPreferredTheme());
+  }
+};
+
+export const toggleTheme = () => {
+  const current = getRoot().getAttribute('data-theme') || 'light';
+  setTheme(current === 'dark' ? 'light' : 'dark');
+};
+
+export const initThemeToggle = () => {
+  const toggle = getThemeToggle();
+  if (!toggle) return;
+  toggle.addEventListener('click', toggleTheme);
+};
+
+export const initBackToTop = () => {
+  const backToTop = document.getElementById('backToTop');
   if (!backToTop) return;
   backToTop.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 };
 
-const initNavToggle = () => {
+export const initNavToggle = () => {
   const navToggle = document.querySelector('.nav__toggle');
   const navLinks = document.querySelector('.nav__links');
   if (!navToggle || !navLinks) return;
@@ -52,9 +66,9 @@ const initNavToggle = () => {
   });
 };
 
-const initHeroObserver = () => {
+export const initHeroObserver = () => {
   const hero = document.querySelector('.hero');
-  if (!hero) return;
+  if (!hero || typeof window === 'undefined' || !('IntersectionObserver' in window)) return;
 
   const observer = new IntersectionObserver(
     (entries) => {
@@ -70,21 +84,22 @@ const initHeroObserver = () => {
   observer.observe(hero);
 };
 
-const initYear = () => {
+export const initYear = () => {
+  const currentYearEl = document.getElementById('currentYear');
   if (currentYearEl) {
     currentYearEl.textContent = new Date().getFullYear();
   }
 };
 
-document.addEventListener('DOMContentLoaded', () => {
+export const initApp = () => {
   initTheme();
   initBackToTop();
   initNavToggle();
   initHeroObserver();
   initYear();
+  initThemeToggle();
+};
 
-  if (themeToggle) {
-    themeToggle.addEventListener('click', toggleTheme);
-  }
-});
+document.addEventListener('DOMContentLoaded', initApp);
+
 

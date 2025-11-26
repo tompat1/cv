@@ -33,11 +33,35 @@
           <li><a href="#services">Services</a></li>
           <li><a href="#experience">Experience</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li>
-            <button id="themeToggle" class="btn btn--ghost">Toggle theme</button>
-          </li>
         </ul>
-        <a class="btn btn--primary nav__cta" href="#contact">Let's work</a>
+        <div class="nav__actions">
+          <button
+            id="themeToggle"
+            class="theme-toggle"
+            aria-label="Toggle theme"
+            aria-pressed="false"
+          >
+            <svg
+              class="theme-toggle__icon theme-toggle__icon--sun"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                d="M12 4.5a1 1 0 0 1 1 1V7a1 1 0 0 1-2 0V5.5a1 1 0 0 1 1-1ZM12 15.5a1 1 0 0 1 1 1V19a1 1 0 0 1-2 0v-2.5a1 1 0 0 1 1-1Zm7.5-3.5a1 1 0 0 1 1 1 .998.998 0 0 1-1 1H17a1 1 0 1 1 0-2h2.5ZM7 12a1 1 0 0 1-1 1H3.5a1 1 0 1 1 0-2H6a1 1 0 0 1 1 1Zm9 5.05a1 1 0 0 1 1.414 0l1.768 1.768a1 1 0 1 1-1.414 1.414l-1.768-1.768A1 1 0 0 1 15.999 17.05Zm-7.062-9.1a1 1 0 0 1 0 1.414L7.17 11.133a1 1 0 0 1-1.414-1.415L7.523 8.95a1 1 0 0 1 1.414 0Zm9.1-.011 1.768-1.768a1 1 0 0 1 1.414 1.414L18.45 9.353a1 1 0 0 1-1.414-1.414ZM8.95 16.999a1 1 0 0 1 0 1.414l-1.768 1.768a1 1 0 0 1-1.414-1.414l1.768-1.768a1 1 0 0 1 1.414 0ZM16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"
+              />
+            </svg>
+            <svg
+              class="theme-toggle__icon theme-toggle__icon--moon"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                d="M21 14.5A9 9 0 0 1 9.5 3.05 7 7 0 1 0 20.95 14.5H21Z"
+              />
+            </svg>
+          </button>
+          <a class="btn btn--primary nav__cta" href="#contact">Let's work</a>
+        </div>
       </nav>
     </header>
 
