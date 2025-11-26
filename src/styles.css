@@ -242,17 +242,17 @@ textarea {
   transition: opacity 200ms ease, transform 200ms ease;
 }
 
-.theme-toggle__icon--sun {
+.theme-toggle__icon--moon {
   opacity: 1;
   transform: scale(1);
 }
 
-[data-theme='dark'] .theme-toggle__icon--sun {
+[data-theme='dark'] .theme-toggle__icon--moon {
   opacity: 0;
   transform: scale(0.85);
 }
 
-[data-theme='dark'] .theme-toggle__icon--moon {
+[data-theme='dark'] .theme-toggle__icon--sun {
   opacity: 1;
   transform: scale(1);
 }
