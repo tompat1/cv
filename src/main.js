@@ -5,7 +5,13 @@ const personas = [
   {
     title: 'Digital Design & UX',
     slug: 'digital-design-ux',
-    accentColor: '#e15b9e',
+    palette: {
+      accent: '#e15b9e',
+      accentStrong: '#d14888',
+      accentSoft: 'rgba(225, 91, 158, 0.16)',
+      accentSurface: 'rgba(225, 91, 158, 0.12)',
+      accentBorder: 'rgba(225, 91, 158, 0.4)',
+    },
     icon: '/assets/product-designer.svg',
     iconAlt: 'Geometric icon for a digital product designer',
     heroCopy: {
@@ -100,7 +106,13 @@ const personas = [
   {
     title: 'Branding & Content',
     slug: 'branding-content',
-    accentColor: '#7157ff',
+    palette: {
+      accent: '#7157ff',
+      accentStrong: '#5a3df3',
+      accentSoft: 'rgba(113, 87, 255, 0.16)',
+      accentSurface: 'rgba(113, 87, 255, 0.12)',
+      accentBorder: 'rgba(113, 87, 255, 0.4)',
+    },
     icon: '/assets/design-systems.svg',
     iconAlt: 'Geometric icon for brand and content strategy',
     heroCopy: {
@@ -195,7 +207,13 @@ const personas = [
   {
     title: 'Web Development',
     slug: 'web-development',
-    accentColor: '#20b0b5',
+    palette: {
+      accent: '#20b0b5',
+      accentStrong: '#1a8f93',
+      accentSoft: 'rgba(32, 176, 181, 0.16)',
+      accentSurface: 'rgba(32, 176, 181, 0.12)',
+      accentBorder: 'rgba(32, 176, 181, 0.42)',
+    },
     icon: '/assets/ux-engineer.svg',
     iconAlt: 'Geometric icon for a web developer',
     heroCopy: {
@@ -295,6 +313,14 @@ const getThemeToggle = () => document.getElementById('themeToggle');
 const setPersonaContext = (persona) => {
   const root = getRoot();
   root.setAttribute('data-persona', persona.slug);
+
+  if (persona.palette) {
+    root.style.setProperty('--accent', persona.palette.accent);
+    root.style.setProperty('--accent-strong', persona.palette.accentStrong);
+    root.style.setProperty('--accent-soft', persona.palette.accentSoft);
+    root.style.setProperty('--accent-surface', persona.palette.accentSurface);
+    root.style.setProperty('--accent-border', persona.palette.accentBorder);
+  }
 };
 
 const getPersonaPanels = () =>
