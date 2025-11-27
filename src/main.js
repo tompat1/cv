@@ -3,276 +3,104 @@ import './styles.css';
 const THEME_KEY = 'tr-theme';
 const personas = [
   {
-    title: 'Product Designer',
-    slug: 'product-designer',
-    accentColor: '#7785e3',
+    title: 'Front-end, UX & Digital Designer',
+    slug: 'frontend-ux-designer',
+    accentColor: '#e15b9e',
     icon: '/assets/product-designer.svg',
-    iconAlt: 'Notebook and interface icon for a product designer',
+    iconAlt: 'Geometric icon for a digital designer',
     heroCopy: {
-      eyebrow: 'Product strategist for fast-moving SaaS',
-      heading: 'Building human-centered products with',
-      highlight: 'clarity, craft, and care.',
+      eyebrow: 'Consultant & designer for web and digital products',
+      heading: 'Crafting experiences across',
+      highlight: 'front-end, UX, and visual design.',
       lead:
-        "I guide teams from fuzzy problem framing to launch-ready experiences. Over the last 8+ years, I've shipped customer journeys used by millions across SaaS, fintech, and health tech.",
+        'I have been a consultant for 30+ years within IT, Graphic & Digital Design, and PM/Marketing—delivering creative, technical, and strategic solutions to diverse stakeholders.',
       stats: [
-        { value: '10+', label: 'Products launched end-to-end' },
-        { value: '60%', label: 'Avg. uplift in core KPIs' },
-        { value: '8 yrs', label: 'Hybrid product & design experience' },
+        { value: '30+ yrs', label: 'Consulting across IT & design' },
+        { value: '12 yrs', label: 'Digital product & UX focus' },
+        { value: '4', label: 'Key roles: Front-end / UX / Digital & Graphic Design' },
       ],
-      focus: ['Figma/ FigJam', 'Maze & Lookback', 'Notion & Linear'],
+      focus: ['HTML / CSS / JS', 'Figma & Adobe XD', 'Illustrator & Photoshop'],
       actions: [
-        { label: 'See selected work', href: '#work', variant: 'primary' },
-        { label: 'Book intro call', href: '#contact', variant: 'ghost' },
+        { label: 'See recent assignments', href: '#work', variant: 'primary' },
+        { label: 'Get in touch', href: '#contact', variant: 'ghost' },
       ],
       portrait:
         'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80',
     },
     projects: [
       {
-        badge: 'Fintech',
-        year: '2024',
-        title: 'FlowPay Intelligence',
+        badge: 'News / SaaS',
+        year: '2016-2023',
+        title: 'Rapidus',
         description:
-          'Repositioned the payments insights suite with clearer forecasting flows, lifting merchant retention by 18%.',
-        tags: ['Narrative mapping', 'Outcome-focused roadmap', 'Design system starter kit'],
-        linkLabel: 'Read case study ->',
+          'Front-end development and redesign for a digital news platform with TypeScript, RESTful APIs, and graph visualizations.',
+        tags: ['React & Next.js', 'Figma prototypes', 'API integrations'],
+        linkLabel: 'Assignment overview ->',
         href: '#',
       },
       {
-        badge: 'Climate SaaS',
-        year: '2023',
-        title: 'Circulate Analytics',
+        badge: 'Finance',
+        year: '2016-2020',
+        title: 'Intrum',
         description:
-          'Launched a scenario planning tool that let sustainability leads model impact in minutes, cutting reporting time by 40%.',
-        tags: ['Jobs-to-be-done synthesis', 'High-fidelity flows', 'Release playbacks'],
-        linkLabel: 'Read case study ->',
+          'UX/design direction and front-end delivery for multilingual platforms, dashboards, and campaign pages in 23 languages.',
+        tags: ['UX/UI design', 'Front-end build', 'Stakeholder collaboration'],
+        linkLabel: 'See project notes ->',
         href: '#',
       },
       {
-        badge: 'Health Tech',
-        year: '2022',
-        title: 'Northwind Care',
+        badge: 'Gov & Sustainability',
+        year: '2015-2021',
+        title: 'Naturvårdsverket',
         description:
-          'Built the clinician hub experience and responsive UI kit that now powers twelve cross-platform apps.',
-        tags: ['Experience vision', 'Service blueprints', 'Component engineering'],
-        linkLabel: 'Read case study ->',
+          'UX/design direction and front-end work for environmental reporting tools, interactive maps, and complex forms.',
+        tags: ['Design systems', 'Accessibility', 'Data-driven UI'],
+        linkLabel: 'Read summary ->',
+        href: '#',
+      },
+      {
+        badge: 'Banking',
+        year: '2014',
+        title: 'Bankgirocentralen',
+        description:
+          'Front-end development, UX, and visual design for online bank applications and dashboards across multiple lines of business.',
+        tags: ['Responsive UI', 'Design leadership', 'Agile delivery'],
+        linkLabel: 'Engagement highlights ->',
         href: '#',
       },
     ],
     skills: [
       {
-        title: 'Product Discovery',
+        title: 'Front-end Development',
         description:
-          'Align business outcomes with user needs through co-creation workshops, field research, and strategy roadmaps.',
-        bullets: ['Problem framing', 'Jobs-to-be-done studies', 'Opportunity solution trees'],
+          'Building responsive, accessible interfaces with modern frameworks and clean HTML, CSS, and JavaScript.',
+        bullets: ['React / Next.js / MVC', 'TypeScript & API integrations', 'Performance & accessibility'],
       },
       {
-        title: 'Design Systems',
+        title: 'UX & Design Direction',
         description:
-          'Scale a cohesive visual language with token-driven components, documentation, and governance practices.',
-        bullets: ['Multi-brand systems', 'Accessibility audits', 'Figma <> code parity'],
+          'Leading discovery, prototyping, and interface design that connects user goals to business outcomes.',
+        bullets: ['Wireframes & Figma prototypes', 'Design systems & UI kits', 'Usability testing & iteration'],
       },
       {
-        title: 'Product Execution',
+        title: 'Digital & Graphic Design',
         description:
-          'Pair with engineering to deliver polished experiences - rapid prototyping, implementation support, and QA.',
-        bullets: ['Interactive prototypes', 'Design QA', 'Frontend engineering'],
+          'Visual design across web, editorial, and marketing with a foundation in Adobe CC.',
+        bullets: ['Illustrator & Photoshop', 'Brand & layout design', 'Motion & visual polish'],
       },
     ],
     testimonial: {
       quote:
-        'Thomas takes a jumble of insights, finds the signal, and turns it into a story the whole team can ship against.',
-      name: 'Eva Magnusson',
-      title: 'VP Product @ FlowPay',
+        'Combining the demands and possibilities of digital design, front-end, Scrum/PM, and design—coupled with my sensibilities as a graphic designer.',
+      name: 'Personal motto',
+      title: 'Thomas Rynell',
     },
     cta: {
       eyebrow: 'Next step',
-      heading: 'Ready to align product and experience?',
+      heading: 'Ready to collaborate on your next release?',
       body:
-        'Book a 30-minute roadmap review to align business goals, outcomes, and the first release milestone.',
-      button: { label: 'Book a roadmap review', href: '#contact' },
-    },
-  },
-  {
-    title: 'Design Systems Partner',
-    slug: 'design-systems',
-    accentColor: '#f97316',
-    icon: '/assets/design-systems.svg',
-    iconAlt: 'Layered blocks icon for a design systems partner',
-    heroCopy: {
-      eyebrow: 'Stewarding design systems that stick',
-      heading: 'Scaling multi-brand experiences with',
-      highlight: 'design ops rigor.',
-      lead:
-        'I audit, architect, and operationalize design systems that keep teams fast and consistent. From tokens to governance, I align designers and engineers under one language.',
-      stats: [
-        { value: '5', label: 'Systems rolled out across platforms' },
-        { value: '30%', label: 'Faster design-to-dev handoffs' },
-        { value: '12 squads', label: 'Supported with playbooks' },
-      ],
-      focus: ['Figma & Tokens Studio', 'Storybook & Chromatic', 'Zeroheight & Confluence'],
-      actions: [
-        { label: 'Review my playbook', href: '#services', variant: 'primary' },
-        { label: 'Schedule a teardown', href: '#contact', variant: 'ghost' },
-      ],
-      portrait:
-        'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80',
-    },
-    projects: [
-      {
-        badge: 'B2B SaaS',
-        year: '2024',
-        title: 'NovaOS Design Language',
-        description:
-          'Unified three legacy UI kits into a single token-driven system, cutting UI defects by 22% and speeding feature delivery.',
-        tags: ['Token architecture', 'Design ops rituals', 'Component governance'],
-        linkLabel: 'See rollout notes ->',
-        href: '#',
-      },
-      {
-        badge: 'E-commerce',
-        year: '2023',
-        title: 'Atlas Marketplace System',
-        description:
-          'Delivered a multi-brand component library with themeable primitives so 8 regional storefronts shipped aligned UX in 6 weeks.',
-        tags: ['Multi-brand theming', 'Accessibility reviews', 'Storybook delivery'],
-        linkLabel: 'View component spec ->',
-        href: '#',
-      },
-      {
-        badge: 'FinOps',
-        year: '2022',
-        title: 'LedgerOne UI Kit',
-        description:
-          'Created a resilient design system for complex data tables and workflows, raising designer onboarding satisfaction to 94%.',
-        tags: ['Design tokens', 'Workflow patterns', 'Design QA'],
-        linkLabel: 'Read migration plan ->',
-        href: '#',
-      },
-    ],
-    skills: [
-      {
-        title: 'Audits & KPIs',
-        description:
-          'Assess current systems, map gaps, and define success metrics tied to product velocity and quality.',
-        bullets: ['Inventory & gap analysis', 'Scorecards & metrics', 'Executive readouts'],
-      },
-      {
-        title: 'Architecture',
-        description:
-          'Set up tokens, foundations, and semantic naming that scale to theming and multiple brands.',
-        bullets: ['Token maps', 'Accessibility baselines', 'CI/CD for design assets'],
-      },
-      {
-        title: 'Enablement',
-        description:
-          'Document, coach, and steward governance so designers and engineers ship consistent UI with confidence.',
-        bullets: ['Playbooks & docs', 'Pairing sessions', 'Component stewardship'],
-      },
-    ],
-    testimonial: {
-      quote:
-        'Thomas translated design ideals into an engineering-ready system. The rituals he set up keep our squads aligned release after release.',
-      name: 'Hugo Ferreira',
-      title: 'CTO @ Circulate',
-    },
-    cta: {
-      eyebrow: 'Systems support',
-      heading: 'Need a system steward?',
-      body:
-        'Run a focused audit to benchmark quality, resilience, and adoption—then co-create the backlog that keeps teams shipping.',
-      button: { label: 'Book a systems audit', href: '#contact' },
-    },
-  },
-  {
-    title: 'UX Engineer',
-    slug: 'ux-engineer',
-    accentColor: '#22c55e',
-    icon: '/assets/ux-engineer.svg',
-    iconAlt: 'Monitor and checklist icon for a UX engineer',
-    heroCopy: {
-      eyebrow: 'Prototype partner for product teams',
-      heading: 'Shipping polished interactions with',
-      highlight: 'production-ready code.',
-      lead:
-        'I translate Figma into performant frontends, validating ideas quickly with real data and production-minded components.',
-      stats: [
-        { value: '12', label: 'Design-to-code libraries delivered' },
-        { value: '4.9/5', label: 'PM partner satisfaction' },
-        { value: '2x', label: 'Faster validation cycles' },
-      ],
-      focus: ['React & TypeScript', 'Vite & Storybook', 'a11y-first testing'],
-      actions: [
-        { label: 'View build samples', href: '#work', variant: 'primary' },
-        { label: 'Pair on a spike', href: '#contact', variant: 'ghost' },
-      ],
-      portrait:
-        'https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=600&q=80',
-    },
-    projects: [
-      {
-        badge: 'AI SaaS',
-        year: '2024',
-        title: 'SprintKit Workbench',
-        description:
-          'Built interactive prototypes backed by mock APIs to validate AI-assisted workflows, reducing engineering lift by 50% pre-MVP.',
-        tags: ['React prototypes', 'API stubbing', 'Usability testing'],
-        linkLabel: 'See prototype notes ->',
-        href: '#',
-      },
-      {
-        badge: 'Mobility',
-        year: '2023',
-        title: 'RouteWise Dispatch',
-        description:
-          'Engineered map and scheduling interfaces with WCAG coverage, unlocking enterprise contracts.',
-        tags: ['Accessible UI', 'Maps & data viz', 'Design QA'],
-        linkLabel: 'View engineering doc ->',
-        href: '#',
-      },
-      {
-        badge: 'DevTools',
-        year: '2022',
-        title: 'Pulse Component Library',
-        description:
-          'Partnered with platform teams to ship typed React components and Storybook docs that mirror the Figma source.',
-        tags: ['Typed components', 'Storybook docs', 'CI checks'],
-        linkLabel: 'Read build log ->',
-        href: '#',
-      },
-    ],
-    skills: [
-      {
-        title: 'Prototype & Validate',
-        description:
-          'Stand up experiments with real interactions and data to derisk bets before sprinting.',
-        bullets: ['Interactive flows', 'Microcopy in code', 'Remote usability tests'],
-      },
-      {
-        title: 'Engineer UI Kits',
-        description:
-          'Bridge design systems to code with typed, accessible components and documentation.',
-        bullets: ['Design token wiring', 'A11y-first components', 'Storybook workflows'],
-      },
-      {
-        title: 'Ship with Teams',
-        description:
-          'Pair with engineering to integrate builds, QA visual polish, and keep parity with design.',
-        bullets: ['PR reviews', 'QA checklists', 'Launch support'],
-      },
-    ],
-    testimonial: {
-      quote:
-        'His prototypes ship with sensible defaults, test coverage, and docs—engineering inherits code they barely need to refactor.',
-      name: 'Mara Lindholm',
-      title: 'VP Engineering @ SprintKit',
-    },
-    cta: {
-      eyebrow: 'Hands-on help',
-      heading: 'Need a build partner for your next sprint?',
-      body:
-        'Bring me into your two-week spike and we will leave with validated flows, code-ready components, and a confident handoff.',
-      button: { label: 'Review site performance', href: '#contact' },
+        'Bring me in for front-end, UX, or design leadership. We will map the goals, shape the experience, and deliver a polished build together.',
+      button: { label: 'Start a project conversation', href: '#contact' },
     },
   },
 ];
