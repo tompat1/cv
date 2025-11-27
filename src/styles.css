@@ -8,6 +8,11 @@
   --color-pill: rgba(20, 20, 20, 0.06);
   --color-primary: #7785e3;
   --color-primary-dark: #5f6ad6;
+  --accent: #7785e3;
+  --accent-strong: #5f6ad6;
+  --accent-surface: rgba(119, 133, 227, 0.08);
+  --accent-border: rgba(119, 133, 227, 0.35);
+  --accent-contrast: #0f172a;
   --shadow-soft: 0 20px 50px rgba(20, 20, 20, 0.08);
 }
 
@@ -20,7 +25,36 @@
   --color-pill: rgba(255, 255, 255, 0.08);
   --color-primary: #7785e3;
   --color-primary-dark: #5f6ad6;
+  --accent: #9aa5ff;
+  --accent-strong: #7785e3;
+  --accent-surface: rgba(154, 165, 255, 0.12);
+  --accent-border: rgba(154, 165, 255, 0.32);
+  --accent-contrast: #f7f9ff;
   --shadow-soft: 0 25px 40px rgba(0, 0, 0, 0.45);
+}
+
+[data-persona='strategist'] {
+  --accent: #ef8b2d;
+  --accent-strong: #d87012;
+  --accent-surface: rgba(239, 139, 45, 0.12);
+  --accent-border: rgba(239, 139, 45, 0.35);
+  --accent-contrast: #140901;
+}
+
+[data-persona='builder'] {
+  --accent: #2eafa8;
+  --accent-strong: #1e8a85;
+  --accent-surface: rgba(46, 175, 168, 0.12);
+  --accent-border: rgba(46, 175, 168, 0.32);
+  --accent-contrast: #041210;
+}
+
+[data-persona='designer'] {
+  --accent: #c44ae7;
+  --accent-strong: #a72ed1;
+  --accent-surface: rgba(196, 74, 231, 0.14);
+  --accent-border: rgba(196, 74, 231, 0.35);
+  --accent-contrast: #17071a;
 }
 
 *,
@@ -124,6 +158,49 @@ textarea {
 
 .btn--small {
   padding: 0.55rem 1.1rem;
+}
+
+/* Persona switcher */
+.persona-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem;
+  background: var(--color-bg-alt);
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+}
+
+.persona-switcher button {
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+  border-radius: 999px;
+  padding: 0.55rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease,
+    background 150ms ease, color 150ms ease;
+}
+
+.persona-switcher button:hover {
+  border-color: var(--accent-border);
+  background: var(--accent-surface);
+  transform: translateY(-1px);
+}
+
+.persona-switcher button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--accent-surface);
+}
+
+.persona-switcher button[aria-pressed='true'],
+.persona-switcher button.is-active {
+  background: var(--accent);
+  border-color: var(--accent-strong);
+  color: var(--accent-contrast);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
 }
 
 /* Header */
@@ -381,6 +458,74 @@ textarea {
   text-decoration: none;
   color: var(--color-primary);
   font-weight: 600;
+}
+
+.persona-card {
+  border-color: var(--accent-border);
+  background: linear-gradient(180deg, var(--accent-surface), transparent 45%);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.08);
+}
+
+.persona-card h3,
+.persona-card .card__link {
+  color: var(--accent-strong);
+}
+
+.persona-card .pill {
+  background: var(--accent-surface);
+  color: var(--color-text);
+}
+
+.skill-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.skill-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  background: var(--accent-surface);
+  border: 1px solid var(--accent-border);
+  color: var(--color-text);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform 150ms ease, background 150ms ease, border-color 150ms ease;
+}
+
+.skill-chip::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-surface);
+}
+
+.skill-chip:hover {
+  transform: translateY(-1px);
+  background: color-mix(in srgb, var(--accent-surface) 70%, var(--color-bg) 30%);
+  border-color: var(--accent-strong);
+}
+
+.persona-content {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 220ms ease, transform 220ms ease;
+  pointer-events: none;
+}
+
+.persona-content.is-active,
+.persona-content[aria-hidden='false'] {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 /* Timeline */
