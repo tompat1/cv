@@ -33,28 +33,28 @@
   --shadow-soft: 0 25px 40px rgba(0, 0, 0, 0.45);
 }
 
-:root[data-persona='product-designer'] {
-  --accent: #7785e3;
-  --accent-strong: #5f6ad6;
-  --accent-soft: rgba(119, 133, 227, 0.16);
-  --accent-surface: rgba(119, 133, 227, 0.12);
-  --accent-border: rgba(119, 133, 227, 0.4);
+:root[data-persona='digital-design-ux'] {
+  --accent: #e15b9e;
+  --accent-strong: #d14888;
+  --accent-soft: rgba(225, 91, 158, 0.16);
+  --accent-surface: rgba(225, 91, 158, 0.12);
+  --accent-border: rgba(225, 91, 158, 0.4);
 }
 
-:root[data-persona='design-systems'] {
-  --accent: #f97316;
-  --accent-strong: #ea580c;
-  --accent-soft: rgba(249, 115, 22, 0.18);
-  --accent-surface: rgba(249, 115, 22, 0.12);
-  --accent-border: rgba(249, 115, 22, 0.4);
+:root[data-persona='branding-content'] {
+  --accent: #7157ff;
+  --accent-strong: #5a3df3;
+  --accent-soft: rgba(113, 87, 255, 0.16);
+  --accent-surface: rgba(113, 87, 255, 0.12);
+  --accent-border: rgba(113, 87, 255, 0.4);
 }
 
-:root[data-persona='ux-engineer'] {
-  --accent: #22c55e;
-  --accent-strong: #16a34a;
-  --accent-soft: rgba(34, 197, 94, 0.2);
-  --accent-surface: rgba(34, 197, 94, 0.12);
-  --accent-border: rgba(34, 197, 94, 0.45);
+:root[data-persona='web-development'] {
+  --accent: #20b0b5;
+  --accent-strong: #1a8f93;
+  --accent-soft: rgba(32, 176, 181, 0.16);
+  --accent-surface: rgba(32, 176, 181, 0.12);
+  --accent-border: rgba(32, 176, 181, 0.42);
 }
 
 *,

@@ -3,23 +3,33 @@ import './styles.css';
 const THEME_KEY = 'tr-theme';
 const personas = [
   {
-    title: 'Front-end, UX & Digital Designer',
-    slug: 'frontend-ux-designer',
-    accentColor: '#e15b9e',
+    title: 'Digital Design & UX',
+    slug: 'digital-design-ux',
+    palette: {
+      accent: '#e15b9e',
+      accentStrong: '#d14888',
+      accentSoft: 'rgba(225, 91, 158, 0.16)',
+      accentSurface: 'rgba(225, 91, 158, 0.12)',
+      accentBorder: 'rgba(225, 91, 158, 0.4)',
+    },
     icon: '/assets/product-designer.svg',
-    iconAlt: 'Geometric icon for a digital designer',
+    iconAlt: 'Geometric icon for a digital product designer',
     heroCopy: {
       eyebrow: 'Consultant & designer for web and digital products',
-      heading: 'Crafting experiences across',
-      highlight: 'front-end, UX, and visual design.',
+      heading: 'Designing intuitive experiences for',
+      highlight: 'modern products & services.',
       lead:
-        'I have been a consultant for 30+ years within IT, Graphic & Digital Design, and PM/Marketing—delivering creative, technical, and strategic solutions to diverse stakeholders.',
+        'I bring 30+ years across IT, digital design, and product to move ideas from discovery through validated prototypes into developer-ready design systems.',
       stats: [
         { value: '30+ yrs', label: 'Consulting across IT & design' },
         { value: '12 yrs', label: 'Digital product & UX focus' },
-        { value: '4', label: 'Key roles: Front-end / UX / Digital & Graphic Design' },
+        { value: '200+', label: 'Flows prototyped & tested' },
       ],
-      focus: ['HTML / CSS / JS', 'Figma & Adobe XD', 'Illustrator & Photoshop'],
+      focus: [
+        'I design intuitive product flows, validate with users, and deliver Figma systems ready for dev handoff.',
+        'Hands-on research loops, from interviews to moderated tests, keep usability grounded in real feedback.',
+        'Design systems, UI kits, and accessibility baked into every component for smoother builds.',
+      ],
       actions: [
         { label: 'See recent assignments', href: '#work', variant: 'primary' },
         { label: 'Get in touch', href: '#contact', variant: 'ghost' },
@@ -33,19 +43,9 @@ const personas = [
         year: '2016-2023',
         title: 'Rapidus',
         description:
-          'Front-end development and redesign for a digital news platform with TypeScript, RESTful APIs, and graph visualizations.',
-        tags: ['React & Next.js', 'Figma prototypes', 'API integrations'],
+          'Product discovery, UX, and redesign for a digital news platform with TypeScript, RESTful APIs, and graph visualizations.',
+        tags: ['User flows & prototypes', 'Design systems', 'React / Next.js'],
         linkLabel: 'Assignment overview ->',
-        href: '#',
-      },
-      {
-        badge: 'Finance',
-        year: '2016-2020',
-        title: 'Intrum',
-        description:
-          'UX/design direction and front-end delivery for multilingual platforms, dashboards, and campaign pages in 23 languages.',
-        tags: ['UX/UI design', 'Front-end build', 'Stakeholder collaboration'],
-        linkLabel: 'See project notes ->',
         href: '#',
       },
       {
@@ -53,8 +53,8 @@ const personas = [
         year: '2015-2021',
         title: 'Naturvårdsverket',
         description:
-          'UX/design direction and front-end work for environmental reporting tools, interactive maps, and complex forms.',
-        tags: ['Design systems', 'Accessibility', 'Data-driven UI'],
+          'Research-led UX direction for environmental reporting tools, interactive maps, and complex forms.',
+        tags: ['Accessibility', 'Data-driven UX', 'Stakeholder workshops'],
         linkLabel: 'Read summary ->',
         href: '#',
       },
@@ -63,44 +63,246 @@ const personas = [
         year: '2014',
         title: 'Bankgirocentralen',
         description:
-          'Front-end development, UX, and visual design for online bank applications and dashboards across multiple lines of business.',
-        tags: ['Responsive UI', 'Design leadership', 'Agile delivery'],
+          'Flow design and responsive UI for online bank applications and dashboards across multiple business lines.',
+        tags: ['Responsive UX', 'Design leadership', 'Agile delivery'],
         linkLabel: 'Engagement highlights ->',
         href: '#',
       },
     ],
     skills: [
       {
-        title: 'Front-end Development',
+        title: 'Product discovery',
         description:
-          'Building responsive, accessible interfaces with modern frameworks and clean HTML, CSS, and JavaScript.',
-        bullets: ['React / Next.js / MVC', 'TypeScript & API integrations', 'Performance & accessibility'],
+          'Shape journeys with research, interviews, and co-creation that clarify user intent and business value.',
+        bullets: ['Problem framing & workshops', 'User interviews & synthesis', 'Personas, jobs-to-be-done, service maps'],
       },
       {
-        title: 'UX & Design Direction',
+        title: 'UX & product design',
         description:
-          'Leading discovery, prototyping, and interface design that connects user goals to business outcomes.',
-        bullets: ['Wireframes & Figma prototypes', 'Design systems & UI kits', 'Usability testing & iteration'],
+          'Prototype flows, validate them with users, and refine the details until they are ready for build.',
+        bullets: ['Flows, wires, and high-fidelity UI', 'Usability tests & iteration', 'Microcopy & interaction design'],
       },
       {
-        title: 'Digital & Graphic Design',
+        title: 'Design systems',
         description:
-          'Visual design across web, editorial, and marketing with a foundation in Adobe CC.',
-        bullets: ['Illustrator & Photoshop', 'Brand & layout design', 'Motion & visual polish'],
+          'Deliver accessible, reusable components with Figma libraries and implementation notes for dev teams.',
+        bullets: ['Foundations & tokens', 'UI kits with states', 'Handoff specs & documentation'],
       },
     ],
     testimonial: {
       quote:
-        'Combining the demands and possibilities of digital design, front-end, Scrum/PM, and design—coupled with my sensibilities as a graphic designer.',
+        'Combining the demands of digital design, front-end, and product thinking—paired with my sensibilities as a graphic designer.',
       name: 'Personal motto',
       title: 'Thomas Rynell',
     },
     cta: {
       eyebrow: 'Next step',
-      heading: 'Ready to collaborate on your next release?',
+      heading: 'Ready to ship a validated experience?',
       body:
-        'Bring me in for front-end, UX, or design leadership. We will map the goals, shape the experience, and deliver a polished build together.',
-      button: { label: 'Start a project conversation', href: '#contact' },
+        'Bring me in for discovery, UX leadership, or design system delivery. We will test, refine, and hand off a build-ready solution.',
+      button: { label: 'Start a UX project', href: '#contact' },
+    },
+  },
+  {
+    title: 'Branding & Content',
+    slug: 'branding-content',
+    palette: {
+      accent: '#7157ff',
+      accentStrong: '#5a3df3',
+      accentSoft: 'rgba(113, 87, 255, 0.16)',
+      accentSurface: 'rgba(113, 87, 255, 0.12)',
+      accentBorder: 'rgba(113, 87, 255, 0.4)',
+    },
+    icon: '/assets/design-systems.svg',
+    iconAlt: 'Geometric icon for brand and content strategy',
+    heroCopy: {
+      eyebrow: 'Brand and content leader for product teams',
+      heading: 'Building cohesive stories through',
+      highlight: 'identity, messaging, and content.',
+      lead:
+        'I create brand systems, messaging frameworks, and content plans that keep every touchpoint consistent while supporting product goals.',
+      stats: [
+        { value: '25+', label: 'Brands refreshed or launched' },
+        { value: '6', label: 'Languages coordinated for content ops' },
+        { value: '12 yrs', label: 'Storytelling for digital products' },
+      ],
+      focus: [
+        'I craft cohesive visual identities, messaging frameworks, and content that keeps your voice consistent.',
+        'Style guides, design tokens, and brand toolkits that scale from decks to product UI.',
+        'Editorial calendars, long- and short-form copy, and governance to keep teams aligned.',
+      ],
+      actions: [
+        { label: 'See recent assignments', href: '#work', variant: 'primary' },
+        { label: 'Get in touch', href: '#contact', variant: 'ghost' },
+      ],
+      portrait:
+        'https://images.unsplash.com/photo-1530023367847-a683933f4177?auto=format&fit=crop&w=600&q=80',
+    },
+    projects: [
+      {
+        badge: 'Finance',
+        year: '2016-2020',
+        title: 'Intrum',
+        description:
+          'Brand and content direction for multilingual platforms, dashboards, and campaigns across 23 languages.',
+        tags: ['Messaging frameworks', 'Design direction', 'Localization ops'],
+        linkLabel: 'See project notes ->',
+        href: '#',
+      },
+      {
+        badge: 'Gov & Sustainability',
+        year: '2015-2021',
+        title: 'Naturvårdsverket',
+        description:
+          'Identity refresh and content strategy for environmental reporting tools and public-facing communications.',
+        tags: ['Brand systems', 'Editorial voice', 'Accessibility'],
+        linkLabel: 'Read summary ->',
+        href: '#',
+      },
+      {
+        badge: 'News / SaaS',
+        year: '2016-2023',
+        title: 'Rapidus',
+        description:
+          'Narrative and UI content for subscription funnels, dashboards, and data-heavy visualizations.',
+        tags: ['Narrative design', 'Content design', 'Conversion copy'],
+        linkLabel: 'Assignment overview ->',
+        href: '#',
+      },
+    ],
+    skills: [
+      {
+        title: 'Identity systems',
+        description:
+          'Define the visual language, from logos to UI styling, with scalable guidelines that teams can ship with.',
+        bullets: ['Visual identity refresh', 'Design tokens & UI styling', 'Brand toolkits & templates'],
+      },
+      {
+        title: 'Messaging frameworks',
+        description:
+          'Clarify positioning, value props, and proof points so every channel speaks in one voice.',
+        bullets: ['Positioning & story pillars', 'Product messaging hierarchy', 'Tone & voice playbooks'],
+      },
+      {
+        title: 'Content & ops',
+        description:
+          'Plan and deliver content that stays on-brand—from landing pages to lifecycle campaigns.',
+        bullets: ['Editorial calendars', 'Localization & governance', 'Content design for product UI'],
+      },
+    ],
+    testimonial: {
+      quote:
+        'A cohesive brand voice across product, marketing, and support makes every experience feel intentional.',
+      name: 'Guiding principle',
+      title: 'Thomas Rynell',
+    },
+    cta: {
+      eyebrow: 'Next step',
+      heading: 'Ready for a consistent brand voice?',
+      body:
+        'Let us craft the identity, messaging, and content frameworks that keep your product recognizable everywhere.',
+      button: { label: 'Plan a brand sprint', href: '#contact' },
+    },
+  },
+  {
+    title: 'Web Development',
+    slug: 'web-development',
+    palette: {
+      accent: '#20b0b5',
+      accentStrong: '#1a8f93',
+      accentSoft: 'rgba(32, 176, 181, 0.16)',
+      accentSurface: 'rgba(32, 176, 181, 0.12)',
+      accentBorder: 'rgba(32, 176, 181, 0.42)',
+    },
+    icon: '/assets/ux-engineer.svg',
+    iconAlt: 'Geometric icon for a web developer',
+    heroCopy: {
+      eyebrow: 'Front-end engineer & UX technologist',
+      heading: 'Building performant, maintainable sites with',
+      highlight: 'modern tooling and best practices.',
+      lead:
+        'From design handoff to deployment, I ship reliable front-end systems with clean architecture, accessibility, and analytics baked in.',
+      stats: [
+        { value: '50+', label: 'Sites & apps launched' },
+        { value: '8', label: 'Design systems engineered' },
+        { value: '99.9%', label: 'Uptime on recent launches' },
+      ],
+      focus: [
+        'I build performant, maintainable sites with modern tooling, from design handoff to deployment.',
+        'Front-end architecture in React/Next.js with component libraries mapped to design systems.',
+        'CI/CD, performance budgets, and analytics instrumentation to keep releases predictable.',
+      ],
+      actions: [
+        { label: 'See recent assignments', href: '#work', variant: 'primary' },
+        { label: 'Get in touch', href: '#contact', variant: 'ghost' },
+      ],
+      portrait:
+        'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80',
+    },
+    projects: [
+      {
+        badge: 'News / SaaS',
+        year: '2016-2023',
+        title: 'Rapidus',
+        description:
+          'Front-end development for a high-traffic news platform with TypeScript, RESTful APIs, and graph visualizations.',
+        tags: ['React & Next.js', 'API integrations', 'Performance tuning'],
+        linkLabel: 'Assignment overview ->',
+        href: '#',
+      },
+      {
+        badge: 'Finance',
+        year: '2016-2020',
+        title: 'Intrum',
+        description:
+          'Front-end delivery for multilingual platforms, dashboards, and campaign pages across 23 languages.',
+        tags: ['Front-end build', 'Localization', 'Design-system mapping'],
+        linkLabel: 'See project notes ->',
+        href: '#',
+      },
+      {
+        badge: 'Gov & Sustainability',
+        year: '2015-2021',
+        title: 'Naturvårdsverket',
+        description:
+          'Accessibility-focused front-end for environmental reporting tools, interactive maps, and complex forms.',
+        tags: ['Accessibility', 'Data-rich UI', 'Mapping & visualization'],
+        linkLabel: 'Read summary ->',
+        href: '#',
+      },
+    ],
+    skills: [
+      {
+        title: 'Front-end architecture',
+        description:
+          'Set up scalable foundations with modern frameworks, linting, testing, and component libraries.',
+        bullets: ['React, Next.js, Vite', 'TypeScript & testing', 'Design system implementation'],
+      },
+      {
+        title: 'UI implementation',
+        description:
+          'Translate Figma into responsive, accessible interfaces that perform across devices.',
+        bullets: ['Semantic HTML & ARIA', 'Performance budgets', 'Animations & micro-interactions'],
+      },
+      {
+        title: 'Delivery & ops',
+        description:
+          'Own the release chain with CI/CD, hosting, monitoring, and analytics wired from day one.',
+        bullets: ['CI/CD & hosting', 'Error monitoring', 'Analytics & A/B testing'],
+      },
+    ],
+    testimonial: {
+      quote:
+        'Robust delivery pairs clean front-end engineering with thoughtful UX details that make releases feel polished.',
+      name: 'Delivery mantra',
+      title: 'Thomas Rynell',
+    },
+    cta: {
+      eyebrow: 'Next step',
+      heading: 'Ready to launch with confidence?',
+      body:
+        'Let us build and ship the front-end—from design handoff to production—complete with QA, analytics, and monitoring.',
+      button: { label: 'Kick off a build', href: '#contact' },
     },
   },
 ];
@@ -111,6 +313,14 @@ const getThemeToggle = () => document.getElementById('themeToggle');
 const setPersonaContext = (persona) => {
   const root = getRoot();
   root.setAttribute('data-persona', persona.slug);
+
+  if (persona.palette) {
+    root.style.setProperty('--accent', persona.palette.accent);
+    root.style.setProperty('--accent-strong', persona.palette.accentStrong);
+    root.style.setProperty('--accent-soft', persona.palette.accentSoft);
+    root.style.setProperty('--accent-surface', persona.palette.accentSurface);
+    root.style.setProperty('--accent-border', persona.palette.accentBorder);
+  }
 };
 
 const getPersonaPanels = () =>
