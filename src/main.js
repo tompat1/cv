@@ -7,21 +7,17 @@ const personas = [
     slug: 'product-designer',
     accentColor: '#7785e3',
     heroCopy: {
-      eyebrow: 'Currently open for new projects (Jan 2026)',
+      eyebrow: 'Product strategist for fast-moving SaaS',
       heading: 'Building human-centered products with',
       highlight: 'clarity, craft, and care.',
       lead:
-        "I help SaaS teams translate complex challenges into elegant journeys. Over the last 8+ years, I've shipped product experiences used by millions at tech startups, fintech scale-ups, and design-led agencies.",
+        "I guide teams from fuzzy problem framing to launch-ready experiences. Over the last 8+ years, I've shipped customer journeys used by millions across SaaS, fintech, and health tech.",
       stats: [
         { value: '10+', label: 'Products launched end-to-end' },
-        { value: '60%', label: 'Avg. uplift in key KPIs shipped' },
+        { value: '60%', label: 'Avg. uplift in core KPIs' },
         { value: '8 yrs', label: 'Hybrid product & design experience' },
       ],
-      focus: [
-        'Product strategy & discovery',
-        'Design systems & prototyping',
-        'Accessible frontend engineering',
-      ],
+      focus: ['Figma/ FigJam', 'Maze & Lookback', 'Notion & Linear'],
       actions: [
         { label: 'See selected work', href: '#work', variant: 'primary' },
         { label: 'Book intro call', href: '#contact', variant: 'ghost' },
@@ -35,8 +31,8 @@ const personas = [
         year: '2024',
         title: 'FlowPay Intelligence',
         description:
-          'Led discovery to redesign the payments insights suite, improving merchant retention by 18% through clearer forecasting experiences.',
-        tags: ['Product workshops', 'Design system foundations', 'React prototype build'],
+          'Repositioned the payments insights suite with clearer forecasting flows, lifting merchant retention by 18%.',
+        tags: ['Narrative mapping', 'Outcome-focused roadmap', 'Design system starter kit'],
         linkLabel: 'Read case study ->',
         href: '#',
       },
@@ -45,8 +41,8 @@ const personas = [
         year: '2023',
         title: 'Circulate Analytics',
         description:
-          'Shipped a scenario planning tool that allowed sustainability leads to model impact in minutes, cutting reporting time by 40%.',
-        tags: ['Journey mapping', 'High fidelity UI', 'Frontend handoff'],
+          'Launched a scenario planning tool that let sustainability leads model impact in minutes, cutting reporting time by 40%.',
+        tags: ['Jobs-to-be-done synthesis', 'High-fidelity flows', 'Release playbacks'],
         linkLabel: 'Read case study ->',
         href: '#',
       },
@@ -55,8 +51,8 @@ const personas = [
         year: '2022',
         title: 'Northwind Care',
         description:
-          'Designed the clinician hub experience and built the responsive UI kit powering twelve cross-platform apps.',
-        tags: ['Experience vision', 'Design ops', 'Component engineering'],
+          'Built the clinician hub experience and responsive UI kit that now powers twelve cross-platform apps.',
+        tags: ['Experience vision', 'Service blueprints', 'Component engineering'],
         linkLabel: 'Read case study ->',
         href: '#',
       },
@@ -83,16 +79,16 @@ const personas = [
     ],
     testimonial: {
       quote:
-        "Thomas has a rare ability to move seamlessly from fuzzy problem spaces to shippable solutions. He's our go-to for 0->1 product bets.",
+        'Thomas takes a jumble of insights, finds the signal, and turns it into a story the whole team can ship against.',
       name: 'Eva Magnusson',
       title: 'VP Product @ FlowPay',
     },
     cta: {
       eyebrow: 'Next step',
-      heading: "Let's shape the next release.",
+      heading: 'Ready to align product and experience?',
       body:
-        'Send a note to hello@thomasrynell.com or book a quick chemistry call to explore your next release.',
-      button: { label: 'Start a project', href: 'mailto:hello@thomasrynell.com' },
+        'Book a 30-minute roadmap review to align business goals, outcomes, and the first release milestone.',
+      button: { label: 'Book a roadmap review', href: '#contact' },
     },
   },
   {
@@ -100,7 +96,7 @@ const personas = [
     slug: 'design-systems',
     accentColor: '#f97316',
     heroCopy: {
-      eyebrow: 'Available for system modernization',
+      eyebrow: 'Stewarding design systems that stick',
       heading: 'Scaling multi-brand experiences with',
       highlight: 'design ops rigor.',
       lead:
@@ -110,7 +106,7 @@ const personas = [
         { value: '30%', label: 'Faster design-to-dev handoffs' },
         { value: '12 squads', label: 'Supported with playbooks' },
       ],
-      focus: ['System audits & KPIs', 'Token-driven libraries', 'Documentation & enablement'],
+      focus: ['Figma & Tokens Studio', 'Storybook & Chromatic', 'Zeroheight & Confluence'],
       actions: [
         { label: 'Review my playbook', href: '#services', variant: 'primary' },
         { label: 'Schedule a teardown', href: '#contact', variant: 'ghost' },
@@ -124,8 +120,8 @@ const personas = [
         year: '2024',
         title: 'NovaOS Design Language',
         description:
-          'Unified three legacy UI kits into a single token-driven system, cutting UI defects by 22% and accelerating new feature launches.',
-        tags: ['Token architecture', 'Design ops', 'Component governance'],
+          'Unified three legacy UI kits into a single token-driven system, cutting UI defects by 22% and speeding feature delivery.',
+        tags: ['Token architecture', 'Design ops rituals', 'Component governance'],
         linkLabel: 'See rollout notes ->',
         href: '#',
       },
@@ -134,7 +130,7 @@ const personas = [
         year: '2023',
         title: 'Atlas Marketplace System',
         description:
-          'Delivered a multi-brand component library with themeable primitives, enabling 8 regional storefronts to ship aligned UX in 6 weeks.',
+          'Delivered a multi-brand component library with themeable primitives so 8 regional storefronts shipped aligned UX in 6 weeks.',
         tags: ['Multi-brand theming', 'Accessibility reviews', 'Storybook delivery'],
         linkLabel: 'View component spec ->',
         href: '#',
@@ -144,7 +140,7 @@ const personas = [
         year: '2022',
         title: 'LedgerOne UI Kit',
         description:
-          'Created a resilient design system for complex data tables and workflows, improving designer onboarding satisfaction to 94%.',
+          'Created a resilient design system for complex data tables and workflows, raising designer onboarding satisfaction to 94%.',
         tags: ['Design tokens', 'Workflow patterns', 'Design QA'],
         linkLabel: 'Read migration plan ->',
         href: '#',
@@ -172,7 +168,7 @@ const personas = [
     ],
     testimonial: {
       quote:
-        'Thomas made our system real for engineers. The token strategy and governance rituals he set up keep our teams aligned release after release.',
+        'Thomas translated design ideals into an engineering-ready system. The rituals he set up keep our squads aligned release after release.',
       name: 'Hugo Ferreira',
       title: 'CTO @ Circulate',
     },
@@ -180,8 +176,8 @@ const personas = [
       eyebrow: 'Systems support',
       heading: 'Need a system steward?',
       body:
-        'Let’s run an audit or pair on your next release so we can keep designers and engineers shipping without friction.',
-      button: { label: 'Book a systems consult', href: '#contact' },
+        'Run a focused audit to benchmark quality, resilience, and adoption—then co-create the backlog that keeps teams shipping.',
+      button: { label: 'Book a systems audit', href: '#contact' },
     },
   },
   {
@@ -199,7 +195,7 @@ const personas = [
         { value: '4.9/5', label: 'PM partner satisfaction' },
         { value: '2x', label: 'Faster validation cycles' },
       ],
-      focus: ['Rapid prototyping', 'Design-engineering parity', 'Inclusive UI patterns'],
+      focus: ['React & TypeScript', 'Vite & Storybook', 'a11y-first testing'],
       actions: [
         { label: 'View build samples', href: '#work', variant: 'primary' },
         { label: 'Pair on a spike', href: '#contact', variant: 'ghost' },
@@ -223,7 +219,7 @@ const personas = [
         year: '2023',
         title: 'RouteWise Dispatch',
         description:
-          'Engineered complex map and scheduling interfaces with accessibility baked in, unlocking enterprise contracts.',
+          'Engineered map and scheduling interfaces with WCAG coverage, unlocking enterprise contracts.',
         tags: ['Accessible UI', 'Maps & data viz', 'Design QA'],
         linkLabel: 'View engineering doc ->',
         href: '#',
@@ -233,7 +229,7 @@ const personas = [
         year: '2022',
         title: 'Pulse Component Library',
         description:
-          'Partnered with platform teams to create typed React components and Storybook docs that ship exactly like the Figma files.',
+          'Partnered with platform teams to ship typed React components and Storybook docs that mirror the Figma source.',
         tags: ['Typed components', 'Storybook docs', 'CI checks'],
         linkLabel: 'Read build log ->',
         href: '#',
@@ -261,7 +257,7 @@ const personas = [
     ],
     testimonial: {
       quote:
-        'His prototypes feel like the final product. Engineering loves inheriting his work because it is already production-minded.',
+        'His prototypes ship with sensible defaults, test coverage, and docs—engineering inherits code they barely need to refactor.',
       name: 'Mara Lindholm',
       title: 'VP Engineering @ SprintKit',
     },
@@ -270,7 +266,7 @@ const personas = [
       heading: 'Need a build partner for your next sprint?',
       body:
         'Bring me into your two-week spike and we will leave with validated flows, code-ready components, and a confident handoff.',
-      button: { label: 'Book a pairing slot', href: '#contact' },
+      button: { label: 'Review site performance', href: '#contact' },
     },
   },
 ];
