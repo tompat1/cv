@@ -132,8 +132,24 @@ textarea {
   border-radius: 999px;
   cursor: pointer;
   color: var(--color-text);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
   transition: background 200ms ease, color 200ms ease, box-shadow 200ms ease,
     border-color 200ms ease, transform 180ms ease;
+}
+
+.persona-tab__icon {
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 10px;
+  border: 1px solid var(--color-border);
+  background: #fff;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+.persona-tab__label {
+  font-weight: 600;
 }
 
 .persona-tab[aria-selected='true'] {
@@ -369,6 +385,28 @@ textarea {
   font-size: clamp(2.5rem, 4vw, 3.75rem);
   line-height: 1.1;
   margin: 0 0 1rem;
+}
+
+.hero__persona {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 0.75rem;
+}
+
+.hero__persona-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 14px;
+  border: 1px solid var(--color-border);
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+.hero__persona-title {
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: 0.02em;
 }
 
 .hero .lead {

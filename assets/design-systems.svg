@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title>Design systems icon</title>
+  <rect x="10" y="12" width="44" height="40" rx="6" fill="#fff4eb" stroke="#f97316" stroke-width="3" />
+  <rect x="16" y="20" width="12" height="12" rx="2" fill="#f97316" opacity="0.18" />
+  <rect x="28" y="20" width="20" height="4" rx="2" fill="#f97316" />
+  <rect x="16" y="36" width="24" height="4" rx="2" fill="#f97316" />
+  <rect x="16" y="44" width="14" height="4" rx="2" fill="#f97316" opacity="0.7" />
+  <circle cx="46" cy="42" r="6" fill="#f97316" />
+</svg>
