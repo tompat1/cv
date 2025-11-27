@@ -11,7 +11,7 @@ const personas = [
     heroCopy: {
       eyebrow: 'Consultant & designer for web and digital products',
       heading: 'Crafting experiences across',
-      highlight: 'front-end, UX, and visual design.',
+      highlight: 'digital design, branding, and web development.',
       lead:
         'I have been a consultant for 30+ years within IT, Graphic & Digital Design, and PM/Marketing—delivering creative, technical, and strategic solutions to diverse stakeholders.',
       stats: [
@@ -19,7 +19,11 @@ const personas = [
         { value: '12 yrs', label: 'Digital product & UX focus' },
         { value: '4', label: 'Key roles: Front-end / UX / Digital & Graphic Design' },
       ],
-      focus: ['HTML / CSS / JS', 'Figma & Adobe XD', 'Illustrator & Photoshop'],
+      focus: [
+        'I design intuitive product flows, validate with users, and deliver Figma systems ready for dev handoff.',
+        'I craft cohesive visual identities, messaging frameworks, and content that keeps your voice consistent.',
+        'I build performant, maintainable sites with modern tooling, from design handoff to deployment.',
+      ],
       actions: [
         { label: 'See recent assignments', href: '#work', variant: 'primary' },
         { label: 'Get in touch', href: '#contact', variant: 'ghost' },
@@ -71,22 +75,22 @@ const personas = [
     ],
     skills: [
       {
-        title: 'Front-end Development',
+        title: 'Digital Design & UX',
         description:
-          'Building responsive, accessible interfaces with modern frameworks and clean HTML, CSS, and JavaScript.',
-        bullets: ['React / Next.js / MVC', 'TypeScript & API integrations', 'Performance & accessibility'],
+          'I design intuitive product flows, validate with users, and deliver Figma systems ready for dev handoff.',
+        bullets: ['User flows & prototypes', 'Design systems & UI kits', 'Research, testing, and iteration'],
       },
       {
-        title: 'UX & Design Direction',
+        title: 'Branding & Content',
         description:
-          'Leading discovery, prototyping, and interface design that connects user goals to business outcomes.',
-        bullets: ['Wireframes & Figma prototypes', 'Design systems & UI kits', 'Usability testing & iteration'],
+          'I craft cohesive visual identities, messaging frameworks, and content that keeps your voice consistent.',
+        bullets: ['Visual identity & guidelines', 'Messaging frameworks', 'Long- and short-form content'],
       },
       {
-        title: 'Digital & Graphic Design',
+        title: 'Web Development',
         description:
-          'Visual design across web, editorial, and marketing with a foundation in Adobe CC.',
-        bullets: ['Illustrator & Photoshop', 'Brand & layout design', 'Motion & visual polish'],
+          'I build performant, maintainable sites with modern tooling, from design handoff to deployment.',
+        bullets: ['React, Next.js, and Vite', 'Accessible, responsive delivery', 'CI/CD, hosting, and analytics'],
       },
     ],
     testimonial: {
