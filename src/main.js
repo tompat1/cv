@@ -278,8 +278,34 @@ let activePersona = personas[0];
 const getRoot = () => document.documentElement;
 const getThemeToggle = () => document.getElementById('themeToggle');
 
-const setAccentColor = (accentColor) => {
-  getRoot().style.setProperty('--persona-accent', accentColor);
+const setPersonaContext = (persona) => {
+  const root = getRoot();
+  root.setAttribute('data-persona', persona.slug);
+};
+
+const getPersonaPanels = () =>
+  document.querySelectorAll('.hero, [data-projects], [data-skills], [data-testimonial], .persona-cta');
+
+const animatePersonaPanels = () => {
+  const panels = getPersonaPanels();
+  if (!panels.length) return;
+
+  panels.forEach((panel) => {
+    const shouldSkipHero = panel.classList.contains('hero') && !panel.classList.contains('hero--visible');
+    if (shouldSkipHero) return;
+    panel.classList.add('persona-panel');
+    panel.classList.remove('persona-panel--active');
+  });
+
+  requestAnimationFrame(() => {
+    panels.forEach((panel) => {
+      const shouldSkipHero = panel.classList.contains('hero') && !panel.classList.contains('hero--visible');
+      if (shouldSkipHero) return;
+      // eslint-disable-next-line no-unused-expressions
+      panel.offsetWidth;
+      panel.classList.add('persona-panel--active');
+    });
+  });
 };
 
 const renderHero = (persona) => {
@@ -444,12 +470,13 @@ const renderCta = (cta) => {
 };
 
 const renderPersonaContent = (persona) => {
-  setAccentColor(persona.accentColor);
+  setPersonaContext(persona);
   renderHero(persona);
   renderProjects(persona.projects);
   renderSkills(persona.skills);
   renderTestimonial(persona.testimonial);
   renderCta(persona.cta);
+  animatePersonaPanels();
 };
 
 const renderPersonaTabs = (container) => {
