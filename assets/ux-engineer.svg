@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title>UX engineer icon</title>
+  <rect x="8" y="14" width="48" height="36" rx="8" fill="#e8f9ef" stroke="#22c55e" stroke-width="3" />
+  <path d="M16 26h14" stroke="#22c55e" stroke-width="3" stroke-linecap="round" />
+  <path d="M16 34h10" stroke="#22c55e" stroke-width="3" stroke-linecap="round" />
+  <path d="M16 42h20" stroke="#22c55e" stroke-width="3" stroke-linecap="round" opacity="0.65" />
+  <circle cx="44" cy="30" r="6" fill="#22c55e" opacity="0.22" />
+  <path d="M40 46l7-8 5 5" stroke="#22c55e" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

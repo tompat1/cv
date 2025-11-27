@@ -6,6 +6,8 @@ const personas = [
     title: 'Product Designer',
     slug: 'product-designer',
     accentColor: '#7785e3',
+    icon: '/assets/product-designer.svg',
+    iconAlt: 'Notebook and interface icon for a product designer',
     heroCopy: {
       eyebrow: 'Product strategist for fast-moving SaaS',
       heading: 'Building human-centered products with',
@@ -95,6 +97,8 @@ const personas = [
     title: 'Design Systems Partner',
     slug: 'design-systems',
     accentColor: '#f97316',
+    icon: '/assets/design-systems.svg',
+    iconAlt: 'Layered blocks icon for a design systems partner',
     heroCopy: {
       eyebrow: 'Stewarding design systems that stick',
       heading: 'Scaling multi-brand experiences with',
@@ -184,6 +188,8 @@ const personas = [
     title: 'UX Engineer',
     slug: 'ux-engineer',
     accentColor: '#22c55e',
+    icon: '/assets/ux-engineer.svg',
+    iconAlt: 'Monitor and checklist icon for a UX engineer',
     heroCopy: {
       eyebrow: 'Prototype partner for product teams',
       heading: 'Shipping polished interactions with',
@@ -306,6 +312,8 @@ const animatePersonaPanels = () => {
 
 const renderHero = (persona) => {
   const heroEyebrow = document.querySelector('[data-hero-eyebrow]');
+  const heroPersonaTitle = document.querySelector('[data-hero-persona-title]');
+  const heroPersonaIcon = document.querySelector('[data-hero-persona-icon]');
   const heroHeading = document.querySelector('[data-hero-heading]');
   const heroHighlight = document.querySelector('[data-hero-highlight]');
   const heroLead = document.querySelector('[data-hero-lead]');
@@ -316,6 +324,8 @@ const renderHero = (persona) => {
 
   if (
     !heroEyebrow ||
+    !heroPersonaTitle ||
+    !heroPersonaIcon ||
     !heroHeading ||
     !heroHighlight ||
     !heroLead ||
@@ -328,6 +338,9 @@ const renderHero = (persona) => {
 
   const { heroCopy } = persona;
   heroEyebrow.textContent = heroCopy.eyebrow;
+  heroPersonaTitle.textContent = persona.title;
+  heroPersonaIcon.setAttribute('src', persona.icon);
+  heroPersonaIcon.setAttribute('alt', persona.iconAlt);
   heroHeading.textContent = `${heroCopy.heading} `;
   heroHighlight.textContent = heroCopy.highlight;
   heroLead.textContent = heroCopy.lead;
@@ -483,7 +496,16 @@ const renderPersonaTabs = (container) => {
     button.className = 'persona-tab';
     button.dataset.personaOption = persona.slug;
     button.setAttribute('role', 'tab');
-    button.textContent = persona.title;
+    const icon = document.createElement('img');
+    icon.src = persona.icon;
+    icon.alt = persona.iconAlt;
+    icon.className = 'persona-tab__icon';
+
+    const label = document.createElement('span');
+    label.className = 'persona-tab__label';
+    label.textContent = persona.title;
+
+    button.append(icon, label);
     container.appendChild(button);
   });
 };
