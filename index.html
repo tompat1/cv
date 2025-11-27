@@ -76,32 +76,49 @@
     </header>
 
     <main>
-      <section class="persona-switcher">
-        <div class="container persona-switcher__inner" role="tablist" aria-label="Persona switcher">
-          <span class="persona-switcher__label">Focus</span>
-          <div class="persona-switcher__tabs" data-persona-switcher></div>
-        </div>
-      </section>
-
       <section class="hero container">
         <div class="hero__copy">
-          <p class="eyebrow" data-hero-eyebrow></p>
+          <p class="eyebrow">Currently open for new projects (Jan 2026)</p>
           <h1>
-            <span data-hero-heading></span>
-            <span class="highlight" data-hero-highlight></span>
+            Building human-centered products with
+            <span class="highlight">clarity, craft, and care.</span>
           </h1>
-          <p class="lead" data-hero-lead></p>
-          <div class="hero__actions" data-hero-actions></div>
-          <dl class="hero__stats" data-hero-stats></dl>
+          <p class="lead">
+            I help SaaS teams translate complex challenges into elegant journeys.
+            Over the last 8+ years, I've shipped product experiences used by
+            millions at tech startups, fintech scale-ups, and design-led agencies.
+          </p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#work">See selected work</a>
+            <a class="btn btn--ghost" href="#contact">Book intro call</a>
+          </div>
+          <dl class="hero__stats">
+            <div>
+              <dt>10+</dt>
+              <dd>Products launched end-to-end</dd>
+            </div>
+            <div>
+              <dt>60%</dt>
+              <dd>Avg. uplift in key KPIs shipped</dd>
+            </div>
+            <div>
+              <dt>8 yrs</dt>
+              <dd>Hybrid product & design experience</dd>
+            </div>
+          </dl>
         </div>
         <div class="hero__media">
           <div class="portrait">
             <img
-              data-hero-portrait
+              src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80"
               alt="Portrait of Thomas Rynell"
             />
           </div>
-          <ul class="focus-list" data-focus-list></ul>
+          <ul class="focus-list">
+            <li>Product strategy & discovery</li>
+            <li>Design systems & prototyping</li>
+            <li>Accessible frontend engineering</li>
+          </ul>
         </div>
       </section>
 
@@ -113,7 +130,61 @@
           </div>
           <a class="btn btn--ghost" href="#">View PDF case studies</a>
         </div>
-        <div class="container grid grid--3" data-projects></div>
+        <div class="container grid grid--3">
+          <article class="card project-card">
+            <div class="card__meta">
+              <span class="pill">Fintech</span>
+              <time datetime="2024-09">2024</time>
+            </div>
+            <h3>FlowPay Intelligence</h3>
+            <p>
+              Led discovery to redesign the payments insights suite, improving
+              merchant retention by 18% through clearer forecasting experiences.
+            </p>
+            <ul>
+              <li>Product workshops</li>
+              <li>Design system foundations</li>
+              <li>React prototype build</li>
+            </ul>
+            <a href="#" class="card__link">Read case study -></a>
+          </article>
+
+          <article class="card project-card">
+            <div class="card__meta">
+              <span class="pill">Climate SaaS</span>
+              <time datetime="2023-05">2023</time>
+            </div>
+            <h3>Circulate Analytics</h3>
+            <p>
+              Shipped a scenario planning tool that allowed sustainability leads
+              to model impact in minutes, cutting reporting time by 40%.
+            </p>
+            <ul>
+              <li>Journey mapping</li>
+              <li>High fidelity UI</li>
+              <li>Frontend handoff</li>
+            </ul>
+            <a href="#" class="card__link">Read case study -></a>
+          </article>
+
+          <article class="card project-card">
+            <div class="card__meta">
+              <span class="pill">Health Tech</span>
+              <time datetime="2022-02">2022</time>
+            </div>
+            <h3>Northwind Care</h3>
+            <p>
+              Designed the clinician hub experience and built the responsive UI
+              kit powering twelve cross-platform apps.
+            </p>
+            <ul>
+              <li>Experience vision</li>
+              <li>Design ops</li>
+              <li>Component engineering</li>
+            </ul>
+            <a href="#" class="card__link">Read case study -></a>
+          </article>
+        </div>
       </section>
 
       <section id="services" class="section">
@@ -126,7 +197,44 @@
             Embedded with founders, product leads, and multi-functional teams.
           </p>
         </div>
-        <div class="container grid grid--3" data-skills></div>
+        <div class="container grid grid--3">
+          <article class="card service-card">
+            <h3>Product Discovery</h3>
+            <p>
+              Align business outcomes with user needs through co-creation
+              workshops, field research, and strategy roadmaps.
+            </p>
+            <ul>
+              <li>Problem framing</li>
+              <li>Jobs-to-be-done studies</li>
+              <li>Opportunity solution trees</li>
+            </ul>
+          </article>
+          <article class="card service-card">
+            <h3>Design Systems</h3>
+            <p>
+              Scale a cohesive visual language with token-driven components,
+              documentation, and governance practices.
+            </p>
+            <ul>
+              <li>Multi-brand systems</li>
+              <li>Accessibility audits</li>
+              <li>Figma &lt;&gt; code parity</li>
+            </ul>
+          </article>
+          <article class="card service-card">
+            <h3>Product Execution</h3>
+            <p>
+              Pair with engineering to deliver polished experiences - rapid
+              prototyping, implementation support, and QA.
+            </p>
+            <ul>
+              <li>Interactive prototypes</li>
+              <li>Design QA</li>
+              <li>Frontend engineering</li>
+            </ul>
+          </article>
+        </div>
       </section>
 
       <section id="experience" class="section section--alt">
@@ -171,20 +279,50 @@
             <p class="eyebrow">Testimonials</p>
             <h2>Trusted by product leaders.</h2>
           </div>
-          <div class="testimonial-grid" data-testimonial></div>
+          <div class="testimonial-grid">
+            <figure class="card quote">
+              <blockquote>
+                "Thomas has a rare ability to move seamlessly from fuzzy problem
+                spaces to shippable solutions. He's our go-to for 0->1 product bets."
+              </blockquote>
+              <figcaption>
+                <strong>Eva Magnusson</strong>, VP Product @ FlowPay
+              </figcaption>
+            </figure>
+            <figure class="card quote">
+              <blockquote>
+                "He builds alignment fast, prototypes relentlessly, and ensures the
+                final build feels just as polished as the Figma file."
+              </blockquote>
+              <figcaption>
+                <strong>Hugo Ferreira</strong>, CTO @ Circulate
+              </figcaption>
+            </figure>
+          </div>
         </div>
       </section>
 
-      <section class="section section--alt persona-cta">
+      <section class="section section--alt newsletter">
         <div class="container">
           <div>
-            <p class="eyebrow" data-cta-eyebrow>Next step</p>
-            <h2 data-cta-heading></h2>
-            <p data-cta-body></p>
+            <p class="eyebrow">Dispatch</p>
+            <h2>Monthly notes on product craft.</h2>
+            <p>
+              A short read on product thinking, design systems, and practical
+              shipping. Zero spam, unsubscribe anytime.
+            </p>
           </div>
-          <div class="persona-cta__action">
-            <a class="btn btn--primary" data-cta-link href="#"></a>
-          </div>
+          <form class="newsletter__form">
+            <label for="newsletter-email" class="sr-only">Email address</label>
+            <input
+              type="email"
+              id="newsletter-email"
+              name="email"
+              placeholder="you@email.com"
+              required
+            />
+            <button class="btn btn--primary" type="submit">Subscribe</button>
+          </form>
         </div>
       </section>
     </main>
