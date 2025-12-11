@@ -38,8 +38,7 @@ const relocatePublicAssets = () => ({
 });
 
 export default defineConfig({
-  publicDir,
-  plugins: [relocatePublicAssets()],
+  publicDir: 'assets',
   test: {
     environment: 'jsdom',
     setupFiles: './vitest.setup.js',
