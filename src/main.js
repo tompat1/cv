@@ -2,763 +2,63 @@ import './styles.css';
 
 const THEME_KEY = 'tr-theme';
 const LANGUAGE_KEY = 'tr-language';
-const personas = [
-  {
-    title: 'Digital Design & UX',
-    slug: 'digital-design-ux',
-    palette: {
-      accent: '#e15b9e',
-      accentStrong: '#d14888',
-      accentSoft: 'rgba(225, 91, 158, 0.16)',
-      accentSurface: 'rgba(225, 91, 158, 0.12)',
-      accentBorder: 'rgba(225, 91, 158, 0.4)',
-    },
-    icon: '/assets/product-designer.svg',
-    iconAlt: 'Geometric icon for a digital product designer',
-    heroCopy: {
-      eyebrow: 'Consultant & designer for web and digital products',
-      heading: 'Designing intuitive experiences for',
-      highlight: 'modern products & services.',
-      lead:
-        'I bring 30+ years across IT, digital design, and product to move ideas from discovery through validated prototypes into developer-ready design systems.',
-      stats: [
-        { value: '30+ yrs', label: 'Consulting across IT & design' },
-        { value: '12 yrs', label: 'Digital product & UX focus' },
-        { value: '200+', label: 'Flows prototyped & tested' },
-      ],
-      focus: [
-        'I design intuitive product flows, validate with users, and deliver Figma systems ready for dev handoff.',
-        'Hands-on research loops, from interviews to moderated tests, keep usability grounded in real feedback.',
-        'Design systems, UI kits, and accessibility baked into every component for smoother builds.',
-      ],
-      actions: [
-        { label: 'See recent assignments', href: '#work', variant: 'primary' },
-        { label: 'Get in touch', href: '#contact', variant: 'ghost' },
-      ],
-      portrait:
-        'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80',
-    },
-    projects: [
-      {
-        badge: 'News / SaaS',
-        year: '2016-2023',
-        title: 'Rapidus',
-        description:
-          'Product discovery, UX, and redesign for a digital news platform with TypeScript, RESTful APIs, and graph visualizations.',
-        tags: ['User flows & prototypes', 'Design systems', 'React / Next.js'],
-        linkLabel: 'Assignment overview ->',
-        href: '#',
-      },
-      {
-        badge: 'Gov & Sustainability',
-        year: '2015-2021',
-        title: 'Naturvårdsverket',
-        description:
-          'Research-led UX direction for environmental reporting tools, interactive maps, and complex forms.',
-        tags: ['Accessibility', 'Data-driven UX', 'Stakeholder workshops'],
-        linkLabel: 'Read summary ->',
-        href: '#',
-      },
-      {
-        badge: 'Banking',
-        year: '2014',
-        title: 'Bankgirocentralen',
-        description:
-          'Flow design and responsive UI for online bank applications and dashboards across multiple business lines.',
-        tags: ['Responsive UX', 'Design leadership', 'Agile delivery'],
-        linkLabel: 'Engagement highlights ->',
-        href: '#',
-      },
-    ],
-    skills: [
-      {
-        title: 'Product discovery',
-        description:
-          'Shape journeys with research, interviews, and co-creation that clarify user intent and business value.',
-        bullets: ['Problem framing & workshops', 'User interviews & synthesis', 'Personas, jobs-to-be-done, service maps'],
-      },
-      {
-        title: 'UX & product design',
-        description:
-          'Prototype flows, validate them with users, and refine the details until they are ready for build.',
-        bullets: ['Flows, wires, and high-fidelity UI', 'Usability tests & iteration', 'Microcopy & interaction design'],
-      },
-      {
-        title: 'Design systems',
-        description:
-          'Deliver accessible, reusable components with Figma libraries and implementation notes for dev teams.',
-        bullets: ['Foundations & tokens', 'UI kits with states', 'Handoff specs & documentation'],
-      },
-    ],
-    testimonial: {
-      quote:
-        'Combining the demands of digital design, front-end, and product thinking—paired with my sensibilities as a graphic designer.',
-      name: 'Personal motto',
-      title: 'Thomas Rynell',
-    },
-    cta: {
-      eyebrow: 'Next step',
-      heading: 'Ready to ship a validated experience?',
-      body:
-        'Bring me in for discovery, UX leadership, or design system delivery. We will test, refine, and hand off a build-ready solution.',
-      button: { label: 'Start a UX project', href: '#contact' },
-    },
-  },
-  {
-    title: 'Branding & Content',
-    slug: 'branding-content',
-    palette: {
-      accent: '#7157ff',
-      accentStrong: '#5a3df3',
-      accentSoft: 'rgba(113, 87, 255, 0.16)',
-      accentSurface: 'rgba(113, 87, 255, 0.12)',
-      accentBorder: 'rgba(113, 87, 255, 0.4)',
-    },
-    icon: '/assets/design-systems.svg',
-    iconAlt: 'Geometric icon for brand and content strategy',
-    heroCopy: {
-      eyebrow: 'Brand and content leader for product teams',
-      heading: 'Building cohesive stories through',
-      highlight: 'identity, messaging, and content.',
-      lead:
-        'I create brand systems, messaging frameworks, and content plans that keep every touchpoint consistent while supporting product goals.',
-      stats: [
-        { value: '25+', label: 'Brands refreshed or launched' },
-        { value: '6', label: 'Languages coordinated for content ops' },
-        { value: '12 yrs', label: 'Storytelling for digital products' },
-      ],
-      focus: [
-        'I craft cohesive visual identities, messaging frameworks, and content that keeps your voice consistent.',
-        'Style guides, design tokens, and brand toolkits that scale from decks to product UI.',
-        'Editorial calendars, long- and short-form copy, and governance to keep teams aligned.',
-      ],
-      actions: [
-        { label: 'See recent assignments', href: '#work', variant: 'primary' },
-        { label: 'Get in touch', href: '#contact', variant: 'ghost' },
-      ],
-      portrait:
-        'https://images.unsplash.com/photo-1530023367847-a683933f4177?auto=format&fit=crop&w=600&q=80',
-    },
-    projects: [
-      {
-        badge: 'Finance',
-        year: '2016-2020',
-        title: 'Intrum',
-        description:
-          'Brand and content direction for multilingual platforms, dashboards, and campaigns across 23 languages.',
-        tags: ['Messaging frameworks', 'Design direction', 'Localization ops'],
-        linkLabel: 'See project notes ->',
-        href: '#',
-      },
-      {
-        badge: 'Gov & Sustainability',
-        year: '2015-2021',
-        title: 'Naturvårdsverket',
-        description:
-          'Identity refresh and content strategy for environmental reporting tools and public-facing communications.',
-        tags: ['Brand systems', 'Editorial voice', 'Accessibility'],
-        linkLabel: 'Read summary ->',
-        href: '#',
-      },
-      {
-        badge: 'News / SaaS',
-        year: '2016-2023',
-        title: 'Rapidus',
-        description:
-          'Narrative and UI content for subscription funnels, dashboards, and data-heavy visualizations.',
-        tags: ['Narrative design', 'Content design', 'Conversion copy'],
-        linkLabel: 'Assignment overview ->',
-        href: '#',
-      },
-    ],
-    skills: [
-      {
-        title: 'Identity systems',
-        description:
-          'Define the visual language, from logos to UI styling, with scalable guidelines that teams can ship with.',
-        bullets: ['Visual identity refresh', 'Design tokens & UI styling', 'Brand toolkits & templates'],
-      },
-      {
-        title: 'Messaging frameworks',
-        description:
-          'Clarify positioning, value props, and proof points so every channel speaks in one voice.',
-        bullets: ['Positioning & story pillars', 'Product messaging hierarchy', 'Tone & voice playbooks'],
-      },
-      {
-        title: 'Content & ops',
-        description:
-          'Plan and deliver content that stays on-brand—from landing pages to lifecycle campaigns.',
-        bullets: ['Editorial calendars', 'Localization & governance', 'Content design for product UI'],
-      },
-    ],
-    testimonial: {
-      quote:
-        'A cohesive brand voice across product, marketing, and support makes every experience feel intentional.',
-      name: 'Guiding principle',
-      title: 'Thomas Rynell',
-    },
-    cta: {
-      eyebrow: 'Next step',
-      heading: 'Ready for a consistent brand voice?',
-      body:
-        'Let us craft the identity, messaging, and content frameworks that keep your product recognizable everywhere.',
-      button: { label: 'Plan a brand sprint', href: '#contact' },
-    },
-  },
-  {
-    title: 'Web Development',
-    slug: 'web-development',
-    palette: {
-      accent: '#20b0b5',
-      accentStrong: '#1a8f93',
-      accentSoft: 'rgba(32, 176, 181, 0.16)',
-      accentSurface: 'rgba(32, 176, 181, 0.12)',
-      accentBorder: 'rgba(32, 176, 181, 0.42)',
-    },
-    icon: '/assets/ux-engineer.svg',
-    iconAlt: 'Geometric icon for a web developer',
-    heroCopy: {
-      eyebrow: 'Front-end engineer & UX technologist',
-      heading: 'Building performant, maintainable sites with',
-      highlight: 'modern tooling and best practices.',
-      lead:
-        'From design handoff to deployment, I ship reliable front-end systems with clean architecture, accessibility, and analytics baked in.',
-      stats: [
-        { value: '50+', label: 'Sites & apps launched' },
-        { value: '8', label: 'Design systems engineered' },
-        { value: '99.9%', label: 'Uptime on recent launches' },
-      ],
-      focus: [
-        'I build performant, maintainable sites with modern tooling, from design handoff to deployment.',
-        'Front-end architecture in React/Next.js with component libraries mapped to design systems.',
-        'CI/CD, performance budgets, and analytics instrumentation to keep releases predictable.',
-      ],
-      actions: [
-        { label: 'See recent assignments', href: '#work', variant: 'primary' },
-        { label: 'Get in touch', href: '#contact', variant: 'ghost' },
-      ],
-      portrait:
-        'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80',
-    },
-    projects: [
-      {
-        badge: 'News / SaaS',
-        year: '2016-2023',
-        title: 'Rapidus',
-        description:
-          'Front-end development for a high-traffic news platform with TypeScript, RESTful APIs, and graph visualizations.',
-        tags: ['React & Next.js', 'API integrations', 'Performance tuning'],
-        linkLabel: 'Assignment overview ->',
-        href: '#',
-      },
-      {
-        badge: 'Finance',
-        year: '2016-2020',
-        title: 'Intrum',
-        description:
-          'Front-end delivery for multilingual platforms, dashboards, and campaign pages across 23 languages.',
-        tags: ['Front-end build', 'Localization', 'Design-system mapping'],
-        linkLabel: 'See project notes ->',
-        href: '#',
-      },
-      {
-        badge: 'Gov & Sustainability',
-        year: '2015-2021',
-        title: 'Naturvårdsverket',
-        description:
-          'Accessibility-focused front-end for environmental reporting tools, interactive maps, and complex forms.',
-        tags: ['Accessibility', 'Data-rich UI', 'Mapping & visualization'],
-        linkLabel: 'Read summary ->',
-        href: '#',
-      },
-    ],
-    skills: [
-      {
-        title: 'Front-end architecture',
-        description:
-          'Set up scalable foundations with modern frameworks, linting, testing, and component libraries.',
-        bullets: ['React, Next.js, Vite', 'TypeScript & testing', 'Design system implementation'],
-      },
-      {
-        title: 'UI implementation',
-        description:
-          'Translate Figma into responsive, accessible interfaces that perform across devices.',
-        bullets: ['Semantic HTML & ARIA', 'Performance budgets', 'Animations & micro-interactions'],
-      },
-      {
-        title: 'Delivery & ops',
-        description:
-          'Own the release chain with CI/CD, hosting, monitoring, and analytics wired from day one.',
-        bullets: ['CI/CD & hosting', 'Error monitoring', 'Analytics & A/B testing'],
-      },
-    ],
-    testimonial: {
-      quote:
-        'Robust delivery pairs clean front-end engineering with thoughtful UX details that make releases feel polished.',
-      name: 'Delivery mantra',
-      title: 'Thomas Rynell',
-    },
-    cta: {
-      eyebrow: 'Next step',
-      heading: 'Ready to launch with confidence?',
-      body:
-        'Let us build and ship the front-end—from design handoff to production—complete with QA, analytics, and monitoring.',
-      button: { label: 'Kick off a build', href: '#contact' },
-    },
-  },
-];
-
-const svPersonas = [
-  {
-    title: 'Digital design & UX',
-    slug: 'digital-design-ux',
-    palette: {
-      accent: '#e15b9e',
-      accentStrong: '#d14888',
-      accentSoft: 'rgba(225, 91, 158, 0.16)',
-      accentSurface: 'rgba(225, 91, 158, 0.12)',
-      accentBorder: 'rgba(225, 91, 158, 0.4)',
-    },
-    icon: '/assets/product-designer.svg',
-    iconAlt: 'Geometrisk ikon för en digital produktdesigner',
-    heroCopy: {
-      eyebrow: 'Konsult och designer för webb och digitala produkter',
-      heading: 'Designar intuitiva upplevelser för',
-      highlight: 'moderna produkter och tjänster.',
-      lead:
-        'Jag tar 30+ år inom IT, digital design och produkt från discovery till validerade prototyper och utvecklingsredo designsystem.',
-      stats: [
-        { value: '30+ år', label: 'Konsult inom IT & design' },
-        { value: '12 år', label: 'Fokus på digital produkt & UX' },
-        { value: '200+', label: 'Flöden prototypade & testade' },
-      ],
-      focus: [
-        'Jag designar intuitiva produktflöden, validerar med användare och levererar Figma-system redo för utveckling.',
-        'Praktiska forskningsloopar, från intervjuer till modererade tester, håller användbarheten förankrad i verklig feedback.',
-        'Designsystem, UI-kit och tillgänglighet bakas in i varje komponent för smidigare byggnationer.',
-      ],
-      actions: [
-        { label: 'Se senaste uppdrag', href: '#work', variant: 'primary' },
-        { label: 'Ta kontakt', href: '#contact', variant: 'ghost' },
-      ],
-      portrait:
-        'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80',
-    },
-    projects: [
-      {
-        badge: 'Nyheter / SaaS',
-        year: '2016-2023',
-        title: 'Rapidus',
-        description:
-          'Produktupptäck, UX och redesign för en digital nyhetsplattform med TypeScript, REST-API:er och grafvisualiseringar.',
-        tags: ['Användarflöden & prototyper', 'Designsystem', 'React / Next.js'],
-        linkLabel: 'Uppdragsöversikt ->',
-        href: '#',
-      },
-      {
-        badge: 'Myndighet & hållbarhet',
-        year: '2015-2021',
-        title: 'Naturvårdsverket',
-        description:
-          'Forskningsdriven UX-inriktning för verktyg inom miljörapportering, interaktiva kartor och komplexa formulär.',
-        tags: ['Tillgänglighet', 'Datadriven UX', 'Workshops med intressenter'],
-        linkLabel: 'Läs sammanfattning ->',
-        href: '#',
-      },
-      {
-        badge: 'Bank',
-        year: '2014',
-        title: 'Bankgirocentralen',
-        description:
-          'Flödesdesign och responsiv UI för banktjänster och dashboards över flera affärsområden.',
-        tags: ['Responsiv UX', 'Designledning', 'Agil leverans'],
-        linkLabel: 'Höjdpunkter från uppdraget ->',
-        href: '#',
-      },
-    ],
-    skills: [
-      {
-        title: 'Produktupptäck',
-        description:
-          'Forma resor med research, intervjuer och samskapande som tydliggör användarintention och affärsvärde.',
-        bullets: ['Problemformulering & workshops', 'Användarintervjuer & syntes', 'Personas, jobs-to-be-done, servicekartor'],
-      },
-      {
-        title: 'UX- och produktdesign',
-        description:
-          'Prototypa flöden, validera dem med användare och slipa detaljerna tills de är redo för utveckling.',
-        bullets: ['Flöden, wireframes och pixelperfekt UI', 'Användningstester & iteration', 'Mikrocopy och interaktioner'],
-      },
-      {
-        title: 'Designsystem',
-        description:
-          'Leverera tillgängliga, återanvändbara komponenter med Figma-bibliotek och implementeringsnoter för dev-team.',
-        bullets: ['Grunder & tokens', 'UI-kit med tillstånd', 'Handoff-specifikationer & dokumentation'],
-      },
-    ],
-    testimonial: {
-      quote:
-        'Jag kombinerar kraven från digital design, frontend och produkt—parat med min känsla som grafisk designer.',
-      name: 'Personligt motto',
-      title: 'Thomas Rynell',
-    },
-    cta: {
-      eyebrow: 'Nästa steg',
-      heading: 'Redo att skeppa en validerad upplevelse?',
-      body:
-        'Ta in mig för discovery, UX-ledning eller ett levererat designsystem. Vi testar, förfinar och lämnar över en byggklar lösning.',
-      button: { label: 'Starta ett UX-projekt', href: '#contact' },
-    },
-  },
-  {
-    title: 'Branding & innehåll',
-    slug: 'branding-content',
-    palette: {
-      accent: '#7157ff',
-      accentStrong: '#5a3df3',
-      accentSoft: 'rgba(113, 87, 255, 0.16)',
-      accentSurface: 'rgba(113, 87, 255, 0.12)',
-      accentBorder: 'rgba(113, 87, 255, 0.4)',
-    },
-    icon: '/assets/design-systems.svg',
-    iconAlt: 'Geometrisk ikon för varumärkes- och innehållsstrategi',
-    heroCopy: {
-      eyebrow: 'Varumärkes- och innehållsledare för produktteam',
-      heading: 'Bygger sammanhållna berättelser genom',
-      highlight: 'identitet, budskap och innehåll.',
-      lead:
-        'Jag skapar varumärkessystem, budskapsramverk och innehållsplaner som håller varje touchpoint konsekvent och stärker produktmålen.',
-      stats: [
-        { value: '25+', label: 'Varumärken uppdaterade eller lanserade' },
-        { value: '6', label: 'Språk koordinerade för content ops' },
-        { value: '12 år', label: 'Storytelling för digitala produkter' },
-      ],
-      focus: [
-        'Jag tar fram visuella identiteter, budskapsramverk och innehåll som håller rösten konsekvent.',
-        'Stilguider, designtokens och varumärkeskit som skalar från pitchdecks till produkt-UI.',
-        'Redaktionella kalendrar, korta och långa format samt governance som håller teamen synkade.',
-      ],
-      actions: [
-        { label: 'Se senaste uppdrag', href: '#work', variant: 'primary' },
-        { label: 'Ta kontakt', href: '#contact', variant: 'ghost' },
-      ],
-      portrait:
-        'https://images.unsplash.com/photo-1530023367847-a683933f4177?auto=format&fit=crop&w=600&q=80',
-    },
-    projects: [
-      {
-        badge: 'Finans',
-        year: '2016-2020',
-        title: 'Intrum',
-        description:
-          'Varumärkes- och innehållsstrategi för flerspråkiga plattformar, dashboards och kampanjer på 23 språk.',
-        tags: ['Budskapsramverk', 'Designdirektion', 'Lokalisering & processer'],
-        linkLabel: 'Se projektanteckningar ->',
-        href: '#',
-      },
-      {
-        badge: 'Myndighet & hållbarhet',
-        year: '2015-2021',
-        title: 'Naturvårdsverket',
-        description:
-          'Identitetsförnyelse och innehållsstrategi för miljörapporteringsverktyg och externa kommunikationer.',
-        tags: ['Varumärkessystem', 'Redaktionell röst', 'Tillgänglighet'],
-        linkLabel: 'Läs sammanfattning ->',
-        href: '#',
-      },
-      {
-        badge: 'Nyheter / SaaS',
-        year: '2016-2023',
-        title: 'Rapidus',
-        description:
-          'Berättelser och UI-innehåll för prenumerationsflöden, dashboards och dataintensiva visualiseringar.',
-        tags: ['Narrative design', 'Innehållsdesign', 'Konverterande copy'],
-        linkLabel: 'Uppdragsöversikt ->',
-        href: '#',
-      },
-    ],
-    skills: [
-      {
-        title: 'Identitetssystem',
-        description:
-          'Definiera det visuella språket, från logotyp till UI, med skalbara riktlinjer som team kan leverera med.',
-        bullets: ['Visuell identitetsförnyelse', 'Designtokens & UI-styling', 'Varumärkeskit & mallar'],
-      },
-      {
-        title: 'Budskapsramverk',
-        description:
-          'Tydliggör positionering, värdeerbjudanden och bevispunkter så att varje kanal talar med en röst.',
-        bullets: ['Positionering & storypelare', 'Produktbudskapshierarki', 'Ton & röst-playbooks'],
-      },
-      {
-        title: 'Innehåll & process',
-        description:
-          'Planera och leverera innehåll som håller sig till varumärket—from landningssidor till livscykelkampanjer.',
-        bullets: ['Redaktionella kalendrar', 'Lokalisering & governance', 'Innehållsdesign för produkt-UI'],
-      },
-    ],
-    testimonial: {
-      quote: 'En sammanhållen varumärkesröst i produkt, marknad och support får varje upplevelse att kännas genomtänkt.',
-      name: 'Vägledande princip',
-      title: 'Thomas Rynell',
-    },
-    cta: {
-      eyebrow: 'Nästa steg',
-      heading: 'Redo för en konsekvent varumärkesröst?',
-      body:
-        'Låt oss ta fram identiteten, budskapen och innehållsramarna som gör produkten igenkännbar överallt.',
-      button: { label: 'Planera en varumärkesworkshop', href: '#contact' },
-    },
-  },
-  {
-    title: 'Webbutveckling',
-    slug: 'web-development',
-    palette: {
-      accent: '#20b0b5',
-      accentStrong: '#1a8f93',
-      accentSoft: 'rgba(32, 176, 181, 0.16)',
-      accentSurface: 'rgba(32, 176, 181, 0.12)',
-      accentBorder: 'rgba(32, 176, 181, 0.42)',
-    },
-    icon: '/assets/ux-engineer.svg',
-    iconAlt: 'Geometrisk ikon för en webbutvecklare',
-    heroCopy: {
-      eyebrow: 'Frontend-utvecklare & UX-teknolog',
-      heading: 'Bygger presterande, underhållbara sajter med',
-      highlight: 'modern verktygskedja och best practices.',
-      lead:
-        'Från design-handoff till produktion levererar jag tillförlitlig frontend med ren arkitektur, tillgänglighet och analys inbyggt.',
-      stats: [
-        { value: '50+', label: 'Sajter & appar lanserade' },
-        { value: '8', label: 'Designsystem implementerade' },
-        { value: '99,9%', label: 'Uptime på senaste lanseringar' },
-      ],
-      focus: [
-        'Jag bygger snabba, underhållbara sajter med modern verktygskedja från handoff till deployment.',
-        'Frontend-arkitektur i React/Next.js med komponentbibliotek kopplade till designsystem.',
-        'CI/CD, prestandabudgetar och analys som gör releaser förutsägbara.',
-      ],
-      actions: [
-        { label: 'Se senaste uppdrag', href: '#work', variant: 'primary' },
-        { label: 'Ta kontakt', href: '#contact', variant: 'ghost' },
-      ],
-      portrait:
-        'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80',
-    },
-    projects: [
-      {
-        badge: 'Nyheter / SaaS',
-        year: '2016-2023',
-        title: 'Rapidus',
-        description:
-          'Frontend-utveckling för en trafiktung nyhetsplattform med TypeScript, REST-API:er och grafvisualiseringar.',
-        tags: ['React & Next.js', 'API-integrationer', 'Prestandaoptimering'],
-        linkLabel: 'Uppdragsöversikt ->',
-        href: '#',
-      },
-      {
-        badge: 'Finans',
-        year: '2016-2020',
-        title: 'Intrum',
-        description:
-          'Frontend-leverans för flerspråkiga plattformar, dashboards och kampanjsidor på 23 språk.',
-        tags: ['Frontendbygge', 'Lokalisering', 'Designsystemskoppling'],
-        linkLabel: 'Se projektanteckningar ->',
-        href: '#',
-      },
-      {
-        badge: 'Myndighet & hållbarhet',
-        year: '2015-2021',
-        title: 'Naturvårdsverket',
-        description:
-          'Tillgänglighetsfokuserad frontend för miljörapporteringsverktyg, interaktiva kartor och komplexa formulär.',
-        tags: ['Tillgänglighet', 'Datarik UI', 'Kartor & visualisering'],
-        linkLabel: 'Läs sammanfattning ->',
-        href: '#',
-      },
-    ],
-    skills: [
-      {
-        title: 'Frontend-arkitektur',
-        description:
-          'Sätter upp skalbara grunder med moderna ramverk, lintning, testning och komponentbibliotek.',
-        bullets: ['React, Next.js, Vite', 'TypeScript & testning', 'Implementering av designsystem'],
-      },
-      {
-        title: 'UI-implementation',
-        description:
-          'Översätter Figma till responsiva, tillgängliga gränssnitt som presterar på alla enheter.',
-        bullets: ['Semantisk HTML & ARIA', 'Prestandabudgetar', 'Animationer & mikrointeraktioner'],
-      },
-      {
-        title: 'Leverans & process',
-        description:
-          'Äger releasekedjan med CI/CD, hosting, monitorering och analys från dag ett.',
-        bullets: ['CI/CD & hosting', 'Felkoll & monitorering', 'Analys & A/B-testning'],
-      },
-    ],
-    testimonial: {
-      quote:
-        'Robust leverans kombinerar ren frontend-engineering med genomtänkta UX-detaljer som gör lanseringar polerade.',
-      name: 'Leveransmantra',
-      title: 'Thomas Rynell',
-    },
-    cta: {
-      eyebrow: 'Nästa steg',
-      heading: 'Redo att lansera med självförtroende?',
-      body:
-        'Jag bygger och skeppar frontenden—från design-handoff till produktion—med QA, analys och monitorering på plats.',
-      button: { label: 'Kickstarta en release', href: '#contact' },
-    },
-  },
-];
-
-const copy = {
-  en: {
-    personaSwitcher: 'Focus',
-    nav: {
-      links: ['Work', 'Services', 'Experience', 'Contact'],
-      cta: "Let's work",
-    },
-    work: {
-      eyebrow: 'Select Assignments',
-      heading: 'Recent collaborations & outcomes.',
-      cta: 'View PDF case studies',
-    },
-    services: {
-      eyebrow: 'Capabilities',
-      heading: 'Where I plug in.',
-      summary: 'Embedded with founders, product leads, and multi-functional teams.',
-    },
-    experience: {
-      eyebrow: 'Experience',
-      heading: 'Consulting across IT, design, and product.',
-      cta: 'Download full resume',
-      timeline: [
-        {
-          heading: 'Rapidus · Front-end & UX',
-          meta: '2016-2023 · Malmö',
-          body:
-            'Front-end development and redesign of a digital news platform using TypeScript, React/Next.js, RESTful APIs, graph databases, and advanced data visualization.',
-        },
-        {
-          heading: 'Intrum · UX, Design Direction, Front-end',
-          meta: '2016-2020 · Stockholm',
-          body:
-            'Led UX and front-end for multilingual platforms, dashboards, and campaign pages across 23 languages; collaborated closely with product, marketing, and engineering stakeholders.',
-        },
-        {
-          heading: 'Naturvårdsverket · UX, Design Direction, Front-end',
-          meta: '2015-2021 · Stockholm',
-          body:
-            'UX/design direction and front-end work for environmental reporting tools, interactive maps, and complex forms with accessibility and data quality in focus.',
-        },
-        {
-          heading: 'Bankgirocentralen · Front-end & Graphic Design',
-          meta: '2014 · Stockholm',
-          body:
-            'Front-end development, UX, and graphic design for online bank applications and dashboards across multiple lines of business.',
-        },
-      ],
-    },
-    testimonials: {
-      eyebrow: 'Testimonials',
-      heading: 'Trusted by product leaders.',
-    },
-    footer: {
-      heading: "Let's shape the next release.",
-      body:
-        'Send a note to <a data-link-key="contactEmail" href="mailto:thomas@rynell.com">thomas@rynell.com</a> or connect on the platforms below.',
-      cta: 'Start a project',
-      socials: { linkedin: 'LinkedIn', portfolio: 'Portfolio', email: 'Email' },
-      backToTop: 'Back to top ↑',
-    },
-  },
-  sv: {
-    personaSwitcher: 'Fokus',
-    nav: {
-      links: ['Arbete', 'Tjänster', 'Erfarenhet', 'Kontakt'],
-      cta: 'Samarbeta',
-    },
-    work: {
-      eyebrow: 'Utvalda uppdrag',
-      heading: 'Aktuella samarbeten och resultat.',
-      cta: 'Visa PDF-case',
-    },
-    services: {
-      eyebrow: 'Förmågor',
-      heading: 'Där jag kliver in.',
-      summary: 'Inbakad i team med grundare, produktledare och tvärfunktionella roller.',
-    },
-    experience: {
-      eyebrow: 'Erfarenhet',
-      heading: 'Konsult inom IT, design och produkt.',
-      cta: 'Ladda ner komplett CV',
-      timeline: [
-        {
-          heading: 'Rapidus · Frontend & UX',
-          meta: '2016-2023 · Malmö',
-          body:
-            'Frontend-utveckling och redesign av en digital nyhetsplattform med TypeScript, React/Next.js, REST-API:er, grafdatabaser och avancerad datavisualisering.',
-        },
-        {
-          heading: 'Intrum · UX, designdirektion, frontend',
-          meta: '2016-2020 · Stockholm',
-          body:
-            'Ledde UX och frontend för flerspråkiga plattformar, dashboards och kampanjsidor över 23 språk i nära samarbete med produkt, marknad och teknik.',
-        },
-        {
-          heading: 'Naturvårdsverket · UX, designdirektion, frontend',
-          meta: '2015-2021 · Stockholm',
-          body:
-            'UX/designledning och frontend-arbete för miljörapporteringsverktyg, interaktiva kartor och komplexa formulär med fokus på tillgänglighet och datakvalitet.',
-        },
-        {
-          heading: 'Bankgirocentralen · Frontend & grafisk design',
-          meta: '2014 · Stockholm',
-          body:
-            'Frontend-utveckling, UX och grafisk design för bankapplikationer och dashboards över flera affärsområden.',
-        },
-      ],
-    },
-    testimonials: {
-      eyebrow: 'Omdömen',
-      heading: 'Förtroende från produktledare.',
-    },
-    footer: {
-      heading: 'Låt oss forma nästa release.',
-      body:
-        'Hör av dig till <a data-link-key="contactEmail" href="mailto:thomas@rynell.com">thomas@rynell.com</a> eller connecta på plattformarna nedan.',
-      cta: 'Starta ett projekt',
-      socials: { linkedin: 'LinkedIn', portfolio: 'Portfolio', email: 'E-post' },
-      backToTop: 'Till toppen ↑',
-    },
-  },
-};
-
-const links = {
-  en: {
-    navCta: '#contact',
-    workCta: '#work',
-    experienceCta: '#experience',
-    footerCta: 'mailto:thomas@rynell.com',
-    contactEmail: 'mailto:thomas@rynell.com',
-    socials: {
-      linkedin: 'https://www.linkedin.com/in/thomasrynell/',
-      portfolio: 'https://thomasrynell.com',
-      email: 'mailto:thomas@rynell.com',
-    },
-  },
-};
-
-let locales = {
-  en: { label: 'English', personas, copy: copy.en },
-  sv: { label: 'Svenska', personas: svPersonas, copy: copy.sv },
-};
+const DEFAULT_LOCALES = ['en', 'sv'];
 
 const cloneDeep = (value) => JSON.parse(JSON.stringify(value));
 
-links.sv = cloneDeep(links.en);
+let locales = {};
+let links = {};
+let copy = {};
+let personasByLocale = {};
+
+const loadLocaleFile = async (code) => {
+  const response = await fetch(`/locales/${code}.json`);
+  if (!response.ok) throw new Error(`Failed to load locale file for ${code}`);
+  return response.json();
+};
+
+const applyLocalePayload = (code, payload = {}) => {
+  const { label, personas = [], copy: localeCopy = {}, links: localeLinks = {} } = payload;
+  copy[code] = cloneDeep(localeCopy);
+  personasByLocale[code] = cloneDeep(personas);
+  links[code] = cloneDeep(localeLinks || links.en || {});
+  locales = {
+    ...locales,
+    [code]: {
+      label: label || code.toUpperCase(),
+      personas: personasByLocale[code],
+      copy: copy[code],
+    },
+  };
+};
+
+const loadInitialLocales = async (codes = DEFAULT_LOCALES) => {
+  const results = await Promise.allSettled(codes.map((code) => loadLocaleFile(code)));
+  results.forEach((result, index) => {
+    const code = codes[index];
+    if (result.status === 'fulfilled') {
+      applyLocalePayload(code, result.value);
+    }
+  });
+
+  if (!Object.keys(locales).length) {
+    applyLocalePayload(DEFAULT_LOCALES[0], { label: 'English', personas: [], copy: {}, links: {} });
+  }
+};
+
+const getInitialLanguage = () => {
+  const stored = typeof localStorage !== 'undefined' ? localStorage.getItem(LANGUAGE_KEY) : null;
+  if (stored && locales[stored]) return stored;
+  const docLang = typeof document !== 'undefined' ? document.documentElement.lang : null;
+  if (docLang && locales[docLang]) return docLang;
+  return DEFAULT_LOCALES.find((code) => locales[code]) || Object.keys(locales)[0] || 'en';
+};
+
+let activeLanguage = DEFAULT_LOCALES[0];
+let translationManagerLocale = activeLanguage;
+const getLocale = () => locales[activeLanguage] || {};
+const getPersonas = () => personasByLocale[activeLanguage] || [];
+let activePersona = getPersonas()[0];
 
 const flattenTranslations = (value, path = []) => {
   if (value === null || value === undefined) return [];
@@ -829,19 +129,6 @@ const getValueAtPath = (target, path) => {
   }, target);
 };
 
-const getInitialLanguage = () => {
-  const stored = localStorage.getItem(LANGUAGE_KEY);
-  if (stored && locales[stored]) return stored;
-  const docLang = document.documentElement.lang;
-  if (docLang && locales[docLang]) return docLang;
-  return 'en';
-};
-
-let activeLanguage = getInitialLanguage();
-let translationManagerLocale = activeLanguage;
-const getLocale = () => locales[activeLanguage];
-const getPersonas = () => getLocale().personas;
-let activePersona = getPersonas()[0];
 const getRoot = () => document.documentElement;
 const getThemeToggle = () => document.getElementById('themeToggle');
 const getLanguagePicker = () => document.getElementById('languagePicker');
@@ -1061,7 +348,7 @@ const addTranslationValue = (localeKey, keyPath, value) => {
 
 const setLinkValue = (localeKey, keyPath, value) => {
   if (!links[localeKey]) {
-    links[localeKey] = cloneDeep(links.en || links.sv || {});
+    links[localeKey] = cloneDeep(links[activeLanguage] || links.en || links.sv || {});
   }
   const segments = keyPath.split('.').filter(Boolean);
   if (!segments.length) return;
@@ -1072,18 +359,71 @@ const addLocale = (code, label) => {
   if (!code) return;
   const normalized = code.trim();
   if (locales[normalized]) return;
-  copy[normalized] = cloneDeep(copy.en);
-  links[normalized] = cloneDeep(links.en || links.sv || {});
+  const baseLocale = locales[activeLanguage] ? activeLanguage : DEFAULT_LOCALES[0];
+  copy[normalized] = cloneDeep(copy[baseLocale] || {});
+  links[normalized] = cloneDeep(links[baseLocale] || {});
+  personasByLocale[normalized] = cloneDeep(personasByLocale[baseLocale] || []);
   locales = {
     ...locales,
     [normalized]: {
       label: label || normalized.toUpperCase(),
-      personas: cloneDeep(personas),
+      personas: personasByLocale[normalized],
       copy: copy[normalized],
     },
   };
   renderLanguagePickerOptions();
   renderTranslationLocaleOptions();
+};
+
+const buildLocalePayload = (localeKey) => {
+  if (!locales[localeKey]) return null;
+  return {
+    code: localeKey,
+    label: locales[localeKey].label,
+    personas: personasByLocale[localeKey] || [],
+    copy: copy[localeKey] || {},
+    links: links[localeKey] || {},
+  };
+};
+
+const downloadJson = (filename, data) => {
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const linkEl = document.createElement('a');
+  linkEl.href = URL.createObjectURL(blob);
+  linkEl.download = filename;
+  document.body.appendChild(linkEl);
+  linkEl.click();
+  URL.revokeObjectURL(linkEl.href);
+  linkEl.remove();
+};
+
+const exportLocale = (localeKey) => {
+  const payload = buildLocalePayload(localeKey);
+  if (!payload) return;
+  downloadJson(`locale-${localeKey}.json`, payload);
+};
+
+const importLocaleFile = async (file, fallbackCode) => {
+  if (!file) return;
+  try {
+    const contents = await file.text();
+    const payload = JSON.parse(contents);
+    const codeFromPayload = payload.code || payload.locale || '';
+    const derivedCode = codeFromPayload || fallbackCode || file.name.replace(/\.json$/i, '');
+    if (!derivedCode) return;
+    applyLocalePayload(derivedCode, payload);
+    translationManagerLocale = derivedCode;
+    renderLanguagePickerOptions();
+    renderTranslationLocaleOptions();
+    renderTranslationList(derivedCode);
+    renderLinkList(derivedCode);
+    if (derivedCode === activeLanguage) {
+      applyLanguage();
+    }
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('Failed to import locale file', error);
+  }
 };
 
 const setPersonaContext = (persona) => {
@@ -1294,6 +634,7 @@ const renderCta = (cta) => {
 
 const renderStaticCopy = () => {
   const localeCopy = getLocale().copy;
+  if (!localeCopy) return;
 
   const personaLabel = document.querySelector('[data-persona-switcher-label]');
   if (personaLabel) personaLabel.textContent = localeCopy.personaSwitcher;
@@ -1408,6 +749,10 @@ const getPersonaBySlug = (slug) => getPersonas().find((persona) => persona.slug 
 const renderPersonasForLanguage = () => {
   const switcher = getPersonaSwitcher();
   if (!switcher) return;
+  if (!activePersona) {
+    activePersona = getPersonas()[0];
+  }
+  if (!activePersona) return;
   renderPersonaTabs(switcher);
   setSelectedPersonaTab(switcher, activePersona.slug);
   renderPersonaContent(activePersona);
@@ -1424,7 +769,7 @@ export const setLanguage = (nextLanguage) => {
   if (!locales[nextLanguage]) return;
   activeLanguage = nextLanguage;
   localStorage.setItem(LANGUAGE_KEY, nextLanguage);
-  const personaMatch = getPersonaBySlug(activePersona.slug);
+  const personaMatch = activePersona ? getPersonaBySlug(activePersona.slug) : null;
   activePersona = personaMatch || getPersonas()[0];
   applyLanguage();
   const picker = getLanguagePicker();
@@ -1433,7 +778,10 @@ export const setLanguage = (nextLanguage) => {
   }
 };
 
-export const initLanguage = () => {
+export const initLanguage = async () => {
+  await loadInitialLocales();
+  activeLanguage = getInitialLanguage();
+  translationManagerLocale = activeLanguage;
   renderLanguagePickerOptions();
   setLanguage(activeLanguage);
   const picker = getLanguagePicker();
@@ -1567,6 +915,8 @@ export const initTranslationManager = () => {
   const saveLinksButton = manager.querySelector('[data-save-links]');
   const addTranslationForm = manager.querySelector('[data-add-translation-form]');
   const newLocaleForm = manager.querySelector('[data-new-locale-form]');
+  const exportButton = manager.querySelector('[data-export-locale]');
+  const importInput = manager.querySelector('[data-import-locale]');
 
   renderLanguagePickerOptions();
   renderTranslationLocaleOptions();
@@ -1641,6 +991,20 @@ export const initTranslationManager = () => {
     });
   }
 
+  if (exportButton) {
+    exportButton.addEventListener('click', () => exportLocale(translationManagerLocale));
+  }
+
+  if (importInput) {
+    importInput.addEventListener('change', async (event) => {
+      const [file] = event.target.files || [];
+      await importLocaleFile(file, translationManagerLocale);
+      if (importInput) {
+        importInput.value = '';
+      }
+    });
+  }
+
   if (saveLinksButton) {
     saveLinksButton.addEventListener('click', () => {
       const pending = getPendingLinkEdits(translationManagerLocale);
@@ -1661,9 +1025,9 @@ export const initTranslationManager = () => {
   renderLinkList(translationManagerLocale);
 };
 
-export const initApp = () => {
+export const initApp = async () => {
   initTheme();
-  initLanguage();
+  await initLanguage();
   initPersonas();
   initBackToTop();
   initNavToggle();

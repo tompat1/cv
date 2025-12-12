@@ -228,6 +228,23 @@
                 />
                 <button class="btn btn--ghost" type="submit">Add locale</button>
               </form>
+              <div class="translation-manager__io">
+                <button class="btn btn--ghost" type="button" data-export-locale>Export locale JSON</button>
+                <label class="btn btn--ghost translation-manager__import" for="importLocale">
+                  <input
+                    id="importLocale"
+                    type="file"
+                    accept="application/json"
+                    data-import-locale
+                    aria-label="Import locale JSON"
+                    hidden
+                  />
+                  <span>Import locale JSON</span>
+                </label>
+                <p class="translation-manager__hint">
+                  Export and import locale files to version translations without a backend.
+                </p>
+              </div>
             </div>
           </div>
 

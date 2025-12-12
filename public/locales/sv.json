@@ -1,0 +1,486 @@
+{
+  "label": "Svenska",
+  "personas": [
+    {
+      "title": "Digital design & UX",
+      "slug": "digital-design-ux",
+      "palette": {
+        "accent": "#e15b9e",
+        "accentStrong": "#d14888",
+        "accentSoft": "rgba(225, 91, 158, 0.16)",
+        "accentSurface": "rgba(225, 91, 158, 0.12)",
+        "accentBorder": "rgba(225, 91, 158, 0.4)"
+      },
+      "icon": "/assets/product-designer.svg",
+      "iconAlt": "Geometrisk ikon för en digital produktdesigner",
+      "heroCopy": {
+        "eyebrow": "Konsult och designer för webb och digitala produkter",
+        "heading": "Designar intuitiva upplevelser för",
+        "highlight": "moderna produkter och tjänster.",
+        "lead": "Jag tar 30+ år inom IT, digital design och produkt från discovery till validerade prototyper och utvecklingsredo designsystem.",
+        "stats": [
+          {
+            "value": "30+ år",
+            "label": "Konsult inom IT & design"
+          },
+          {
+            "value": "12 år",
+            "label": "Fokus på digital produkt & UX"
+          },
+          {
+            "value": "200+",
+            "label": "Flöden prototypade & testade"
+          }
+        ],
+        "focus": [
+          "Jag designar intuitiva produktflöden, validerar med användare och levererar Figma-system redo för utveckling.",
+          "Praktiska forskningsloopar, från intervjuer till modererade tester, håller användbarheten förankrad i verklig feedback.",
+          "Designsystem, UI-kit och tillgänglighet bakas in i varje komponent för smidigare byggnationer."
+        ],
+        "actions": [
+          {
+            "label": "Se senaste uppdrag",
+            "href": "#work",
+            "variant": "primary"
+          },
+          {
+            "label": "Ta kontakt",
+            "href": "#contact",
+            "variant": "ghost"
+          }
+        ],
+        "portrait": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80"
+      },
+      "projects": [
+        {
+          "badge": "Nyheter / SaaS",
+          "year": "2016-2023",
+          "title": "Rapidus",
+          "description": "Produktupptäck, UX och redesign för en digital nyhetsplattform med TypeScript, REST-API:er och grafvisualiseringar.",
+          "tags": [
+            "Användarflöden & prototyper",
+            "Designsystem",
+            "React / Next.js"
+          ],
+          "linkLabel": "Uppdragsöversikt ->",
+          "href": "#"
+        },
+        {
+          "badge": "Myndighet & hållbarhet",
+          "year": "2015-2021",
+          "title": "Naturvårdsverket",
+          "description": "Forskningsledd UX-riktning för miljörapporteringsverktyg, interaktiva kartor och komplexa formulär.",
+          "tags": [
+            "Tillgänglighet",
+            "Datadriven UX",
+            "Workshops med intressenter"
+          ],
+          "linkLabel": "Läs sammanfattning ->",
+          "href": "#"
+        },
+        {
+          "badge": "Bank & finans",
+          "year": "2014",
+          "title": "Bankgirocentralen",
+          "description": "Flödesdesign och responsivt UI för bankapplikationer och dashboards över flera affärsområden.",
+          "tags": [
+            "Responsiv UX",
+            "Designledning",
+            "Agil leverans"
+          ],
+          "linkLabel": "Höjdpunkter ->",
+          "href": "#"
+        }
+      ],
+      "skills": [
+        {
+          "title": "Produktupptäck",
+          "description": "Forma resor med forskning, intervjuer och co-creation som tydliggör användarens intent och affärsvärdet.",
+          "bullets": [
+            "Problemformulering & workshops",
+            "Användarintervjuer & syntes",
+            "Personas, jobs-to-be-done, servicedesigndiagram"
+          ]
+        },
+        {
+          "title": "UX & produktdesign",
+          "description": "Prototypa flöden, validera dem med användare och förfina detaljerna tills de är redo för utveckling.",
+          "bullets": [
+            "Flöden, wireframes och pixelperfekt UI",
+            "Användningstester & iteration",
+            "Mikrocopy och interaktioner"
+          ]
+        },
+        {
+          "title": "Designsystem",
+          "description": "Leverera tillgängliga, återanvändbara komponenter med Figma-bibliotek och implementationsnoter för devteam.",
+          "bullets": [
+            "Grunder & tokens",
+            "UI-kit med tillstånd",
+            "Handoffspec & dokumentation"
+          ]
+        }
+      ],
+      "testimonial": {
+        "quote": "Att kombinera kraven från digital design, frontend och produkt—parat med mina sensibiliteter som grafisk formgivare.",
+        "name": "Personligt motto",
+        "title": "Thomas Rynell"
+      },
+      "cta": {
+        "eyebrow": "Nästa steg",
+        "heading": "Redo att skeppa en validerad upplevelse?",
+        "body": "Ta in mig för discovery, UX-ledning eller leverans av designsystem. Vi testar, itererar och lämnar över en lösning redo för utveckling.",
+        "button": {
+          "label": "Starta ett UX-projekt",
+          "href": "#contact"
+        }
+      }
+    },
+    {
+      "title": "Branding & innehåll",
+      "slug": "branding-content",
+      "palette": {
+        "accent": "#7157ff",
+        "accentStrong": "#5a3df3",
+        "accentSoft": "rgba(113, 87, 255, 0.16)",
+        "accentSurface": "rgba(113, 87, 255, 0.12)",
+        "accentBorder": "rgba(113, 87, 255, 0.4)"
+      },
+      "icon": "/assets/design-systems.svg",
+      "iconAlt": "Geometrisk ikon för varumärke och innehållsstrategi",
+      "heroCopy": {
+        "eyebrow": "Brand- och innehållsledare för produktteam",
+        "heading": "Bygger sammanhängande berättelser genom",
+        "highlight": "identitet, budskap och innehåll.",
+        "lead": "Jag skapar varumärkessystem, messaging-ramverk och innehållsplaner som håller varje touchpoint konsekvent och stöttar produktmålen.",
+        "stats": [
+          {
+            "value": "25+",
+            "label": "Varumärken uppdaterade eller lanserade"
+          },
+          {
+            "value": "6",
+            "label": "Språk koordinerade för content ops"
+          },
+          {
+            "value": "12 år",
+            "label": "Berättande för digitala produkter"
+          }
+        ],
+        "focus": [
+          "Jag tar fram sammanhängande visuella identiteter, budskapsramar och innehåll som håller rösten konsekvent.",
+          "Stilguider, designtokens och varumärkesverktyg som skalar från pitchdecks till produkt-UI.",
+          "Redaktionskalendrar, långt och kort innehåll samt governance som håller teamen synkade."
+        ],
+        "actions": [
+          {
+            "label": "Se senaste uppdrag",
+            "href": "#work",
+            "variant": "primary"
+          },
+          {
+            "label": "Ta kontakt",
+            "href": "#contact",
+            "variant": "ghost"
+          }
+        ],
+        "portrait": "https://images.unsplash.com/photo-1530023367847-a683933f4177?auto=format&fit=crop&w=600&q=80"
+      },
+      "projects": [
+        {
+          "badge": "Finans",
+          "year": "2016-2020",
+          "title": "Intrum",
+          "description": "Brand- och innehållsriktning för flerspråkiga plattformar, dashboards och kampanjer över 23 språk.",
+          "tags": [
+            "Messaging-ramar",
+            "Designledning",
+            "Localization ops"
+          ],
+          "linkLabel": "Se projektanteckningar ->",
+          "href": "#"
+        },
+        {
+          "badge": "Myndighet & hållbarhet",
+          "year": "2015-2021",
+          "title": "Naturvårdsverket",
+          "description": "Identitetslyft och innehållsstrategi för miljörapporteringsverktyg och publika kommunikationer.",
+          "tags": [
+            "Varumärkessystem",
+            "Redaktionell röst",
+            "Tillgänglighet"
+          ],
+          "linkLabel": "Läs sammanfattning ->",
+          "href": "#"
+        },
+        {
+          "badge": "Nyheter / SaaS",
+          "year": "2016-2023",
+          "title": "Rapidus",
+          "description": "Berättelser och UI-innehåll för prenumerationsflöden, dashboards och datarika visualiseringar.",
+          "tags": [
+            "Narrative design",
+            "Innehållsdesign",
+            "Konverterande copy"
+          ],
+          "linkLabel": "Uppdragsöversikt ->",
+          "href": "#"
+        }
+      ],
+      "skills": [
+        {
+          "title": "Identitetssystem",
+          "description": "Definiera det visuella språket, från logotyper till UI-stil, med skalbara riktlinjer som team kan skeppa med.",
+          "bullets": [
+            "Visuell identitet",
+            "Designtokens & UI-stil",
+            "Brandverktyg & mallar"
+          ]
+        },
+        {
+          "title": "Messaging-ramverk",
+          "description": "Förtydliga positionering, värdeerbjudanden och proof points så varje kanal talar med en röst.",
+          "bullets": [
+            "Positionering & story pillars",
+            "Produktbudskap",
+            "Ton & röst"
+          ]
+        },
+        {
+          "title": "Innehåll & ops",
+          "description": "Planera och leverera innehåll som håller sig on-brand—från landing pages till lifecycle-kampanjer.",
+          "bullets": [
+            "Redaktionskalendrar",
+            "Localization & governance",
+            "Innehållsdesign för produkt-UI"
+          ]
+        }
+      ],
+      "testimonial": {
+        "quote": "En sammanhållen varumärkesröst över produkt, marknad och support gör varje upplevelse avsiktlig.",
+        "name": "Ledord",
+        "title": "Thomas Rynell"
+      },
+      "cta": {
+        "eyebrow": "Nästa steg",
+        "heading": "Redo att växa ditt varumärke konsekvent?",
+        "body": "Låt oss skärpa positioneringen, utveckla identiteten och leverera innehåll som presterar i varje kanal.",
+        "button": {
+          "label": "Förnya brand & innehåll",
+          "href": "#contact"
+        }
+      }
+    },
+    {
+      "title": "Webbutveckling",
+      "slug": "web-development",
+      "palette": {
+        "accent": "#4fd1c5",
+        "accentStrong": "#2fb3aa",
+        "accentSoft": "rgba(79, 209, 197, 0.18)",
+        "accentSurface": "rgba(79, 209, 197, 0.12)",
+        "accentBorder": "rgba(79, 209, 197, 0.4)"
+      },
+      "icon": "/assets/code.svg",
+      "iconAlt": "Geometrisk ikon för webbutveckling",
+      "heroCopy": {
+        "eyebrow": "Frontend-ingenjör som levererar produktionsbyggen",
+        "heading": "Lanserar presterande webbupplevelser med",
+        "highlight": "moderna stackar & driftsäkerhet.",
+        "lead": "Jag tar ansvar från designhand-off till deployment med produktionsredo frontend, QA, analytics och monitorering inbyggt.",
+        "stats": [
+          {
+            "value": "15+ år",
+            "label": "Frontend-utveckling"
+          },
+          {
+            "value": "200+",
+            "label": "Komponenter skeppade"
+          },
+          {
+            "value": "10+",
+            "label": "Designsystem implementerade"
+          }
+        ],
+        "focus": [
+          "Jag bygger och lanserar frontend som håller sig presterande, tillgänglig och underhållbar över tid.",
+          "Testning, monitorering och analytics bakat i stacken ger teamen förtroende i varje release.",
+          "Från designsystem till komplexa flöden ser jag till att UI och UX skeppas tillsammans."
+        ],
+        "actions": [
+          {
+            "label": "Se senaste uppdrag",
+            "href": "#work",
+            "variant": "primary"
+          },
+          {
+            "label": "Ta kontakt",
+            "href": "#contact",
+            "variant": "ghost"
+          }
+        ],
+        "portrait": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80"
+      },
+      "projects": [
+        {
+          "badge": "Nyheter / SaaS",
+          "year": "2016-2023",
+          "title": "Rapidus",
+          "description": "Frontend-ombyggnad med TypeScript, React/Next.js, REST-API:er, grafdatabaser och avancerade visualiseringar för digitala nyheter.",
+          "tags": [
+            "React/Next.js",
+            "TypeScript",
+            "Designsystem"
+          ],
+          "linkLabel": "Se rebuild-anteckningar ->",
+          "href": "#"
+        },
+        {
+          "badge": "Myndighet & hållbarhet",
+          "year": "2015-2021",
+          "title": "Naturvårdsverket",
+          "description": "Frontend för miljörapporteringsverktyg, interaktiva kartor och datatunga visualiseringar med tillgänglighet i fokus.",
+          "tags": [
+            "Tillgänglighet",
+            "Datavisualisering",
+            "Kartor & GIS"
+          ],
+          "linkLabel": "Utforska detaljer ->",
+          "href": "#"
+        },
+        {
+          "badge": "Finans",
+          "year": "2014",
+          "title": "Bankgirocentralen",
+          "description": "Frontend-UI och UX för online-bankapplikationer, dashboards och transaktionsflöden med hög trafik.",
+          "tags": [
+            "Prestanda",
+            "Responsivt UI",
+            "Enterprise UX"
+          ],
+          "linkLabel": "Release-sammanfattning ->",
+          "href": "#"
+        }
+      ],
+      "skills": [
+        {
+          "title": "Frontend-byggen",
+          "description": "Skeppa tillförlitliga produktionsbyggen med modern tooling, tillgängliga mönster och prestandabudgetar.",
+          "bullets": [
+            "React, Next.js, Vite",
+            "TypeScript & tester",
+            "Implementering av designsystem"
+          ]
+        },
+        {
+          "title": "UI-implementation",
+          "description": "Översätt Figma till responsiva, tillgängliga gränssnitt som presterar på alla enheter.",
+          "bullets": [
+            "Semantisk HTML & ARIA",
+            "Prestandabudgetar",
+            "Animationer & mikrointeraktioner"
+          ]
+        },
+        {
+          "title": "Leverans & drift",
+          "description": "Äg leveranskedjan med CI/CD, hosting, monitorering och analytics från dag ett.",
+          "bullets": [
+            "CI/CD & hosting",
+            "Felkoll & logging",
+            "Analytics & A/B-testning"
+          ]
+        }
+      ],
+      "testimonial": {
+        "quote": "Robust leverans kombinerar ren frontend-engineering med genomtänkta UX-detaljer som gör lanseringar polerade.",
+        "name": "Leveransmantra",
+        "title": "Thomas Rynell"
+      },
+      "cta": {
+        "eyebrow": "Nästa steg",
+        "heading": "Redo att lansera med självförtroende?",
+        "body": "Jag bygger och skeppar frontenden—från design-handoff till produktion—med QA, analys och monitorering på plats.",
+        "button": {
+          "label": "Kickstarta en release",
+          "href": "#contact"
+        }
+      }
+    }
+  ],
+  "copy": {
+    "personaSwitcher": "Fokus",
+    "nav": {
+      "links": [
+        "Arbete",
+        "Tjänster",
+        "Erfarenhet",
+        "Kontakt"
+      ],
+      "cta": "Samarbeta"
+    },
+    "work": {
+      "eyebrow": "Utvalda uppdrag",
+      "heading": "Aktuella samarbeten och resultat.",
+      "cta": "Visa PDF-case"
+    },
+    "services": {
+      "eyebrow": "Förmågor",
+      "heading": "Där jag kliver in.",
+      "summary": "Inbakad i team med grundare, produktledare och tvärfunktionella roller."
+    },
+    "experience": {
+      "eyebrow": "Erfarenhet",
+      "heading": "Konsult inom IT, design och produkt.",
+      "cta": "Ladda ner komplett CV",
+      "timeline": [
+        {
+          "heading": "Rapidus · Frontend & UX",
+          "meta": "2016-2023 · Malmö",
+          "body": "Frontend-utveckling och redesign av en digital nyhetsplattform med TypeScript, React/Next.js, REST-API:er, grafdatabaser och avancerad datavisualisering."
+        },
+        {
+          "heading": "Intrum · UX, designdirektion, frontend",
+          "meta": "2016-2020 · Stockholm",
+          "body": "Ledde UX och frontend för flerspråkiga plattformar, dashboards och kampanjsidor över 23 språk i nära samarbete med produkt, marknad och teknik."
+        },
+        {
+          "heading": "Naturvårdsverket · UX, designdirektion, frontend",
+          "meta": "2015-2021 · Stockholm",
+          "body": "UX/designledning och frontend-arbete för miljörapporteringsverktyg, interaktiva kartor och komplexa formulär med fokus på tillgänglighet och datakvalitet."
+        },
+        {
+          "heading": "Bankgirocentralen · Frontend & grafisk design",
+          "meta": "2014 · Stockholm",
+          "body": "Frontend-utveckling, UX och grafisk design för bankapplikationer och dashboards över flera affärsområden."
+        }
+      ]
+    },
+    "testimonials": {
+      "eyebrow": "Omdömen",
+      "heading": "Förtroende från produktledare."
+    },
+    "footer": {
+      "heading": "Låt oss forma nästa release.",
+      "body": "Hör av dig till <a data-link-key=\"contactEmail\" href=\"mailto:thomas@rynell.com\">thomas@rynell.com</a> eller connecta på plattformarna nedan.",
+      "cta": "Starta ett projekt",
+      "socials": {
+        "linkedin": "LinkedIn",
+        "portfolio": "Portfolio",
+        "email": "E-post"
+      },
+      "backToTop": "Till toppen ↑"
+    }
+  },
+  "links": {
+    "navCta": "#contact",
+    "workCta": "#work",
+    "experienceCta": "#experience",
+    "footerCta": "mailto:thomas@rynell.com",
+    "contactEmail": "mailto:thomas@rynell.com",
+    "socials": {
+      "linkedin": "https://www.linkedin.com/in/thomasrynell/",
+      "portfolio": "https://thomasrynell.com",
+      "email": "mailto:thomas@rynell.com"
+    }
+  }
+}
