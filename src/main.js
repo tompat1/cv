@@ -798,6 +798,10 @@ const getThemeToggle = () => document.getElementById('themeToggle');
 const getLanguagePicker = () => document.getElementById('languagePicker');
 const getPersonaSwitcher = () => document.querySelector('[data-persona-switcher]');
 const getTranslationManager = () => document.querySelector('[data-translation-manager]');
+const isLocalizationRoute = () => {
+  const path = window.location.pathname.replace(/\/+$/, '');
+  return path === '/localization';
+};
 
 const renderLanguagePickerOptions = () => {
   const picker = getLanguagePicker();
@@ -816,6 +820,30 @@ const renderLanguagePickerOptions = () => {
 
   if (locales[current]) {
     picker.value = current;
+  }
+};
+
+const renderTranslationLocaleOptions = () => {
+  const manager = getTranslationManager();
+  if (!manager) return;
+  const picker = manager.querySelector('[data-translation-locale]');
+  if (!picker) return;
+
+  const current = picker.value || translationManagerLocale;
+  picker.innerHTML = '';
+
+  Object.keys(locales).forEach((code) => {
+    const option = document.createElement('option');
+    option.value = code;
+    option.textContent = code;
+    picker.appendChild(option);
+  });
+
+  if (locales[current]) {
+    picker.value = current;
+    translationManagerLocale = current;
+  } else if (picker.value) {
+    translationManagerLocale = picker.value;
   }
 };
 
@@ -877,6 +905,7 @@ const addLocale = (code, label) => {
     },
   };
   renderLanguagePickerOptions();
+  renderTranslationLocaleOptions();
 };
 
 const setPersonaContext = (persona) => {
@@ -1349,14 +1378,22 @@ export const initTranslationManager = () => {
   const manager = getTranslationManager();
   if (!manager) return;
 
+  const onLocalizationPage = isLocalizationRoute();
+  manager.hidden = !onLocalizationPage;
+  if (!onLocalizationPage) return;
+
   const localePicker = manager.querySelector('[data-translation-locale]');
   const translationList = manager.querySelector('[data-translation-list]');
   const addTranslationForm = manager.querySelector('[data-add-translation-form]');
   const newLocaleForm = manager.querySelector('[data-new-locale-form]');
 
   renderLanguagePickerOptions();
+  renderTranslationLocaleOptions();
 
   if (localePicker) {
+    if (!locales[translationManagerLocale]) {
+      translationManagerLocale = activeLanguage;
+    }
     localePicker.value = translationManagerLocale;
     localePicker.addEventListener('change', (event) => {
       const nextLocale = event.target.value;
