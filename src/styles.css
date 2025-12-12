@@ -756,6 +756,29 @@ textarea {
   gap: 1rem;
 }
 
+.translation-manager__links {
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  background: var(--color-bg);
+  padding: 1.25rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.translation-manager__links-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.translation-manager__links-list input {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
 .translation-manager__add {
   display: grid;
   gap: 0.75rem;
@@ -791,6 +814,11 @@ textarea {
   justify-content: space-between;
   gap: 2rem;
   flex-wrap: wrap;
+}
+
+.footer__intro {
+  display: grid;
+  gap: 0.75rem;
 }
 
 .footer__actions {
