@@ -14,8 +14,8 @@
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" type="image/svg+xml" href="/assets/img/rynell-lila.svg" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/TR_badgex2_blue3.png" />
+    <link rel="icon" type="image/svg+xml" href="./assets/img/rynell-lila.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/img/TR_badgex2_blue3.png" />
   </head>
   <body>
     <header class="site-header">
@@ -23,10 +23,10 @@
         <a class="logo" href="#">
           <picture class="logo__image">
             <source
-              srcset="/assets/img/TR_badgex2_blue3.png"
+              srcset="./assets/img/TR_badgex2_blue3.png"
               media="(max-width: 768px)"
             />
-            <img src="/assets/img/rynell-lila.svg" alt="Thomas Rynell logo" />
+            <img src="./assets/img/rynell-lila.svg" alt="Thomas Rynell logo" />
           </picture>
           <div>
             <small>Digital design, branding & web development</small>
@@ -228,6 +228,23 @@
                 />
                 <button class="btn btn--ghost" type="submit">Add locale</button>
               </form>
+              <div class="translation-manager__io">
+                <button class="btn btn--ghost" type="button" data-export-locale>Export locale JSON</button>
+                <label class="btn btn--ghost translation-manager__import" for="importLocale">
+                  <input
+                    id="importLocale"
+                    type="file"
+                    accept="application/json"
+                    data-import-locale
+                    aria-label="Import locale JSON"
+                    hidden
+                  />
+                  <span>Import locale JSON</span>
+                </label>
+                <p class="translation-manager__hint">
+                  Export and import locale files to version translations without a backend.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -309,7 +326,7 @@
       </div>
     </footer>
 
-    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="./src/main.js"></script>
   </body>
 </html>
 
