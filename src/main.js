@@ -667,7 +667,8 @@ const copy = {
     },
     footer: {
       heading: "Let's shape the next release.",
-      body: 'Send a note to <a href="mailto:thomas@rynell.com">thomas@rynell.com</a> or connect on the platforms below.',
+      body:
+        'Send a note to <a data-link-key="contactEmail" href="mailto:thomas@rynell.com">thomas@rynell.com</a> or connect on the platforms below.',
       cta: 'Start a project',
       socials: { linkedin: 'LinkedIn', portfolio: 'Portfolio', email: 'Email' },
       backToTop: 'Back to top ↑',
@@ -726,10 +727,26 @@ const copy = {
     },
     footer: {
       heading: 'Låt oss forma nästa release.',
-      body: 'Hör av dig till <a href="mailto:thomas@rynell.com">thomas@rynell.com</a> eller connecta på plattformarna nedan.',
+      body:
+        'Hör av dig till <a data-link-key="contactEmail" href="mailto:thomas@rynell.com">thomas@rynell.com</a> eller connecta på plattformarna nedan.',
       cta: 'Starta ett projekt',
       socials: { linkedin: 'LinkedIn', portfolio: 'Portfolio', email: 'E-post' },
       backToTop: 'Till toppen ↑',
+    },
+  },
+};
+
+const links = {
+  en: {
+    navCta: '#contact',
+    workCta: '#work',
+    experienceCta: '#experience',
+    footerCta: 'mailto:thomas@rynell.com',
+    contactEmail: 'mailto:thomas@rynell.com',
+    socials: {
+      linkedin: 'https://www.linkedin.com/in/thomasrynell/',
+      portfolio: 'https://thomasrynell.com',
+      email: 'mailto:thomas@rynell.com',
     },
   },
 };
@@ -740,6 +757,8 @@ let locales = {
 };
 
 const cloneDeep = (value) => JSON.parse(JSON.stringify(value));
+
+links.sv = cloneDeep(links.en);
 
 const flattenTranslations = (value, path = []) => {
   if (value === null || value === undefined) return [];
@@ -754,6 +773,25 @@ const flattenTranslations = (value, path = []) => {
   if (typeof value === 'object') {
     return Object.entries(value).flatMap(([childKey, childValue]) =>
       flattenTranslations(childValue, [...path, childKey])
+    );
+  }
+
+  return [];
+};
+
+const flattenLinks = (value, path = []) => {
+  if (!value) return [];
+  if (typeof value === 'string') {
+    return [{ key: path.join('.'), value }];
+  }
+
+  if (Array.isArray(value)) {
+    return value.flatMap((entry, index) => flattenLinks(entry, [...path, index]));
+  }
+
+  if (typeof value === 'object') {
+    return Object.entries(value).flatMap(([childKey, childValue]) =>
+      flattenLinks(childValue, [...path, childKey])
     );
   }
 
@@ -780,6 +818,17 @@ const applyValueAtPath = (target, path, nextValue) => {
   });
 };
 
+const getValueAtPath = (target, path) => {
+  if (!target || !path || !path.length) return undefined;
+
+  return path.reduce((cursor, segment) => {
+    if (cursor === null || cursor === undefined) return undefined;
+    const numericKey = Number.isInteger(Number(segment));
+    const key = numericKey ? Number(segment) : segment;
+    return cursor[key];
+  }, target);
+};
+
 const getInitialLanguage = () => {
   const stored = localStorage.getItem(LANGUAGE_KEY);
   if (stored && locales[stored]) return stored;
@@ -798,6 +847,22 @@ const getThemeToggle = () => document.getElementById('themeToggle');
 const getLanguagePicker = () => document.getElementById('languagePicker');
 const getPersonaSwitcher = () => document.querySelector('[data-persona-switcher]');
 const getTranslationManager = () => document.querySelector('[data-translation-manager]');
+const linkDrafts = {};
+
+const getPendingLinkEdits = (localeKey) => {
+  if (!linkDrafts[localeKey]) {
+    linkDrafts[localeKey] = {};
+  }
+  return linkDrafts[localeKey];
+};
+
+const clearPendingLinkEdits = (localeKey) => {
+  linkDrafts[localeKey] = {};
+};
+
+const hasPendingLinkEdits = (localeKey) =>
+  Boolean(localeKey && Object.keys(getPendingLinkEdits(localeKey)).length);
+
 const isLocalizationRoute = () => {
   const path = window.location.pathname.replace(/\/+$/, '');
   return path === '/localization';
@@ -884,6 +949,109 @@ const renderTranslationList = (localeKey) => {
   }
 };
 
+const getLinksForLocale = (localeKey = activeLanguage) => links[localeKey] || links.en || links.sv || {};
+
+const getLinkValueForLocale = (keyPath, localeKey = activeLanguage) => {
+  const pathSegments = keyPath.split('.').filter(Boolean);
+  const value = getValueAtPath(getLinksForLocale(localeKey), pathSegments);
+  return typeof value === 'string' ? value : '';
+};
+
+const setPendingLinkValue = (localeKey, keyPath, value) => {
+  const pending = getPendingLinkEdits(localeKey);
+  const baseValue = getLinkValueForLocale(keyPath, localeKey);
+  const normalizedValue = value.trim();
+
+  if (normalizedValue === baseValue) {
+    delete pending[keyPath];
+    return false;
+  }
+
+  pending[keyPath] = normalizedValue;
+  return true;
+};
+
+const updateLinkSaveButtonState = (manager, localeKey) => {
+  const saveButton = manager.querySelector('[data-save-links]');
+  if (!saveButton) return;
+  const hasPending = hasPendingLinkEdits(localeKey);
+  saveButton.disabled = !hasPending;
+  saveButton.setAttribute('aria-disabled', hasPending ? 'false' : 'true');
+};
+
+const renderLinkList = (localeKey) => {
+  const manager = getTranslationManager();
+  if (!manager) return;
+  const list = manager.querySelector('[data-link-list]');
+  const count = manager.querySelector('[data-link-count]');
+  if (!list) return;
+
+  const entries = flattenLinks(getLinksForLocale(localeKey));
+  const pending = getPendingLinkEdits(localeKey);
+  list.innerHTML = '';
+
+  entries.forEach((entry) => {
+    const wrapper = document.createElement('label');
+    wrapper.className = 'translation-item';
+
+    const keyEl = document.createElement('div');
+    keyEl.className = 'translation-item__key';
+    keyEl.textContent = entry.key;
+
+    const input = document.createElement('input');
+    input.dataset.linkKey = entry.key;
+    input.type = 'url';
+    input.value = pending[entry.key] ?? entry.value;
+    input.placeholder = 'Enter link or file path';
+
+    if (pending[entry.key]) {
+      wrapper.classList.add('translation-item--dirty');
+    }
+
+    wrapper.append(keyEl, input);
+    list.appendChild(wrapper);
+  });
+
+  if (count) {
+    count.textContent = `${entries.length} links`;
+  }
+
+  updateLinkSaveButtonState(manager, localeKey);
+};
+
+const applyLinks = (localeKey = activeLanguage) => {
+  const localeLinks = getLinksForLocale(localeKey);
+
+  const navCta = document.querySelector('[data-link-key="navCta"]');
+  if (navCta && localeLinks.navCta) navCta.setAttribute('href', localeLinks.navCta);
+
+  const workCta = document.querySelector('[data-link-key="workCta"]');
+  if (workCta && localeLinks.workCta) workCta.setAttribute('href', localeLinks.workCta);
+
+  const experienceCta = document.querySelector('[data-link-key="experienceCta"]');
+  if (experienceCta && localeLinks.experienceCta) experienceCta.setAttribute('href', localeLinks.experienceCta);
+
+  const footerCta = document.querySelector('[data-link-key="footerCta"]');
+  if (footerCta && localeLinks.footerCta) footerCta.setAttribute('href', localeLinks.footerCta);
+
+  const footerEmail = document.querySelector('[data-link-key="contactEmail"]');
+  if (footerEmail && localeLinks.contactEmail) {
+    footerEmail.setAttribute('href', localeLinks.contactEmail);
+    footerEmail.textContent = localeLinks.contactEmail.replace('mailto:', '');
+  }
+
+  const footerLinks = document.querySelectorAll('[data-footer-link]');
+  footerLinks.forEach((link) => {
+    const key = link.dataset.footerLink;
+    const nextHref = key && localeLinks.socials ? localeLinks.socials[key] : null;
+    if (nextHref) {
+      link.setAttribute('href', nextHref);
+      link.setAttribute('rel', 'noreferrer');
+      link.setAttribute('target', '_blank');
+    }
+  });
+};
+
 const addTranslationValue = (localeKey, keyPath, value) => {
   if (!copy[localeKey]) return;
   const segments = keyPath.split('.').filter(Boolean);
@@ -891,11 +1059,21 @@ const addTranslationValue = (localeKey, keyPath, value) => {
   applyValueAtPath(copy[localeKey], segments, value);
 };
 
+const setLinkValue = (localeKey, keyPath, value) => {
+  if (!links[localeKey]) {
+    links[localeKey] = cloneDeep(links.en || links.sv || {});
+  }
+  const segments = keyPath.split('.').filter(Boolean);
+  if (!segments.length) return;
+  applyValueAtPath(links[localeKey], segments, value);
+};
+
 const addLocale = (code, label) => {
   if (!code) return;
   const normalized = code.trim();
   if (locales[normalized]) return;
   copy[normalized] = cloneDeep(copy.en);
+  links[normalized] = cloneDeep(links.en || links.sv || {});
   locales = {
     ...locales,
     [normalized]: {
@@ -1238,6 +1416,7 @@ const renderPersonasForLanguage = () => {
 const applyLanguage = () => {
   document.documentElement.setAttribute('lang', activeLanguage);
   renderStaticCopy();
+  applyLinks();
   renderPersonasForLanguage();
 };
 
@@ -1384,6 +1563,8 @@ export const initTranslationManager = () => {
 
   const localePicker = manager.querySelector('[data-translation-locale]');
   const translationList = manager.querySelector('[data-translation-list]');
+  const linkList = manager.querySelector('[data-link-list]');
+  const saveLinksButton = manager.querySelector('[data-save-links]');
   const addTranslationForm = manager.querySelector('[data-add-translation-form]');
   const newLocaleForm = manager.querySelector('[data-new-locale-form]');
 
@@ -1400,6 +1581,7 @@ export const initTranslationManager = () => {
       if (!locales[nextLocale]) return;
       translationManagerLocale = nextLocale;
       renderTranslationList(translationManagerLocale);
+      renderLinkList(translationManagerLocale);
     });
   }
 
@@ -1411,6 +1593,19 @@ export const initTranslationManager = () => {
       if (translationManagerLocale === activeLanguage) {
         applyLanguage();
       }
+    });
+  }
+
+  if (linkList) {
+    linkList.addEventListener('input', (event) => {
+      const target = event.target;
+      if (!target.dataset.linkKey) return;
+      const isDirty = setPendingLinkValue(translationManagerLocale, target.dataset.linkKey, target.value);
+      const wrapper = target.closest('.translation-item');
+      if (wrapper) {
+        wrapper.classList.toggle('translation-item--dirty', isDirty);
+      }
+      updateLinkSaveButtonState(manager, translationManagerLocale);
     });
   }
 
@@ -1441,11 +1636,29 @@ export const initTranslationManager = () => {
         localePicker.value = translationManagerLocale;
       }
       renderTranslationList(translationManagerLocale);
+      renderLinkList(translationManagerLocale);
       newLocaleForm.reset();
     });
   }
 
+  if (saveLinksButton) {
+    saveLinksButton.addEventListener('click', () => {
+      const pending = getPendingLinkEdits(translationManagerLocale);
+      Object.entries(pending).forEach(([keyPath, value]) => {
+        setLinkValue(translationManagerLocale, keyPath, value);
+      });
+
+      clearPendingLinkEdits(translationManagerLocale);
+      renderLinkList(translationManagerLocale);
+
+      if (translationManagerLocale === activeLanguage) {
+        applyLinks();
+      }
+    });
+  }
+
   renderTranslationList(translationManagerLocale);
+  renderLinkList(translationManagerLocale);
 };
 
 export const initApp = () => {

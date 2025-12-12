@@ -77,7 +77,7 @@
               />
             </svg>
           </button>
-          <a class="btn btn--primary nav__cta" href="#contact" data-nav-cta>Let's work</a>
+          <a class="btn btn--primary nav__cta" href="#contact" data-nav-cta data-link-key="navCta">Let's work</a>
         </div>
       </nav>
     </header>
@@ -126,7 +126,7 @@
             <p class="eyebrow" data-work-eyebrow>Select Assignments</p>
             <h2 data-work-heading>Recent collaborations & outcomes.</h2>
           </div>
-          <a class="btn btn--ghost" href="#" data-work-cta>View PDF case studies</a>
+          <a class="btn btn--ghost" href="#" data-work-cta data-link-key="workCta">View PDF case studies</a>
         </div>
         <div class="container grid grid--3" data-projects></div>
       </section>
@@ -150,7 +150,7 @@
             <p class="eyebrow" data-experience-eyebrow>Experience</p>
             <h2 data-experience-heading>Consulting across IT, design, and product.</h2>
           </div>
-          <a class="btn btn--ghost" href="#" data-experience-cta>Download full resume</a>
+          <a class="btn btn--ghost" href="#" data-experience-cta data-link-key="experienceCta">Download full resume</a>
         </div>
         <div class="container timeline">
           <article data-timeline-index="0">
@@ -265,28 +265,42 @@
               </form>
             </div>
           </div>
+
+          <div class="translation-manager__links">
+            <div>
+              <p class="eyebrow">Links &amp; files</p>
+              <h3 data-link-count></h3>
+              <p class="muted">
+                Manage URLs for social profiles, CTAs, and file downloads used across the site.
+              </p>
+            </div>
+            <div class="translation-manager__links-list" data-link-list></div>
+            <div class="translation-manager__links-actions">
+              <button class="btn btn--primary" type="button" data-save-links disabled>Save links</button>
+            </div>
+          </div>
         </div>
       </section>
     </main>
 
     <footer id="contact" class="site-footer">
       <div class="container footer__grid">
-        <div>
+        <div class="footer__intro">
           <h3 data-footer-heading>Let's shape the next release.</h3>
           <p class="muted" data-footer-body>
-            Send a note to <a href="mailto:thomas@rynell.com">thomas@rynell.com</a>
+            Send a note to <a data-link-key="contactEmail" href="mailto:thomas@rynell.com">thomas@rynell.com</a>
             or connect on the platforms below.
           </p>
-        </div>
-        <div class="footer__actions">
-          <a class="btn btn--primary" href="mailto:thomas@rynell.com" data-footer-cta>
-            Start a project
-          </a>
           <ul class="socials">
             <li><a href="https://www.linkedin.com/in/thomasrynell/" target="_blank" rel="noreferrer" data-footer-link="linkedin">LinkedIn</a></li>
             <li><a href="https://thomasrynell.com" target="_blank" rel="noreferrer" data-footer-link="portfolio">Portfolio</a></li>
             <li><a href="mailto:thomas@rynell.com" data-footer-link="email">Email</a></li>
           </ul>
+        </div>
+        <div class="footer__actions">
+          <a class="btn btn--primary" href="mailto:thomas@rynell.com" data-footer-cta data-link-key="footerCta">
+            Start a project
+          </a>
         </div>
       </div>
       <div class="container footer__meta">
