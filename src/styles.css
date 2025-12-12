@@ -304,6 +304,40 @@ textarea {
   margin-left: auto;
 }
 
+.language-picker {
+  position: relative;
+}
+
+.language-picker select {
+  appearance: none;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 0.6rem 2.5rem 0.6rem 0.9rem;
+  font: inherit;
+  background: var(--color-bg);
+  color: var(--color-text);
+  cursor: pointer;
+  min-width: 100px;
+  transition: border 150ms ease, background 150ms ease;
+}
+
+.language-picker::after {
+  content: '\25bc';
+  position: absolute;
+  right: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.7rem;
+  color: var(--color-muted);
+  pointer-events: none;
+}
+
+.language-picker select:hover,
+.language-picker select:focus-visible {
+  border-color: var(--accent);
+  outline: none;
+}
+
 .nav__toggle {
   display: none;
   flex-direction: column;
