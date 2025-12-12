@@ -11,7 +11,7 @@
         "accentSurface": "rgba(225, 91, 158, 0.12)",
         "accentBorder": "rgba(225, 91, 158, 0.4)"
       },
-      "icon": "/assets/product-designer.svg",
+      "icon": "assets/product-designer.svg",
       "iconAlt": "Geometrisk ikon för en digital produktdesigner",
       "heroCopy": {
         "eyebrow": "Konsult och designer för webb och digitala produkter",
@@ -146,7 +146,7 @@
         "accentSurface": "rgba(113, 87, 255, 0.12)",
         "accentBorder": "rgba(113, 87, 255, 0.4)"
       },
-      "icon": "/assets/design-systems.svg",
+      "icon": "assets/design-systems.svg",
       "iconAlt": "Geometrisk ikon för varumärke och innehållsstrategi",
       "heroCopy": {
         "eyebrow": "Brand- och innehållsledare för produktteam",
@@ -281,7 +281,7 @@
         "accentSurface": "rgba(79, 209, 197, 0.12)",
         "accentBorder": "rgba(79, 209, 197, 0.4)"
       },
-      "icon": "/assets/code.svg",
+      "icon": "assets/code.svg",
       "iconAlt": "Geometrisk ikon för webbutveckling",
       "heroCopy": {
         "eyebrow": "Frontend-ingenjör som levererar produktionsbyggen",

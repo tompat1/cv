@@ -6,21 +6,50 @@ const DEFAULT_LOCALES = ['en', 'sv'];
 
 const cloneDeep = (value) => JSON.parse(JSON.stringify(value));
 
+const withBase = (path = '') => {
+  const normalized = path.replace(/^\/+/, '');
+  if (!normalized) return normalized;
+  if (/^(https?:)?\/\//i.test(normalized)) return normalized;
+  return `${import.meta.env.BASE_URL}${normalized}`;
+};
+
+const stripBase = (path = '') => {
+  if (!path) return path;
+  const base = import.meta.env.BASE_URL || '/';
+  const normalizedBase = base.endsWith('/') ? base : `${base}/`;
+  if (normalizedBase === '/') return path.replace(/^\/+/, '');
+  return path.startsWith(normalizedBase) ? path.slice(normalizedBase.length) : path;
+};
+
 let locales = {};
 let links = {};
 let copy = {};
 let personasByLocale = {};
 
 const loadLocaleFile = async (code) => {
-  const response = await fetch(`/locales/${code}.json`);
+  const response = await fetch(withBase(`locales/${code}.json`));
   if (!response.ok) throw new Error(`Failed to load locale file for ${code}`);
   return response.json();
 };
 
 const applyLocalePayload = (code, payload = {}) => {
   const { label, personas = [], copy: localeCopy = {}, links: localeLinks = {} } = payload;
+  const resolvedPersonas = personas.map((persona) => {
+    const resolvedPersona = { ...persona };
+    if (persona.icon) {
+      resolvedPersona.icon = withBase(persona.icon);
+    }
+    if (persona.heroCopy?.portrait) {
+      resolvedPersona.heroCopy = {
+        ...persona.heroCopy,
+        portrait: withBase(persona.heroCopy.portrait),
+      };
+    }
+    return resolvedPersona;
+  });
+
   copy[code] = cloneDeep(localeCopy);
-  personasByLocale[code] = cloneDeep(personas);
+  personasByLocale[code] = cloneDeep(resolvedPersonas);
   links[code] = cloneDeep(localeLinks || links.en || {});
   locales = {
     ...locales,
@@ -380,7 +409,13 @@ const buildLocalePayload = (localeKey) => {
   return {
     code: localeKey,
     label: locales[localeKey].label,
-    personas: personasByLocale[localeKey] || [],
+    personas: (personasByLocale[localeKey] || []).map((persona) => ({
+      ...persona,
+      icon: stripBase(persona.icon),
+      heroCopy: persona.heroCopy?.portrait
+        ? { ...persona.heroCopy, portrait: stripBase(persona.heroCopy.portrait) }
+        : persona.heroCopy,
+    })),
     copy: copy[localeKey] || {},
     links: links[localeKey] || {},
   };

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title>Frontend engineering icon</title>
+  <rect x="7" y="12" width="50" height="40" rx="6" fill="#eef1ff" stroke="#7785e3" stroke-width="3" />
+  <path d="M14 20h36" stroke="#7785e3" stroke-width="3" stroke-linecap="round" />
+  <path d="M18 28l-6 6 6 6" fill="none" stroke="#7785e3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M46 28l6 6-6 6" fill="none" stroke="#7785e3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+  <rect x="22" y="30" width="20" height="8" rx="2" fill="#dfe4ff" stroke="#7785e3" stroke-width="2" />
+  <circle cx="16" cy="17" r="1.5" fill="#7785e3" />
+  <circle cx="22" cy="17" r="1.5" fill="#7785e3" />
+  <circle cx="28" cy="17" r="1.5" fill="#7785e3" />
+</svg>
