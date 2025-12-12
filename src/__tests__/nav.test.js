@@ -15,12 +15,19 @@ const renderNav = () => {
           <span></span><span></span><span></span>
         </button>
         <ul class="nav__links">
-          <li><a href="#work">Work</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#work" data-nav-link="work">Work</a></li>
+          <li><a href="#services" data-nav-link="services">Services</a></li>
+          <li><a href="#experience" data-nav-link="experience">Experience</a></li>
+          <li><a href="#contact" data-nav-link="contact">Contact</a></li>
         </ul>
         <div class="nav__actions">
+          <label class="language-picker" for="languagePicker">
+            <span class="sr-only">Change language</span>
+            <select id="languagePicker" aria-label="Change language">
+              <option value="en">EN</option>
+              <option value="sv">SV</option>
+            </select>
+          </label>
           <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme" aria-pressed="false">
             <svg></svg>
             <svg></svg>
@@ -53,6 +60,15 @@ describe('navigation', () => {
     expect(toggle).not.toBeNull();
     expect(toggle.getAttribute('aria-label')).toBe('Toggle theme');
     expect(toggle.getAttribute('aria-pressed')).toBe('false');
+  });
+
+  it('includes a language picker', () => {
+    renderNav();
+    const picker = document.getElementById('languagePicker');
+
+    expect(picker).not.toBeNull();
+    expect(picker.getAttribute('aria-label')).toBe('Change language');
+    expect(Array.from(picker.options).map((option) => option.value)).toEqual(['en', 'sv']);
   });
 });
 

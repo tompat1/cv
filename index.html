@@ -36,12 +36,19 @@
           <span></span><span></span><span></span>
         </button>
         <ul class="nav__links">
-          <li><a href="#work">Work</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#work" data-nav-link="work">Work</a></li>
+          <li><a href="#services" data-nav-link="services">Services</a></li>
+          <li><a href="#experience" data-nav-link="experience">Experience</a></li>
+          <li><a href="#contact" data-nav-link="contact">Contact</a></li>
         </ul>
         <div class="nav__actions">
+          <label class="language-picker" for="languagePicker">
+            <span class="sr-only">Change language</span>
+            <select id="languagePicker" aria-label="Change language">
+              <option value="en">EN</option>
+              <option value="sv">SV</option>
+            </select>
+          </label>
           <button
             id="themeToggle"
             class="theme-toggle"
@@ -70,7 +77,7 @@
               />
             </svg>
           </button>
-          <a class="btn btn--primary nav__cta" href="#contact">Let's work</a>
+          <a class="btn btn--primary nav__cta" href="#contact" data-nav-cta>Let's work</a>
         </div>
       </nav>
     </header>
@@ -78,7 +85,7 @@
     <main>
       <section class="persona-switcher">
         <div class="container persona-switcher__inner" role="tablist" aria-label="Persona switcher">
-          <span class="persona-switcher__label">Focus</span>
+          <span class="persona-switcher__label" data-persona-switcher-label>Focus</span>
           <div class="persona-switcher__tabs" data-persona-switcher></div>
         </div>
       </section>
@@ -116,10 +123,10 @@
       <section id="work" class="section section--alt">
         <div class="container section__header">
           <div>
-            <p class="eyebrow">Select Assignments</p>
-            <h2>Recent collaborations & outcomes.</h2>
+            <p class="eyebrow" data-work-eyebrow>Select Assignments</p>
+            <h2 data-work-heading>Recent collaborations & outcomes.</h2>
           </div>
-          <a class="btn btn--ghost" href="#">View PDF case studies</a>
+          <a class="btn btn--ghost" href="#" data-work-cta>View PDF case studies</a>
         </div>
         <div class="container grid grid--3" data-projects></div>
       </section>
@@ -127,10 +134,10 @@
       <section id="services" class="section">
         <div class="container section__header">
           <div>
-            <p class="eyebrow">Capabilities</p>
-            <h2>Where I plug in.</h2>
+            <p class="eyebrow" data-services-eyebrow>Capabilities</p>
+            <h2 data-services-heading>Where I plug in.</h2>
           </div>
-          <p class="muted">
+          <p class="muted" data-services-summary>
             Embedded with founders, product leads, and multi-functional teams.
           </p>
         </div>
@@ -140,43 +147,31 @@
       <section id="experience" class="section section--alt">
         <div class="container section__header">
           <div>
-            <p class="eyebrow">Experience</p>
-            <h2>Consulting across IT, design, and product.</h2>
+            <p class="eyebrow" data-experience-eyebrow>Experience</p>
+            <h2 data-experience-heading>Consulting across IT, design, and product.</h2>
           </div>
-          <a class="btn btn--ghost" href="#">Download full resume</a>
+          <a class="btn btn--ghost" href="#" data-experience-cta>Download full resume</a>
         </div>
         <div class="container timeline">
-          <article>
-            <h3>Rapidus &middot; Front-end & UX</h3>
-            <p class="muted">2016-2023 &middot; Malmö</p>
-            <p>
-              Front-end development and redesign of a digital news platform using TypeScript, React/Next.js,
-              RESTful APIs, graph databases, and advanced data visualization.
-            </p>
+          <article data-timeline-index="0">
+            <h3 data-timeline-heading></h3>
+            <p class="muted" data-timeline-meta></p>
+            <p data-timeline-body></p>
           </article>
-          <article>
-            <h3>Intrum &middot; UX, Design Direction, Front-end</h3>
-            <p class="muted">2016-2020 &middot; Stockholm</p>
-            <p>
-              Led UX and front-end for multilingual platforms, dashboards, and campaign pages across 23 languages;
-              collaborated closely with product, marketing, and engineering stakeholders.
-            </p>
+          <article data-timeline-index="1">
+            <h3 data-timeline-heading></h3>
+            <p class="muted" data-timeline-meta></p>
+            <p data-timeline-body></p>
           </article>
-          <article>
-            <h3>Naturvårdsverket &middot; UX, Design Direction, Front-end</h3>
-            <p class="muted">2015-2021 &middot; Stockholm</p>
-            <p>
-              UX/design direction and front-end work for environmental reporting tools, interactive maps,
-              and complex forms with accessibility and data quality in focus.
-            </p>
+          <article data-timeline-index="2">
+            <h3 data-timeline-heading></h3>
+            <p class="muted" data-timeline-meta></p>
+            <p data-timeline-body></p>
           </article>
-          <article>
-            <h3>Bankgirocentralen &middot; Front-end & Graphic Design</h3>
-            <p class="muted">2014 &middot; Stockholm</p>
-            <p>
-              Front-end development, UX, and graphic design for online bank applications and dashboards
-              across multiple lines of business.
-            </p>
+          <article data-timeline-index="3">
+            <h3 data-timeline-heading></h3>
+            <p class="muted" data-timeline-meta></p>
+            <p data-timeline-body></p>
           </article>
         </div>
       </section>
@@ -184,8 +179,8 @@
       <section class="section">
         <div class="container testimonials">
           <div>
-            <p class="eyebrow">Testimonials</p>
-            <h2>Trusted by product leaders.</h2>
+            <p class="eyebrow" data-testimonials-eyebrow>Testimonials</p>
+            <h2 data-testimonials-heading>Trusted by product leaders.</h2>
           </div>
           <div class="testimonial-grid" data-testimonial></div>
         </div>
@@ -208,26 +203,26 @@
     <footer id="contact" class="site-footer">
       <div class="container footer__grid">
         <div>
-          <h3>Let's shape the next release.</h3>
-          <p class="muted">
+          <h3 data-footer-heading>Let's shape the next release.</h3>
+          <p class="muted" data-footer-body>
             Send a note to <a href="mailto:thomas@rynell.com">thomas@rynell.com</a>
             or connect on the platforms below.
           </p>
         </div>
         <div class="footer__actions">
-          <a class="btn btn--primary" href="mailto:thomas@rynell.com">
+          <a class="btn btn--primary" href="mailto:thomas@rynell.com" data-footer-cta>
             Start a project
           </a>
           <ul class="socials">
-            <li><a href="https://www.linkedin.com/in/thomasrynell/" target="_blank" rel="noreferrer">LinkedIn</a></li>
-            <li><a href="https://thomasrynell.com" target="_blank" rel="noreferrer">Portfolio</a></li>
-            <li><a href="mailto:thomas@rynell.com">Email</a></li>
+            <li><a href="https://www.linkedin.com/in/thomasrynell/" target="_blank" rel="noreferrer" data-footer-link="linkedin">LinkedIn</a></li>
+            <li><a href="https://thomasrynell.com" target="_blank" rel="noreferrer" data-footer-link="portfolio">Portfolio</a></li>
+            <li><a href="mailto:thomas@rynell.com" data-footer-link="email">Email</a></li>
           </ul>
         </div>
       </div>
       <div class="container footer__meta">
         <small>&copy; <span id="currentYear"></span> Thomas Rynell. Crafted in Stockholm.</small>
-        <button id="backToTop" class="btn btn--ghost btn--small">Back to top &uarr;</button>
+        <button id="backToTop" class="btn btn--ghost btn--small" data-back-to-top>Back to top &uarr;</button>
       </div>
     </footer>
 

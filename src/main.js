@@ -1,6 +1,7 @@
 import './styles.css';
 
 const THEME_KEY = 'tr-theme';
+const LANGUAGE_KEY = 'tr-language';
 const personas = [
   {
     title: 'Digital Design & UX',
@@ -306,9 +307,454 @@ const personas = [
     },
   },
 ];
-let activePersona = personas[0];
+
+const svPersonas = [
+  {
+    title: 'Digital design & UX',
+    slug: 'digital-design-ux',
+    palette: {
+      accent: '#e15b9e',
+      accentStrong: '#d14888',
+      accentSoft: 'rgba(225, 91, 158, 0.16)',
+      accentSurface: 'rgba(225, 91, 158, 0.12)',
+      accentBorder: 'rgba(225, 91, 158, 0.4)',
+    },
+    icon: '/assets/product-designer.svg',
+    iconAlt: 'Geometrisk ikon för en digital produktdesigner',
+    heroCopy: {
+      eyebrow: 'Konsult och designer för webb och digitala produkter',
+      heading: 'Designar intuitiva upplevelser för',
+      highlight: 'moderna produkter och tjänster.',
+      lead:
+        'Jag tar 30+ år inom IT, digital design och produkt från discovery till validerade prototyper och utvecklingsredo designsystem.',
+      stats: [
+        { value: '30+ år', label: 'Konsult inom IT & design' },
+        { value: '12 år', label: 'Fokus på digital produkt & UX' },
+        { value: '200+', label: 'Flöden prototypade & testade' },
+      ],
+      focus: [
+        'Jag designar intuitiva produktflöden, validerar med användare och levererar Figma-system redo för utveckling.',
+        'Praktiska forskningsloopar, från intervjuer till modererade tester, håller användbarheten förankrad i verklig feedback.',
+        'Designsystem, UI-kit och tillgänglighet bakas in i varje komponent för smidigare byggnationer.',
+      ],
+      actions: [
+        { label: 'Se senaste uppdrag', href: '#work', variant: 'primary' },
+        { label: 'Ta kontakt', href: '#contact', variant: 'ghost' },
+      ],
+      portrait:
+        'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80',
+    },
+    projects: [
+      {
+        badge: 'Nyheter / SaaS',
+        year: '2016-2023',
+        title: 'Rapidus',
+        description:
+          'Produktupptäck, UX och redesign för en digital nyhetsplattform med TypeScript, REST-API:er och grafvisualiseringar.',
+        tags: ['Användarflöden & prototyper', 'Designsystem', 'React / Next.js'],
+        linkLabel: 'Uppdragsöversikt ->',
+        href: '#',
+      },
+      {
+        badge: 'Myndighet & hållbarhet',
+        year: '2015-2021',
+        title: 'Naturvårdsverket',
+        description:
+          'Forskningsdriven UX-inriktning för verktyg inom miljörapportering, interaktiva kartor och komplexa formulär.',
+        tags: ['Tillgänglighet', 'Datadriven UX', 'Workshops med intressenter'],
+        linkLabel: 'Läs sammanfattning ->',
+        href: '#',
+      },
+      {
+        badge: 'Bank',
+        year: '2014',
+        title: 'Bankgirocentralen',
+        description:
+          'Flödesdesign och responsiv UI för banktjänster och dashboards över flera affärsområden.',
+        tags: ['Responsiv UX', 'Designledning', 'Agil leverans'],
+        linkLabel: 'Höjdpunkter från uppdraget ->',
+        href: '#',
+      },
+    ],
+    skills: [
+      {
+        title: 'Produktupptäck',
+        description:
+          'Forma resor med research, intervjuer och samskapande som tydliggör användarintention och affärsvärde.',
+        bullets: ['Problemformulering & workshops', 'Användarintervjuer & syntes', 'Personas, jobs-to-be-done, servicekartor'],
+      },
+      {
+        title: 'UX- och produktdesign',
+        description:
+          'Prototypa flöden, validera dem med användare och slipa detaljerna tills de är redo för utveckling.',
+        bullets: ['Flöden, wireframes och pixelperfekt UI', 'Användningstester & iteration', 'Mikrocopy och interaktioner'],
+      },
+      {
+        title: 'Designsystem',
+        description:
+          'Leverera tillgängliga, återanvändbara komponenter med Figma-bibliotek och implementeringsnoter för dev-team.',
+        bullets: ['Grunder & tokens', 'UI-kit med tillstånd', 'Handoff-specifikationer & dokumentation'],
+      },
+    ],
+    testimonial: {
+      quote:
+        'Jag kombinerar kraven från digital design, frontend och produkt—parat med min känsla som grafisk designer.',
+      name: 'Personligt motto',
+      title: 'Thomas Rynell',
+    },
+    cta: {
+      eyebrow: 'Nästa steg',
+      heading: 'Redo att skeppa en validerad upplevelse?',
+      body:
+        'Ta in mig för discovery, UX-ledning eller ett levererat designsystem. Vi testar, förfinar och lämnar över en byggklar lösning.',
+      button: { label: 'Starta ett UX-projekt', href: '#contact' },
+    },
+  },
+  {
+    title: 'Branding & innehåll',
+    slug: 'branding-content',
+    palette: {
+      accent: '#7157ff',
+      accentStrong: '#5a3df3',
+      accentSoft: 'rgba(113, 87, 255, 0.16)',
+      accentSurface: 'rgba(113, 87, 255, 0.12)',
+      accentBorder: 'rgba(113, 87, 255, 0.4)',
+    },
+    icon: '/assets/design-systems.svg',
+    iconAlt: 'Geometrisk ikon för varumärkes- och innehållsstrategi',
+    heroCopy: {
+      eyebrow: 'Varumärkes- och innehållsledare för produktteam',
+      heading: 'Bygger sammanhållna berättelser genom',
+      highlight: 'identitet, budskap och innehåll.',
+      lead:
+        'Jag skapar varumärkessystem, budskapsramverk och innehållsplaner som håller varje touchpoint konsekvent och stärker produktmålen.',
+      stats: [
+        { value: '25+', label: 'Varumärken uppdaterade eller lanserade' },
+        { value: '6', label: 'Språk koordinerade för content ops' },
+        { value: '12 år', label: 'Storytelling för digitala produkter' },
+      ],
+      focus: [
+        'Jag tar fram visuella identiteter, budskapsramverk och innehåll som håller rösten konsekvent.',
+        'Stilguider, designtokens och varumärkeskit som skalar från pitchdecks till produkt-UI.',
+        'Redaktionella kalendrar, korta och långa format samt governance som håller teamen synkade.',
+      ],
+      actions: [
+        { label: 'Se senaste uppdrag', href: '#work', variant: 'primary' },
+        { label: 'Ta kontakt', href: '#contact', variant: 'ghost' },
+      ],
+      portrait:
+        'https://images.unsplash.com/photo-1530023367847-a683933f4177?auto=format&fit=crop&w=600&q=80',
+    },
+    projects: [
+      {
+        badge: 'Finans',
+        year: '2016-2020',
+        title: 'Intrum',
+        description:
+          'Varumärkes- och innehållsstrategi för flerspråkiga plattformar, dashboards och kampanjer på 23 språk.',
+        tags: ['Budskapsramverk', 'Designdirektion', 'Lokalisering & processer'],
+        linkLabel: 'Se projektanteckningar ->',
+        href: '#',
+      },
+      {
+        badge: 'Myndighet & hållbarhet',
+        year: '2015-2021',
+        title: 'Naturvårdsverket',
+        description:
+          'Identitetsförnyelse och innehållsstrategi för miljörapporteringsverktyg och externa kommunikationer.',
+        tags: ['Varumärkessystem', 'Redaktionell röst', 'Tillgänglighet'],
+        linkLabel: 'Läs sammanfattning ->',
+        href: '#',
+      },
+      {
+        badge: 'Nyheter / SaaS',
+        year: '2016-2023',
+        title: 'Rapidus',
+        description:
+          'Berättelser och UI-innehåll för prenumerationsflöden, dashboards och dataintensiva visualiseringar.',
+        tags: ['Narrative design', 'Innehållsdesign', 'Konverterande copy'],
+        linkLabel: 'Uppdragsöversikt ->',
+        href: '#',
+      },
+    ],
+    skills: [
+      {
+        title: 'Identitetssystem',
+        description:
+          'Definiera det visuella språket, från logotyp till UI, med skalbara riktlinjer som team kan leverera med.',
+        bullets: ['Visuell identitetsförnyelse', 'Designtokens & UI-styling', 'Varumärkeskit & mallar'],
+      },
+      {
+        title: 'Budskapsramverk',
+        description:
+          'Tydliggör positionering, värdeerbjudanden och bevispunkter så att varje kanal talar med en röst.',
+        bullets: ['Positionering & storypelare', 'Produktbudskapshierarki', 'Ton & röst-playbooks'],
+      },
+      {
+        title: 'Innehåll & process',
+        description:
+          'Planera och leverera innehåll som håller sig till varumärket—from landningssidor till livscykelkampanjer.',
+        bullets: ['Redaktionella kalendrar', 'Lokalisering & governance', 'Innehållsdesign för produkt-UI'],
+      },
+    ],
+    testimonial: {
+      quote: 'En sammanhållen varumärkesröst i produkt, marknad och support får varje upplevelse att kännas genomtänkt.',
+      name: 'Vägledande princip',
+      title: 'Thomas Rynell',
+    },
+    cta: {
+      eyebrow: 'Nästa steg',
+      heading: 'Redo för en konsekvent varumärkesröst?',
+      body:
+        'Låt oss ta fram identiteten, budskapen och innehållsramarna som gör produkten igenkännbar överallt.',
+      button: { label: 'Planera en varumärkesworkshop', href: '#contact' },
+    },
+  },
+  {
+    title: 'Webbutveckling',
+    slug: 'web-development',
+    palette: {
+      accent: '#20b0b5',
+      accentStrong: '#1a8f93',
+      accentSoft: 'rgba(32, 176, 181, 0.16)',
+      accentSurface: 'rgba(32, 176, 181, 0.12)',
+      accentBorder: 'rgba(32, 176, 181, 0.42)',
+    },
+    icon: '/assets/ux-engineer.svg',
+    iconAlt: 'Geometrisk ikon för en webbutvecklare',
+    heroCopy: {
+      eyebrow: 'Frontend-utvecklare & UX-teknolog',
+      heading: 'Bygger presterande, underhållbara sajter med',
+      highlight: 'modern verktygskedja och best practices.',
+      lead:
+        'Från design-handoff till produktion levererar jag tillförlitlig frontend med ren arkitektur, tillgänglighet och analys inbyggt.',
+      stats: [
+        { value: '50+', label: 'Sajter & appar lanserade' },
+        { value: '8', label: 'Designsystem implementerade' },
+        { value: '99,9%', label: 'Uptime på senaste lanseringar' },
+      ],
+      focus: [
+        'Jag bygger snabba, underhållbara sajter med modern verktygskedja från handoff till deployment.',
+        'Frontend-arkitektur i React/Next.js med komponentbibliotek kopplade till designsystem.',
+        'CI/CD, prestandabudgetar och analys som gör releaser förutsägbara.',
+      ],
+      actions: [
+        { label: 'Se senaste uppdrag', href: '#work', variant: 'primary' },
+        { label: 'Ta kontakt', href: '#contact', variant: 'ghost' },
+      ],
+      portrait:
+        'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80',
+    },
+    projects: [
+      {
+        badge: 'Nyheter / SaaS',
+        year: '2016-2023',
+        title: 'Rapidus',
+        description:
+          'Frontend-utveckling för en trafiktung nyhetsplattform med TypeScript, REST-API:er och grafvisualiseringar.',
+        tags: ['React & Next.js', 'API-integrationer', 'Prestandaoptimering'],
+        linkLabel: 'Uppdragsöversikt ->',
+        href: '#',
+      },
+      {
+        badge: 'Finans',
+        year: '2016-2020',
+        title: 'Intrum',
+        description:
+          'Frontend-leverans för flerspråkiga plattformar, dashboards och kampanjsidor på 23 språk.',
+        tags: ['Frontendbygge', 'Lokalisering', 'Designsystemskoppling'],
+        linkLabel: 'Se projektanteckningar ->',
+        href: '#',
+      },
+      {
+        badge: 'Myndighet & hållbarhet',
+        year: '2015-2021',
+        title: 'Naturvårdsverket',
+        description:
+          'Tillgänglighetsfokuserad frontend för miljörapporteringsverktyg, interaktiva kartor och komplexa formulär.',
+        tags: ['Tillgänglighet', 'Datarik UI', 'Kartor & visualisering'],
+        linkLabel: 'Läs sammanfattning ->',
+        href: '#',
+      },
+    ],
+    skills: [
+      {
+        title: 'Frontend-arkitektur',
+        description:
+          'Sätter upp skalbara grunder med moderna ramverk, lintning, testning och komponentbibliotek.',
+        bullets: ['React, Next.js, Vite', 'TypeScript & testning', 'Implementering av designsystem'],
+      },
+      {
+        title: 'UI-implementation',
+        description:
+          'Översätter Figma till responsiva, tillgängliga gränssnitt som presterar på alla enheter.',
+        bullets: ['Semantisk HTML & ARIA', 'Prestandabudgetar', 'Animationer & mikrointeraktioner'],
+      },
+      {
+        title: 'Leverans & process',
+        description:
+          'Äger releasekedjan med CI/CD, hosting, monitorering och analys från dag ett.',
+        bullets: ['CI/CD & hosting', 'Felkoll & monitorering', 'Analys & A/B-testning'],
+      },
+    ],
+    testimonial: {
+      quote:
+        'Robust leverans kombinerar ren frontend-engineering med genomtänkta UX-detaljer som gör lanseringar polerade.',
+      name: 'Leveransmantra',
+      title: 'Thomas Rynell',
+    },
+    cta: {
+      eyebrow: 'Nästa steg',
+      heading: 'Redo att lansera med självförtroende?',
+      body:
+        'Jag bygger och skeppar frontenden—från design-handoff till produktion—med QA, analys och monitorering på plats.',
+      button: { label: 'Kickstarta en release', href: '#contact' },
+    },
+  },
+];
+
+const copy = {
+  en: {
+    personaSwitcher: 'Focus',
+    nav: {
+      links: ['Work', 'Services', 'Experience', 'Contact'],
+      cta: "Let's work",
+    },
+    work: {
+      eyebrow: 'Select Assignments',
+      heading: 'Recent collaborations & outcomes.',
+      cta: 'View PDF case studies',
+    },
+    services: {
+      eyebrow: 'Capabilities',
+      heading: 'Where I plug in.',
+      summary: 'Embedded with founders, product leads, and multi-functional teams.',
+    },
+    experience: {
+      eyebrow: 'Experience',
+      heading: 'Consulting across IT, design, and product.',
+      cta: 'Download full resume',
+      timeline: [
+        {
+          heading: 'Rapidus · Front-end & UX',
+          meta: '2016-2023 · Malmö',
+          body:
+            'Front-end development and redesign of a digital news platform using TypeScript, React/Next.js, RESTful APIs, graph databases, and advanced data visualization.',
+        },
+        {
+          heading: 'Intrum · UX, Design Direction, Front-end',
+          meta: '2016-2020 · Stockholm',
+          body:
+            'Led UX and front-end for multilingual platforms, dashboards, and campaign pages across 23 languages; collaborated closely with product, marketing, and engineering stakeholders.',
+        },
+        {
+          heading: 'Naturvårdsverket · UX, Design Direction, Front-end',
+          meta: '2015-2021 · Stockholm',
+          body:
+            'UX/design direction and front-end work for environmental reporting tools, interactive maps, and complex forms with accessibility and data quality in focus.',
+        },
+        {
+          heading: 'Bankgirocentralen · Front-end & Graphic Design',
+          meta: '2014 · Stockholm',
+          body:
+            'Front-end development, UX, and graphic design for online bank applications and dashboards across multiple lines of business.',
+        },
+      ],
+    },
+    testimonials: {
+      eyebrow: 'Testimonials',
+      heading: 'Trusted by product leaders.',
+    },
+    footer: {
+      heading: "Let's shape the next release.",
+      body: 'Send a note to <a href="mailto:thomas@rynell.com">thomas@rynell.com</a> or connect on the platforms below.',
+      cta: 'Start a project',
+      socials: { linkedin: 'LinkedIn', portfolio: 'Portfolio', email: 'Email' },
+      backToTop: 'Back to top ↑',
+    },
+  },
+  sv: {
+    personaSwitcher: 'Fokus',
+    nav: {
+      links: ['Arbete', 'Tjänster', 'Erfarenhet', 'Kontakt'],
+      cta: 'Samarbeta',
+    },
+    work: {
+      eyebrow: 'Utvalda uppdrag',
+      heading: 'Aktuella samarbeten och resultat.',
+      cta: 'Visa PDF-case',
+    },
+    services: {
+      eyebrow: 'Förmågor',
+      heading: 'Där jag kliver in.',
+      summary: 'Inbakad i team med grundare, produktledare och tvärfunktionella roller.',
+    },
+    experience: {
+      eyebrow: 'Erfarenhet',
+      heading: 'Konsult inom IT, design och produkt.',
+      cta: 'Ladda ner komplett CV',
+      timeline: [
+        {
+          heading: 'Rapidus · Frontend & UX',
+          meta: '2016-2023 · Malmö',
+          body:
+            'Frontend-utveckling och redesign av en digital nyhetsplattform med TypeScript, React/Next.js, REST-API:er, grafdatabaser och avancerad datavisualisering.',
+        },
+        {
+          heading: 'Intrum · UX, designdirektion, frontend',
+          meta: '2016-2020 · Stockholm',
+          body:
+            'Ledde UX och frontend för flerspråkiga plattformar, dashboards och kampanjsidor över 23 språk i nära samarbete med produkt, marknad och teknik.',
+        },
+        {
+          heading: 'Naturvårdsverket · UX, designdirektion, frontend',
+          meta: '2015-2021 · Stockholm',
+          body:
+            'UX/designledning och frontend-arbete för miljörapporteringsverktyg, interaktiva kartor och komplexa formulär med fokus på tillgänglighet och datakvalitet.',
+        },
+        {
+          heading: 'Bankgirocentralen · Frontend & grafisk design',
+          meta: '2014 · Stockholm',
+          body:
+            'Frontend-utveckling, UX och grafisk design för bankapplikationer och dashboards över flera affärsområden.',
+        },
+      ],
+    },
+    testimonials: {
+      eyebrow: 'Omdömen',
+      heading: 'Förtroende från produktledare.',
+    },
+    footer: {
+      heading: 'Låt oss forma nästa release.',
+      body: 'Hör av dig till <a href="mailto:thomas@rynell.com">thomas@rynell.com</a> eller connecta på plattformarna nedan.',
+      cta: 'Starta ett projekt',
+      socials: { linkedin: 'LinkedIn', portfolio: 'Portfolio', email: 'E-post' },
+      backToTop: 'Till toppen ↑',
+    },
+  },
+};
+
+const locales = {
+  en: { label: 'English', personas, copy: copy.en },
+  sv: { label: 'Svenska', personas: svPersonas, copy: copy.sv },
+};
+
+const getInitialLanguage = () => {
+  const stored = localStorage.getItem(LANGUAGE_KEY);
+  if (stored && locales[stored]) return stored;
+  const docLang = document.documentElement.lang;
+  if (docLang && locales[docLang]) return docLang;
+  return 'en';
+};
+
+let activeLanguage = getInitialLanguage();
+const getLocale = () => locales[activeLanguage];
+const getPersonas = () => getLocale().personas;
+let activePersona = getPersonas()[0];
 const getRoot = () => document.documentElement;
 const getThemeToggle = () => document.getElementById('themeToggle');
+const getLanguagePicker = () => document.getElementById('languagePicker');
+const getPersonaSwitcher = () => document.querySelector('[data-persona-switcher]');
 
 const setPersonaContext = (persona) => {
   const root = getRoot();
@@ -516,6 +962,79 @@ const renderCta = (cta) => {
   ctaLink.href = cta.button.href;
 };
 
+const renderStaticCopy = () => {
+  const localeCopy = getLocale().copy;
+
+  const personaLabel = document.querySelector('[data-persona-switcher-label]');
+  if (personaLabel) personaLabel.textContent = localeCopy.personaSwitcher;
+
+  const navLinks = document.querySelectorAll('[data-nav-link]');
+  if (navLinks.length) {
+    localeCopy.nav.links.forEach((label, index) => {
+      if (navLinks[index]) navLinks[index].textContent = label;
+    });
+  }
+
+  const navCta = document.querySelector('[data-nav-cta]');
+  if (navCta) navCta.textContent = localeCopy.nav.cta;
+
+  const workEyebrow = document.querySelector('[data-work-eyebrow]');
+  const workHeading = document.querySelector('[data-work-heading]');
+  const workCta = document.querySelector('[data-work-cta]');
+  if (workEyebrow) workEyebrow.textContent = localeCopy.work.eyebrow;
+  if (workHeading) workHeading.textContent = localeCopy.work.heading;
+  if (workCta) workCta.textContent = localeCopy.work.cta;
+
+  const servicesEyebrow = document.querySelector('[data-services-eyebrow]');
+  const servicesHeading = document.querySelector('[data-services-heading]');
+  const servicesSummary = document.querySelector('[data-services-summary]');
+  if (servicesEyebrow) servicesEyebrow.textContent = localeCopy.services.eyebrow;
+  if (servicesHeading) servicesHeading.textContent = localeCopy.services.heading;
+  if (servicesSummary) servicesSummary.textContent = localeCopy.services.summary;
+
+  const experienceEyebrow = document.querySelector('[data-experience-eyebrow]');
+  const experienceHeading = document.querySelector('[data-experience-heading]');
+  const experienceCta = document.querySelector('[data-experience-cta]');
+  if (experienceEyebrow) experienceEyebrow.textContent = localeCopy.experience.eyebrow;
+  if (experienceHeading) experienceHeading.textContent = localeCopy.experience.heading;
+  if (experienceCta) experienceCta.textContent = localeCopy.experience.cta;
+
+  const timelineArticles = document.querySelectorAll('[data-timeline-index]');
+  timelineArticles.forEach((article) => {
+    const entry = localeCopy.experience.timeline[Number(article.dataset.timelineIndex)];
+    if (!entry) return;
+    const heading = article.querySelector('[data-timeline-heading]');
+    const meta = article.querySelector('[data-timeline-meta]');
+    const body = article.querySelector('[data-timeline-body]');
+    if (heading) heading.textContent = entry.heading;
+    if (meta) meta.textContent = entry.meta;
+    if (body) body.textContent = entry.body;
+  });
+
+  const testimonialsEyebrow = document.querySelector('[data-testimonials-eyebrow]');
+  const testimonialsHeading = document.querySelector('[data-testimonials-heading]');
+  if (testimonialsEyebrow) testimonialsEyebrow.textContent = localeCopy.testimonials.eyebrow;
+  if (testimonialsHeading) testimonialsHeading.textContent = localeCopy.testimonials.heading;
+
+  const footerHeading = document.querySelector('[data-footer-heading]');
+  const footerBody = document.querySelector('[data-footer-body]');
+  const footerCta = document.querySelector('[data-footer-cta]');
+  if (footerHeading) footerHeading.textContent = localeCopy.footer.heading;
+  if (footerBody) footerBody.innerHTML = localeCopy.footer.body;
+  if (footerCta) footerCta.textContent = localeCopy.footer.cta;
+
+  const footerLinks = document.querySelectorAll('[data-footer-link]');
+  footerLinks.forEach((link) => {
+    const key = link.dataset.footerLink;
+    if (key && localeCopy.footer.socials[key]) {
+      link.textContent = localeCopy.footer.socials[key];
+    }
+  });
+
+  const backToTop = document.querySelector('[data-back-to-top]');
+  if (backToTop) backToTop.textContent = localeCopy.footer.backToTop;
+};
+
 const renderPersonaContent = (persona) => {
   setPersonaContext(persona);
   renderHero(persona);
@@ -528,7 +1047,7 @@ const renderPersonaContent = (persona) => {
 
 const renderPersonaTabs = (container) => {
   container.innerHTML = '';
-  personas.forEach((persona) => {
+  getPersonas().forEach((persona) => {
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'persona-tab';
@@ -554,10 +1073,46 @@ const setSelectedPersonaTab = (container, slug) => {
     .forEach((tab) => tab.setAttribute('aria-selected', tab.dataset.personaOption === slug ? 'true' : 'false'));
 };
 
-const getPersonaBySlug = (slug) => personas.find((persona) => persona.slug === slug);
+const getPersonaBySlug = (slug) => getPersonas().find((persona) => persona.slug === slug);
+
+const renderPersonasForLanguage = () => {
+  const switcher = getPersonaSwitcher();
+  if (!switcher) return;
+  renderPersonaTabs(switcher);
+  setSelectedPersonaTab(switcher, activePersona.slug);
+  renderPersonaContent(activePersona);
+};
+
+const applyLanguage = () => {
+  document.documentElement.setAttribute('lang', activeLanguage);
+  renderStaticCopy();
+  renderPersonasForLanguage();
+};
+
+export const setLanguage = (nextLanguage) => {
+  if (!locales[nextLanguage]) return;
+  activeLanguage = nextLanguage;
+  localStorage.setItem(LANGUAGE_KEY, nextLanguage);
+  const personaMatch = getPersonaBySlug(activePersona.slug);
+  activePersona = personaMatch || getPersonas()[0];
+  applyLanguage();
+  const picker = getLanguagePicker();
+  if (picker && picker.value !== nextLanguage) {
+    picker.value = nextLanguage;
+  }
+};
+
+export const initLanguage = () => {
+  setLanguage(activeLanguage);
+  const picker = getLanguagePicker();
+  if (picker) {
+    picker.value = activeLanguage;
+    picker.addEventListener('change', (event) => setLanguage(event.target.value));
+  }
+};
 
 export const initPersonas = () => {
-  const switcher = document.querySelector('[data-persona-switcher]');
+  const switcher = getPersonaSwitcher();
   if (!switcher) return;
 
   const setPersona = (slug) => {
@@ -668,6 +1223,7 @@ export const initYear = () => {
 
 export const initApp = () => {
   initTheme();
+  initLanguage();
   initPersonas();
   initBackToTop();
   initNavToggle();
