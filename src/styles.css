@@ -702,6 +702,62 @@ textarea {
   margin: 0;
 }
 
+.translation-manager__status {
+  display: none;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+.translation-manager__status[data-state] {
+  display: inline-flex;
+}
+
+.translation-manager__status[data-state='loading'] {
+  border-color: var(--accent-border);
+  background: var(--accent-surface);
+  color: var(--accent-strong);
+}
+
+.translation-manager__status[data-state='success'] {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+}
+
+.translation-manager__status[data-state='error'] {
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.08);
+  color: #ef4444;
+}
+
+.translation-manager__spinner {
+  width: 1.05rem;
+  height: 1.05rem;
+  border-radius: 999px;
+  border: 2px solid var(--accent-border);
+  border-top-color: var(--accent);
+  animation: spin 0.9s linear infinite;
+}
+
+.translation-manager__status:not([data-state='loading']) [data-import-spinner] {
+  display: none;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .translation-manager__picker select {
   padding: 0.6rem 0.8rem;
   border-radius: 0.75rem;

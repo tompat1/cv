@@ -439,26 +439,25 @@ const exportLocale = (localeKey) => {
 };
 
 const importLocaleFile = async (file, fallbackCode) => {
-  if (!file) return;
-  try {
-    const contents = await file.text();
-    const payload = JSON.parse(contents);
-    const codeFromPayload = payload.code || payload.locale || '';
-    const derivedCode = codeFromPayload || fallbackCode || file.name.replace(/\.json$/i, '');
-    if (!derivedCode) return;
-    applyLocalePayload(derivedCode, payload);
-    translationManagerLocale = derivedCode;
-    renderLanguagePickerOptions();
-    renderTranslationLocaleOptions();
-    renderTranslationList(derivedCode);
-    renderLinkList(derivedCode);
-    if (derivedCode === activeLanguage) {
-      applyLanguage();
-    }
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error('Failed to import locale file', error);
+  if (!file) return null;
+
+  const contents = await file.text();
+  const payload = JSON.parse(contents);
+  const codeFromPayload = payload.code || payload.locale || '';
+  const derivedCode = codeFromPayload || fallbackCode || file.name.replace(/\.json$/i, '');
+  if (!derivedCode) return null;
+
+  applyLocalePayload(derivedCode, payload);
+  translationManagerLocale = derivedCode;
+  renderLanguagePickerOptions();
+  renderTranslationLocaleOptions();
+  renderTranslationList(derivedCode);
+  renderLinkList(derivedCode);
+  if (derivedCode === activeLanguage) {
+    applyLanguage();
   }
+
+  return derivedCode;
 };
 
 const setPersonaContext = (persona) => {
@@ -952,6 +951,37 @@ export const initTranslationManager = () => {
   const newLocaleForm = manager.querySelector('[data-new-locale-form]');
   const exportButton = manager.querySelector('[data-export-locale]');
   const importInput = manager.querySelector('[data-import-locale]');
+  const importStatus = manager.querySelector('[data-import-status]');
+  const importStatusText = manager.querySelector('[data-import-status-text]');
+  let importStatusTimeout;
+
+  const setImportStatus = (state, message) => {
+    if (!importStatus || !importStatusText) return;
+
+    if (importStatusTimeout) {
+      window.clearTimeout(importStatusTimeout);
+      importStatusTimeout = null;
+    }
+
+    if (!state) {
+      importStatus.removeAttribute('data-state');
+      importStatus.hidden = true;
+      importStatusText.textContent = '';
+      return;
+    }
+
+    importStatus.dataset.state = state;
+    importStatus.hidden = false;
+    importStatusText.textContent = message;
+
+    if (state !== 'loading') {
+      importStatusTimeout = window.setTimeout(() => {
+        importStatus.removeAttribute('data-state');
+        importStatus.hidden = true;
+        importStatusText.textContent = '';
+      }, 3600);
+    }
+  };
 
   renderLanguagePickerOptions();
   renderTranslationLocaleOptions();
@@ -1033,7 +1063,23 @@ export const initTranslationManager = () => {
   if (importInput) {
     importInput.addEventListener('change', async (event) => {
       const [file] = event.target.files || [];
-      await importLocaleFile(file, translationManagerLocale);
+      if (!file) return;
+
+      setImportStatus('loading', 'Uploading locale…');
+
+      try {
+        const importedCode = await importLocaleFile(file, translationManagerLocale);
+        if (importedCode) {
+          setImportStatus('success', `Locale "${importedCode}" imported successfully.`);
+        } else {
+          setImportStatus('error', 'Unable to read locale file.');
+        }
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error('Failed to import locale file', error);
+        setImportStatus('error', 'Import failed. Please check the file format.');
+      }
+
       if (importInput) {
         importInput.value = '';
       }
