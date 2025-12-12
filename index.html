@@ -198,6 +198,75 @@
           </div>
         </div>
       </section>
+
+      <section class="section translation-manager" data-translation-manager hidden>
+        <div class="container translation-manager__shell">
+          <div class="translation-manager__header">
+            <div>
+              <p class="eyebrow">Localization</p>
+              <h2>Translation dashboard</h2>
+              <p class="muted">
+                Track translation keys, edit copy inline, and spin up new locales in one place.
+              </p>
+            </div>
+            <div class="translation-manager__controls">
+              <label class="translation-manager__picker">
+                <span class="sr-only">Select locale</span>
+                <select data-translation-locale aria-label="Select locale"></select>
+              </label>
+              <form class="translation-manager__new-locale" data-new-locale-form>
+                <input
+                  name="localeCode"
+                  placeholder="Add locale code (e.g., fr)"
+                  aria-label="New locale code"
+                  required
+                />
+                <input
+                  name="localeLabel"
+                  placeholder="Locale label"
+                  aria-label="New locale label"
+                />
+                <button class="btn btn--ghost" type="submit">Add locale</button>
+              </form>
+            </div>
+          </div>
+
+          <div class="translation-manager__body">
+            <div class="translation-manager__list" data-translation-list></div>
+            <div class="translation-manager__side-panel">
+              <div class="translation-manager__summary">
+                <p class="eyebrow">Translations</p>
+                <h3 data-translation-count></h3>
+                <p class="muted">
+                  Editing below updates the site copy for the selected locale instantly.
+                </p>
+              </div>
+              <form class="translation-manager__add" data-add-translation-form>
+                <label>
+                  <span>Key path</span>
+                  <input
+                    name="translationKey"
+                    placeholder="e.g. nav.cta"
+                    aria-label="Translation key path"
+                    required
+                  />
+                </label>
+                <label>
+                  <span>Value</span>
+                  <textarea
+                    name="translationValue"
+                    rows="3"
+                    placeholder="Enter translation value"
+                    aria-label="Translation value"
+                    required
+                  ></textarea>
+                </label>
+                <button class="btn btn--primary" type="submit">Add translation</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer id="contact" class="site-footer">

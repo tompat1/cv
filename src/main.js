@@ -734,9 +734,50 @@ const copy = {
   },
 };
 
-const locales = {
+let locales = {
   en: { label: 'English', personas, copy: copy.en },
   sv: { label: 'Svenska', personas: svPersonas, copy: copy.sv },
+};
+
+const cloneDeep = (value) => JSON.parse(JSON.stringify(value));
+
+const flattenTranslations = (value, path = []) => {
+  if (value === null || value === undefined) return [];
+  if (typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean') {
+    return [{ key: path.join('.'), value: String(value) }];
+  }
+
+  if (Array.isArray(value)) {
+    return value.flatMap((entry, index) => flattenTranslations(entry, [...path, index]));
+  }
+
+  if (typeof value === 'object') {
+    return Object.entries(value).flatMap(([childKey, childValue]) =>
+      flattenTranslations(childValue, [...path, childKey])
+    );
+  }
+
+  return [];
+};
+
+const applyValueAtPath = (target, path, nextValue) => {
+  let cursor = target;
+  path.forEach((segment, index) => {
+    const isLast = index === path.length - 1;
+    const numericKey = Number.isInteger(Number(segment));
+    const key = numericKey ? Number(segment) : segment;
+
+    if (isLast) {
+      cursor[key] = nextValue;
+      return;
+    }
+
+    if (!cursor[key] || typeof cursor[key] !== 'object') {
+      cursor[key] = numericKey ? [] : {};
+    }
+
+    cursor = cursor[key];
+  });
 };
 
 const getInitialLanguage = () => {
@@ -748,6 +789,7 @@ const getInitialLanguage = () => {
 };
 
 let activeLanguage = getInitialLanguage();
+let translationManagerLocale = activeLanguage;
 const getLocale = () => locales[activeLanguage];
 const getPersonas = () => getLocale().personas;
 let activePersona = getPersonas()[0];
@@ -755,6 +797,116 @@ const getRoot = () => document.documentElement;
 const getThemeToggle = () => document.getElementById('themeToggle');
 const getLanguagePicker = () => document.getElementById('languagePicker');
 const getPersonaSwitcher = () => document.querySelector('[data-persona-switcher]');
+const getTranslationManager = () => document.querySelector('[data-translation-manager]');
+const isLocalizationRoute = () => {
+  const path = window.location.pathname.replace(/\/+$/, '');
+  return path === '/localization';
+};
+
+const renderLanguagePickerOptions = () => {
+  const picker = getLanguagePicker();
+  if (!picker) return;
+
+  const current = picker.value;
+  picker.innerHTML = '';
+
+  Object.entries(locales).forEach(([key, locale]) => {
+    const option = document.createElement('option');
+    option.value = key;
+    option.textContent = key.toUpperCase();
+    option.setAttribute('data-label', locale.label);
+    picker.appendChild(option);
+  });
+
+  if (locales[current]) {
+    picker.value = current;
+  }
+};
+
+const renderTranslationLocaleOptions = () => {
+  const manager = getTranslationManager();
+  if (!manager) return;
+  const picker = manager.querySelector('[data-translation-locale]');
+  if (!picker) return;
+
+  const current = picker.value || translationManagerLocale;
+  picker.innerHTML = '';
+
+  Object.keys(locales).forEach((code) => {
+    const option = document.createElement('option');
+    option.value = code;
+    option.textContent = code;
+    picker.appendChild(option);
+  });
+
+  if (locales[current]) {
+    picker.value = current;
+    translationManagerLocale = current;
+  } else if (picker.value) {
+    translationManagerLocale = picker.value;
+  }
+};
+
+const buildTranslationsForLocale = (localeKey) => {
+  const localeCopy = copy[localeKey];
+  if (!localeCopy) return [];
+  return flattenTranslations(localeCopy);
+};
+
+const renderTranslationList = (localeKey) => {
+  const manager = getTranslationManager();
+  if (!manager) return;
+  const list = manager.querySelector('[data-translation-list]');
+  const count = manager.querySelector('[data-translation-count]');
+  if (!list) return;
+
+  const entries = buildTranslationsForLocale(localeKey);
+  list.innerHTML = '';
+
+  entries.forEach((entry) => {
+    const wrapper = document.createElement('label');
+    wrapper.className = 'translation-item';
+
+    const keyEl = document.createElement('div');
+    keyEl.className = 'translation-item__key';
+    keyEl.textContent = entry.key;
+
+    const textarea = document.createElement('textarea');
+    textarea.dataset.translationKey = entry.key;
+    textarea.value = entry.value;
+
+    wrapper.append(keyEl, textarea);
+    list.appendChild(wrapper);
+  });
+
+  if (count) {
+    count.textContent = `${entries.length} keys`;
+  }
+};
+
+const addTranslationValue = (localeKey, keyPath, value) => {
+  if (!copy[localeKey]) return;
+  const segments = keyPath.split('.').filter(Boolean);
+  if (!segments.length) return;
+  applyValueAtPath(copy[localeKey], segments, value);
+};
+
+const addLocale = (code, label) => {
+  if (!code) return;
+  const normalized = code.trim();
+  if (locales[normalized]) return;
+  copy[normalized] = cloneDeep(copy.en);
+  locales = {
+    ...locales,
+    [normalized]: {
+      label: label || normalized.toUpperCase(),
+      personas: cloneDeep(personas),
+      copy: copy[normalized],
+    },
+  };
+  renderLanguagePickerOptions();
+  renderTranslationLocaleOptions();
+};
 
 const setPersonaContext = (persona) => {
   const root = getRoot();
@@ -1103,6 +1255,7 @@ export const setLanguage = (nextLanguage) => {
 };
 
 export const initLanguage = () => {
+  renderLanguagePickerOptions();
   setLanguage(activeLanguage);
   const picker = getLanguagePicker();
   if (picker) {
@@ -1221,6 +1374,80 @@ export const initYear = () => {
   }
 };
 
+export const initTranslationManager = () => {
+  const manager = getTranslationManager();
+  if (!manager) return;
+
+  const onLocalizationPage = isLocalizationRoute();
+  manager.hidden = !onLocalizationPage;
+  if (!onLocalizationPage) return;
+
+  const localePicker = manager.querySelector('[data-translation-locale]');
+  const translationList = manager.querySelector('[data-translation-list]');
+  const addTranslationForm = manager.querySelector('[data-add-translation-form]');
+  const newLocaleForm = manager.querySelector('[data-new-locale-form]');
+
+  renderLanguagePickerOptions();
+  renderTranslationLocaleOptions();
+
+  if (localePicker) {
+    if (!locales[translationManagerLocale]) {
+      translationManagerLocale = activeLanguage;
+    }
+    localePicker.value = translationManagerLocale;
+    localePicker.addEventListener('change', (event) => {
+      const nextLocale = event.target.value;
+      if (!locales[nextLocale]) return;
+      translationManagerLocale = nextLocale;
+      renderTranslationList(translationManagerLocale);
+    });
+  }
+
+  if (translationList) {
+    translationList.addEventListener('input', (event) => {
+      const target = event.target;
+      if (!target.dataset.translationKey) return;
+      addTranslationValue(translationManagerLocale, target.dataset.translationKey, target.value);
+      if (translationManagerLocale === activeLanguage) {
+        applyLanguage();
+      }
+    });
+  }
+
+  if (addTranslationForm) {
+    addTranslationForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const key = addTranslationForm.translationKey.value.trim();
+      const value = addTranslationForm.translationValue.value.trim();
+      if (!key || !value) return;
+      addTranslationValue(translationManagerLocale, key, value);
+      renderTranslationList(translationManagerLocale);
+      if (translationManagerLocale === activeLanguage) {
+        applyLanguage();
+      }
+      addTranslationForm.reset();
+    });
+  }
+
+  if (newLocaleForm) {
+    newLocaleForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const code = newLocaleForm.localeCode.value.trim();
+      const label = newLocaleForm.localeLabel.value.trim();
+      if (!code) return;
+      addLocale(code, label);
+      translationManagerLocale = code;
+      if (localePicker) {
+        localePicker.value = translationManagerLocale;
+      }
+      renderTranslationList(translationManagerLocale);
+      newLocaleForm.reset();
+    });
+  }
+
+  renderTranslationList(translationManagerLocale);
+};
+
 export const initApp = () => {
   initTheme();
   initLanguage();
@@ -1230,6 +1457,7 @@ export const initApp = () => {
   initHeroObserver();
   initYear();
   initThemeToggle();
+  initTranslationManager();
 };
 
 document.addEventListener('DOMContentLoaded', initApp);
