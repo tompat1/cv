@@ -779,6 +779,16 @@ textarea {
   color: var(--color-text);
 }
 
+.translation-manager__links-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.translation-item--dirty input {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
 .translation-manager__add {
   display: grid;
   gap: 0.75rem;

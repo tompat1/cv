@@ -818,6 +818,17 @@ const applyValueAtPath = (target, path, nextValue) => {
   });
 };
 
+const getValueAtPath = (target, path) => {
+  if (!target || !path || !path.length) return undefined;
+
+  return path.reduce((cursor, segment) => {
+    if (cursor === null || cursor === undefined) return undefined;
+    const numericKey = Number.isInteger(Number(segment));
+    const key = numericKey ? Number(segment) : segment;
+    return cursor[key];
+  }, target);
+};
+
 const getInitialLanguage = () => {
   const stored = localStorage.getItem(LANGUAGE_KEY);
   if (stored && locales[stored]) return stored;
@@ -836,6 +847,22 @@ const getThemeToggle = () => document.getElementById('themeToggle');
 const getLanguagePicker = () => document.getElementById('languagePicker');
 const getPersonaSwitcher = () => document.querySelector('[data-persona-switcher]');
 const getTranslationManager = () => document.querySelector('[data-translation-manager]');
+const linkDrafts = {};
+
+const getPendingLinkEdits = (localeKey) => {
+  if (!linkDrafts[localeKey]) {
+    linkDrafts[localeKey] = {};
+  }
+  return linkDrafts[localeKey];
+};
+
+const clearPendingLinkEdits = (localeKey) => {
+  linkDrafts[localeKey] = {};
+};
+
+const hasPendingLinkEdits = (localeKey) =>
+  Boolean(localeKey && Object.keys(getPendingLinkEdits(localeKey)).length);
+
 const isLocalizationRoute = () => {
   const path = window.location.pathname.replace(/\/+$/, '');
   return path === '/localization';
@@ -924,6 +951,34 @@ const renderTranslationList = (localeKey) => {
 
 const getLinksForLocale = (localeKey = activeLanguage) => links[localeKey] || links.en || links.sv || {};
 
+const getLinkValueForLocale = (keyPath, localeKey = activeLanguage) => {
+  const pathSegments = keyPath.split('.').filter(Boolean);
+  const value = getValueAtPath(getLinksForLocale(localeKey), pathSegments);
+  return typeof value === 'string' ? value : '';
+};
+
+const setPendingLinkValue = (localeKey, keyPath, value) => {
+  const pending = getPendingLinkEdits(localeKey);
+  const baseValue = getLinkValueForLocale(keyPath, localeKey);
+  const normalizedValue = value.trim();
+
+  if (normalizedValue === baseValue) {
+    delete pending[keyPath];
+    return false;
+  }
+
+  pending[keyPath] = normalizedValue;
+  return true;
+};
+
+const updateLinkSaveButtonState = (manager, localeKey) => {
+  const saveButton = manager.querySelector('[data-save-links]');
+  if (!saveButton) return;
+  const hasPending = hasPendingLinkEdits(localeKey);
+  saveButton.disabled = !hasPending;
+  saveButton.setAttribute('aria-disabled', hasPending ? 'false' : 'true');
+};
+
 const renderLinkList = (localeKey) => {
   const manager = getTranslationManager();
   if (!manager) return;
@@ -932,6 +987,7 @@ const renderLinkList = (localeKey) => {
   if (!list) return;
 
   const entries = flattenLinks(getLinksForLocale(localeKey));
+  const pending = getPendingLinkEdits(localeKey);
   list.innerHTML = '';
 
   entries.forEach((entry) => {
@@ -945,8 +1001,12 @@ const renderLinkList = (localeKey) => {
     const input = document.createElement('input');
     input.dataset.linkKey = entry.key;
     input.type = 'url';
-    input.value = entry.value;
+    input.value = pending[entry.key] ?? entry.value;
     input.placeholder = 'Enter link or file path';
+
+    if (pending[entry.key]) {
+      wrapper.classList.add('translation-item--dirty');
+    }
 
     wrapper.append(keyEl, input);
     list.appendChild(wrapper);
@@ -955,6 +1015,8 @@ const renderLinkList = (localeKey) => {
   if (count) {
     count.textContent = `${entries.length} links`;
   }
+
+  updateLinkSaveButtonState(manager, localeKey);
 };
 
 const applyLinks = (localeKey = activeLanguage) => {
@@ -1502,6 +1564,7 @@ export const initTranslationManager = () => {
   const localePicker = manager.querySelector('[data-translation-locale]');
   const translationList = manager.querySelector('[data-translation-list]');
   const linkList = manager.querySelector('[data-link-list]');
+  const saveLinksButton = manager.querySelector('[data-save-links]');
   const addTranslationForm = manager.querySelector('[data-add-translation-form]');
   const newLocaleForm = manager.querySelector('[data-new-locale-form]');
 
@@ -1537,10 +1600,12 @@ export const initTranslationManager = () => {
     linkList.addEventListener('input', (event) => {
       const target = event.target;
       if (!target.dataset.linkKey) return;
-      setLinkValue(translationManagerLocale, target.dataset.linkKey, target.value.trim());
-      if (translationManagerLocale === activeLanguage) {
-        applyLinks();
+      const isDirty = setPendingLinkValue(translationManagerLocale, target.dataset.linkKey, target.value);
+      const wrapper = target.closest('.translation-item');
+      if (wrapper) {
+        wrapper.classList.toggle('translation-item--dirty', isDirty);
       }
+      updateLinkSaveButtonState(manager, translationManagerLocale);
     });
   }
 
@@ -1573,6 +1638,22 @@ export const initTranslationManager = () => {
       renderTranslationList(translationManagerLocale);
       renderLinkList(translationManagerLocale);
       newLocaleForm.reset();
+    });
+  }
+
+  if (saveLinksButton) {
+    saveLinksButton.addEventListener('click', () => {
+      const pending = getPendingLinkEdits(translationManagerLocale);
+      Object.entries(pending).forEach(([keyPath, value]) => {
+        setLinkValue(translationManagerLocale, keyPath, value);
+      });
+
+      clearPendingLinkEdits(translationManagerLocale);
+      renderLinkList(translationManagerLocale);
+
+      if (translationManagerLocale === activeLanguage) {
+        applyLinks();
+      }
     });
   }
 
