@@ -283,6 +283,54 @@ textarea {
   color: var(--color-text);
   text-decoration: none;
   font-weight: 500;
+  position: relative;
+  padding: 0.35rem 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  --nav-underline: var(--accent);
+}
+
+.nav__links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.35rem;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--nav-underline);
+  transform: scaleX(0);
+  transform-origin: left;
+  opacity: 0;
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.nav__links a:hover::after,
+.nav__links a:focus-visible::after {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+.nav__links a:focus-visible {
+  outline: none;
+  color: var(--accent-strong);
+}
+
+.nav__links a[data-nav-link='work'] {
+  --nav-underline: #e15b9e;
+}
+
+.nav__links a[data-nav-link='services'] {
+  --nav-underline: #7157ff;
+}
+
+.nav__links a[data-nav-link='experience'] {
+  --nav-underline: #20b0b5;
+}
+
+.nav__links a[data-nav-link='contact'] {
+  --nav-underline: var(--accent-strong);
 }
 
 .nav__links--open {
@@ -920,9 +968,34 @@ textarea {
   margin: 0;
 }
 
-.socials a {
+.socials__link {
   color: var(--color-text);
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid transparent;
+  transition: color 160ms ease, border-color 160ms ease;
+}
+
+.socials__link:hover,
+.socials__link:focus-visible {
+  color: var(--accent-strong);
+  border-color: var(--accent-border);
+  outline: none;
+}
+
+.socials__icon {
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+}
+
+.socials__icon svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
 }
 
 .footer__meta {

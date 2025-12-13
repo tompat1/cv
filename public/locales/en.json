@@ -464,6 +464,7 @@
       "body": "Send a note to <a data-link-key=\"contactEmail\" href=\"mailto:thomas@rynell.com\">thomas@rynell.com</a> or connect on the platforms below.",
       "cta": "Start a project",
       "socials": {
+        "instagram": "Instagram",
         "linkedin": "LinkedIn",
         "portfolio": "Portfolio",
         "email": "Email"
@@ -478,6 +479,7 @@
     "footerCta": "mailto:thomas@rynell.com",
     "contactEmail": "mailto:thomas@rynell.com",
     "socials": {
+      "instagram": "https://www.instagram.com/thomasrynell/",
       "linkedin": "https://www.linkedin.com/in/thomasrynell/",
       "portfolio": "https://thomasrynell.com",
       "email": "mailto:thomas@rynell.com"
