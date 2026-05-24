@@ -5,7 +5,7 @@ const THEME_KEY = 'tr-theme';
 const LANGUAGE_KEY = 'tr-language';
 const DEFAULT_LOCALES = ['en', 'sv'];
 
-const cloneDeep = (value) => JSON.parse(JSON.stringify(value));
+const cloneDeep = (value) => structuredClone(value);
 
 const withBase = (path = '') => {
   const normalized = path.replace(/^\/+/, '');
