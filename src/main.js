@@ -497,6 +497,7 @@ const animatePersonaPanels = () => {
   });
 
   requestAnimationFrame(() => {
+    // Read phase
     panels.forEach((panel) => {
       const shouldSkipHero = panel.classList.contains('hero') && !panel.classList.contains('hero--visible');
       if (shouldSkipHero) return;
