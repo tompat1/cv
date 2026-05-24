@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { initTheme, initThemeToggle } from '../main.js';
+import { initTheme, initThemeToggle, getPreferredTheme } from '../main.js';
 
 const renderToggle = () => {
   document.body.innerHTML = `
@@ -60,3 +60,33 @@ describe('theme toggle', () => {
   });
 });
 
+describe('getPreferredTheme', () => {
+  it('returns dark when prefers-color-scheme: dark matches', () => {
+    const matchMediaSpy = vi.spyOn(window, 'matchMedia').mockReturnValue({
+      matches: true,
+      media: '(prefers-color-scheme: dark)'
+    });
+
+    expect(getPreferredTheme()).toBe('dark');
+    matchMediaSpy.mockRestore();
+  });
+
+  it('returns light when prefers-color-scheme: dark does not match', () => {
+    const matchMediaSpy = vi.spyOn(window, 'matchMedia').mockReturnValue({
+      matches: false,
+      media: '(prefers-color-scheme: dark)'
+    });
+
+    expect(getPreferredTheme()).toBe('light');
+    matchMediaSpy.mockRestore();
+  });
+
+  it('returns light when matchMedia is not supported', () => {
+    const originalMatchMedia = window.matchMedia;
+    delete window.matchMedia;
+
+    expect(getPreferredTheme()).toBe('light');
+
+    window.matchMedia = originalMatchMedia;
+  });
+});
