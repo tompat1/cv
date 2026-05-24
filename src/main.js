@@ -7,6 +7,18 @@ const DEFAULT_LOCALES = ['en', 'sv'];
 
 const cloneDeep = (value) => structuredClone(value);
 
+const debounce = (func, wait) => {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+};
+
 const withBase = (path = '') => {
   const normalized = path.replace(/^\/+/, '');
   if (!normalized) return normalized;
@@ -1010,13 +1022,23 @@ export const initTranslationManager = () => {
   }
 
   if (translationList) {
+    const debouncedProcessInput = debounce((locale, key, value, isActive) => {
+      addTranslationValue(locale, key, value);
+      if (isActive) {
+        applyLanguage();
+      }
+    }, 200);
+
     translationList.addEventListener('input', (event) => {
       const target = event.target;
       if (!target.dataset.translationKey) return;
-      addTranslationValue(translationManagerLocale, target.dataset.translationKey, target.value);
-      if (translationManagerLocale === activeLanguage) {
-        applyLanguage();
-      }
+
+      debouncedProcessInput(
+        translationManagerLocale,
+        target.dataset.translationKey,
+        target.value,
+        translationManagerLocale === activeLanguage
+      );
     });
   }
 
