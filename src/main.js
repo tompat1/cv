@@ -1,10 +1,11 @@
+import DOMPurify from 'dompurify';
 import './styles.css';
 
 const THEME_KEY = 'tr-theme';
 const LANGUAGE_KEY = 'tr-language';
 const DEFAULT_LOCALES = ['en', 'sv'];
 
-const cloneDeep = (value) => JSON.parse(JSON.stringify(value));
+const cloneDeep = (value) => structuredClone(value);
 
 const withBase = (path = '') => {
   const normalized = path.replace(/^\/+/, '');
@@ -244,6 +245,8 @@ const renderTranslationList = (localeKey) => {
   const entries = buildTranslationsForLocale(localeKey);
   list.innerHTML = '';
 
+  const fragment = document.createDocumentFragment();
+
   entries.forEach((entry) => {
     const wrapper = document.createElement('label');
     wrapper.className = 'translation-item';
@@ -257,8 +260,10 @@ const renderTranslationList = (localeKey) => {
     textarea.value = entry.value;
 
     wrapper.append(keyEl, textarea);
-    list.appendChild(wrapper);
+    fragment.appendChild(wrapper);
   });
+
+  list.appendChild(fragment);
 
   if (count) {
     count.textContent = `${entries.length} keys`;
@@ -306,6 +311,8 @@ const renderLinkList = (localeKey) => {
   const pending = getPendingLinkEdits(localeKey);
   list.innerHTML = '';
 
+  const fragment = document.createDocumentFragment();
+
   entries.forEach((entry) => {
     const wrapper = document.createElement('label');
     wrapper.className = 'translation-item';
@@ -325,8 +332,10 @@ const renderLinkList = (localeKey) => {
     }
 
     wrapper.append(keyEl, input);
-    list.appendChild(wrapper);
+    fragment.appendChild(wrapper);
   });
+
+  list.appendChild(fragment);
 
   if (count) {
     count.textContent = `${entries.length} links`;
@@ -492,14 +501,7 @@ const animatePersonaPanels = () => {
     panels.forEach((panel) => {
       const shouldSkipHero = panel.classList.contains('hero') && !panel.classList.contains('hero--visible');
       if (shouldSkipHero) return;
-      // eslint-disable-next-line no-unused-expressions
-      panel.offsetWidth;
-    });
-
-    // Write phase
-    panels.forEach((panel) => {
-      const shouldSkipHero = panel.classList.contains('hero') && !panel.classList.contains('hero--visible');
-      if (shouldSkipHero) return;
+      void panel.offsetWidth;
       panel.classList.add('persona-panel--active');
     });
   });
@@ -732,7 +734,7 @@ const renderStaticCopy = () => {
   const footerBody = document.querySelector('[data-footer-body]');
   const footerCta = document.querySelector('[data-footer-cta]');
   if (footerHeading) footerHeading.textContent = localeCopy.footer.heading;
-  if (footerBody) footerBody.innerHTML = localeCopy.footer.body;
+  if (footerBody) footerBody.innerHTML = DOMPurify.sanitize(localeCopy.footer.body);
   if (footerCta) footerCta.textContent = localeCopy.footer.cta;
 
   const footerLinks = document.querySelectorAll('[data-footer-link]');
