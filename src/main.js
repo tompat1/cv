@@ -675,78 +675,96 @@ const renderCta = (cta) => {
   ctaLink.href = cta.button.href;
 };
 
+let staticCopyCache = null;
+
 const renderStaticCopy = () => {
   const localeCopy = getLocale().copy;
   if (!localeCopy) return;
 
-  const personaLabel = document.querySelector('[data-persona-switcher-label]');
-  if (personaLabel) personaLabel.textContent = localeCopy.personaSwitcher;
+  if (!staticCopyCache || (staticCopyCache.personaLabel && !staticCopyCache.personaLabel.isConnected)) {
+    staticCopyCache = {
+      personaLabel: document.querySelector('[data-persona-switcher-label]'),
+      navLinks: document.querySelectorAll('[data-nav-link]'),
+      navCta: document.querySelector('[data-nav-cta]'),
+      workEyebrow: document.querySelector('[data-work-eyebrow]'),
+      workHeading: document.querySelector('[data-work-heading]'),
+      workCta: document.querySelector('[data-work-cta]'),
+      servicesEyebrow: document.querySelector('[data-services-eyebrow]'),
+      servicesHeading: document.querySelector('[data-services-heading]'),
+      servicesSummary: document.querySelector('[data-services-summary]'),
+      experienceEyebrow: document.querySelector('[data-experience-eyebrow]'),
+      experienceHeading: document.querySelector('[data-experience-heading]'),
+      experienceCta: document.querySelector('[data-experience-cta]'),
+      timelineArticles: document.querySelectorAll('[data-timeline-index]'),
+      testimonialsEyebrow: document.querySelector('[data-testimonials-eyebrow]'),
+      testimonialsHeading: document.querySelector('[data-testimonials-heading]'),
+      footerHeading: document.querySelector('[data-footer-heading]'),
+      footerBody: document.querySelector('[data-footer-body]'),
+      footerCta: document.querySelector('[data-footer-cta]'),
+      footerLinks: document.querySelectorAll('[data-footer-link]'),
+      backToTop: document.querySelector('[data-back-to-top]')
+    };
 
-  const navLinks = document.querySelectorAll('[data-nav-link]');
-  if (navLinks.length) {
+    staticCopyCache.timelineArticlesData = Array.from(staticCopyCache.timelineArticles).map(article => ({
+      article,
+      index: Number(article.dataset.timelineIndex),
+      heading: article.querySelector('[data-timeline-heading]'),
+      meta: article.querySelector('[data-timeline-meta]'),
+      body: article.querySelector('[data-timeline-body]')
+    }));
+  }
+
+  const cache = staticCopyCache;
+
+  if (cache.personaLabel && localeCopy.personaSwitcher !== undefined) cache.personaLabel.textContent = localeCopy.personaSwitcher;
+
+  if (cache.navLinks.length && localeCopy.nav?.links) {
     localeCopy.nav.links.forEach((label, index) => {
-      if (navLinks[index]) navLinks[index].textContent = label;
+      if (cache.navLinks[index]) cache.navLinks[index].textContent = label;
     });
   }
 
-  const navCta = document.querySelector('[data-nav-cta]');
-  if (navCta) navCta.textContent = localeCopy.nav.cta;
+  if (cache.navCta && localeCopy.nav?.cta !== undefined) cache.navCta.textContent = localeCopy.nav.cta;
 
-  const workEyebrow = document.querySelector('[data-work-eyebrow]');
-  const workHeading = document.querySelector('[data-work-heading]');
-  const workCta = document.querySelector('[data-work-cta]');
-  if (workEyebrow) workEyebrow.textContent = localeCopy.work.eyebrow;
-  if (workHeading) workHeading.textContent = localeCopy.work.heading;
-  if (workCta) workCta.textContent = localeCopy.work.cta;
+  if (cache.workEyebrow && localeCopy.work?.eyebrow !== undefined) cache.workEyebrow.textContent = localeCopy.work.eyebrow;
+  if (cache.workHeading && localeCopy.work?.heading !== undefined) cache.workHeading.textContent = localeCopy.work.heading;
+  if (cache.workCta && localeCopy.work?.cta !== undefined) cache.workCta.textContent = localeCopy.work.cta;
 
-  const servicesEyebrow = document.querySelector('[data-services-eyebrow]');
-  const servicesHeading = document.querySelector('[data-services-heading]');
-  const servicesSummary = document.querySelector('[data-services-summary]');
-  if (servicesEyebrow) servicesEyebrow.textContent = localeCopy.services.eyebrow;
-  if (servicesHeading) servicesHeading.textContent = localeCopy.services.heading;
-  if (servicesSummary) servicesSummary.textContent = localeCopy.services.summary;
+  if (cache.servicesEyebrow && localeCopy.services?.eyebrow !== undefined) cache.servicesEyebrow.textContent = localeCopy.services.eyebrow;
+  if (cache.servicesHeading && localeCopy.services?.heading !== undefined) cache.servicesHeading.textContent = localeCopy.services.heading;
+  if (cache.servicesSummary && localeCopy.services?.summary !== undefined) cache.servicesSummary.textContent = localeCopy.services.summary;
 
-  const experienceEyebrow = document.querySelector('[data-experience-eyebrow]');
-  const experienceHeading = document.querySelector('[data-experience-heading]');
-  const experienceCta = document.querySelector('[data-experience-cta]');
-  if (experienceEyebrow) experienceEyebrow.textContent = localeCopy.experience.eyebrow;
-  if (experienceHeading) experienceHeading.textContent = localeCopy.experience.heading;
-  if (experienceCta) experienceCta.textContent = localeCopy.experience.cta;
+  if (cache.experienceEyebrow && localeCopy.experience?.eyebrow !== undefined) cache.experienceEyebrow.textContent = localeCopy.experience.eyebrow;
+  if (cache.experienceHeading && localeCopy.experience?.heading !== undefined) cache.experienceHeading.textContent = localeCopy.experience.heading;
+  if (cache.experienceCta && localeCopy.experience?.cta !== undefined) cache.experienceCta.textContent = localeCopy.experience.cta;
 
-  const timelineArticles = document.querySelectorAll('[data-timeline-index]');
-  timelineArticles.forEach((article) => {
-    const entry = localeCopy.experience.timeline[Number(article.dataset.timelineIndex)];
-    if (!entry) return;
-    const heading = article.querySelector('[data-timeline-heading]');
-    const meta = article.querySelector('[data-timeline-meta]');
-    const body = article.querySelector('[data-timeline-body]');
-    if (heading) heading.textContent = entry.heading;
-    if (meta) meta.textContent = entry.meta;
-    if (body) body.textContent = entry.body;
-  });
+  if (localeCopy.experience?.timeline) {
+    cache.timelineArticlesData.forEach((data) => {
+      const entry = localeCopy.experience.timeline[data.index];
+      if (!entry) return;
+      if (data.heading && entry.heading !== undefined) data.heading.textContent = entry.heading;
+      if (data.meta && entry.meta !== undefined) data.meta.textContent = entry.meta;
+      if (data.body && entry.body !== undefined) data.body.textContent = entry.body;
+    });
+  }
 
-  const testimonialsEyebrow = document.querySelector('[data-testimonials-eyebrow]');
-  const testimonialsHeading = document.querySelector('[data-testimonials-heading]');
-  if (testimonialsEyebrow) testimonialsEyebrow.textContent = localeCopy.testimonials.eyebrow;
-  if (testimonialsHeading) testimonialsHeading.textContent = localeCopy.testimonials.heading;
+  if (cache.testimonialsEyebrow && localeCopy.testimonials?.eyebrow !== undefined) cache.testimonialsEyebrow.textContent = localeCopy.testimonials.eyebrow;
+  if (cache.testimonialsHeading && localeCopy.testimonials?.heading !== undefined) cache.testimonialsHeading.textContent = localeCopy.testimonials.heading;
 
-  const footerHeading = document.querySelector('[data-footer-heading]');
-  const footerBody = document.querySelector('[data-footer-body]');
-  const footerCta = document.querySelector('[data-footer-cta]');
-  if (footerHeading) footerHeading.textContent = localeCopy.footer.heading;
-  if (footerBody) footerBody.innerHTML = DOMPurify.sanitize(localeCopy.footer.body);
-  if (footerCta) footerCta.textContent = localeCopy.footer.cta;
+  if (cache.footerHeading && localeCopy.footer?.heading !== undefined) cache.footerHeading.textContent = localeCopy.footer.heading;
+  if (cache.footerBody && localeCopy.footer?.body !== undefined) cache.footerBody.innerHTML = DOMPurify.sanitize(localeCopy.footer.body);
+  if (cache.footerCta && localeCopy.footer?.cta !== undefined) cache.footerCta.textContent = localeCopy.footer.cta;
 
-  const footerLinks = document.querySelectorAll('[data-footer-link]');
-  footerLinks.forEach((link) => {
-    const key = link.dataset.footerLink;
-    if (key && localeCopy.footer.socials[key]) {
-      link.textContent = localeCopy.footer.socials[key];
-    }
-  });
+  if (localeCopy.footer?.socials) {
+    cache.footerLinks.forEach((link) => {
+      const key = link.dataset.footerLink;
+      if (key && localeCopy.footer.socials[key] !== undefined) {
+        link.textContent = localeCopy.footer.socials[key];
+      }
+    });
+  }
 
-  const backToTop = document.querySelector('[data-back-to-top]');
-  if (backToTop) backToTop.textContent = localeCopy.footer.backToTop;
+  if (cache.backToTop && localeCopy.footer?.backToTop !== undefined) cache.backToTop.textContent = localeCopy.footer.backToTop;
 };
 
 const renderPersonaContent = (persona) => {
