@@ -181,7 +181,7 @@ const hasPendingLinkEdits = (localeKey) =>
 
 const isLocalizationRoute = () => {
   const path = window.location.pathname.replace(/\/+$/, '');
-  return path === '/localization';
+  return path.endsWith('/localization');
 };
 
 const renderLanguagePickerOptions = () => {
