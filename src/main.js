@@ -488,11 +488,18 @@ const animatePersonaPanels = () => {
   });
 
   requestAnimationFrame(() => {
+    // Read phase
     panels.forEach((panel) => {
       const shouldSkipHero = panel.classList.contains('hero') && !panel.classList.contains('hero--visible');
       if (shouldSkipHero) return;
       // eslint-disable-next-line no-unused-expressions
       panel.offsetWidth;
+    });
+
+    // Write phase
+    panels.forEach((panel) => {
+      const shouldSkipHero = panel.classList.contains('hero') && !panel.classList.contains('hero--visible');
+      if (shouldSkipHero) return;
       panel.classList.add('persona-panel--active');
     });
   });
