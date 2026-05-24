@@ -244,6 +244,8 @@ const renderTranslationList = (localeKey) => {
   const entries = buildTranslationsForLocale(localeKey);
   list.innerHTML = '';
 
+  const fragment = document.createDocumentFragment();
+
   entries.forEach((entry) => {
     const wrapper = document.createElement('label');
     wrapper.className = 'translation-item';
@@ -257,8 +259,10 @@ const renderTranslationList = (localeKey) => {
     textarea.value = entry.value;
 
     wrapper.append(keyEl, textarea);
-    list.appendChild(wrapper);
+    fragment.appendChild(wrapper);
   });
+
+  list.appendChild(fragment);
 
   if (count) {
     count.textContent = `${entries.length} keys`;
@@ -306,6 +310,8 @@ const renderLinkList = (localeKey) => {
   const pending = getPendingLinkEdits(localeKey);
   list.innerHTML = '';
 
+  const fragment = document.createDocumentFragment();
+
   entries.forEach((entry) => {
     const wrapper = document.createElement('label');
     wrapper.className = 'translation-item';
@@ -325,8 +331,10 @@ const renderLinkList = (localeKey) => {
     }
 
     wrapper.append(keyEl, input);
-    list.appendChild(wrapper);
+    fragment.appendChild(wrapper);
   });
+
+  list.appendChild(fragment);
 
   if (count) {
     count.textContent = `${entries.length} links`;
