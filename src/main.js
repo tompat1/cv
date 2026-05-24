@@ -1,3 +1,4 @@
+import DOMPurify from 'dompurify';
 import './styles.css';
 
 const THEME_KEY = 'tr-theme';
@@ -725,7 +726,7 @@ const renderStaticCopy = () => {
   const footerBody = document.querySelector('[data-footer-body]');
   const footerCta = document.querySelector('[data-footer-cta]');
   if (footerHeading) footerHeading.textContent = localeCopy.footer.heading;
-  if (footerBody) footerBody.innerHTML = localeCopy.footer.body;
+  if (footerBody) footerBody.innerHTML = DOMPurify.sanitize(localeCopy.footer.body);
   if (footerCta) footerCta.textContent = localeCopy.footer.cta;
 
   const footerLinks = document.querySelectorAll('[data-footer-link]');
