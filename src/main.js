@@ -5,6 +5,10 @@ import './styles.css';
 const THEME_KEY = 'tr-theme';
 const LANGUAGE_KEY = 'tr-language';
 const DEFAULT_LOCALES = ['en', 'sv'];
+const LOCALE_FLAG_LABELS = {
+  en: 'English',
+  sv: 'Swedish'
+};
 const MOTION_EASE = [0.22, 1, 0.36, 1];
 const MOTION_SPRING = { type: 'spring', stiffness: 190, damping: 24, mass: 0.7 };
 const SCROLL_REVEAL_SELECTOR = [
@@ -316,9 +320,53 @@ const isLocalizationRoute = () => {
   return path.endsWith('/localization');
 };
 
+const updateLanguagePickerPresentation = (code = activeLanguage) => {
+  const picker = getLanguagePicker();
+  if (!picker) return;
+
+  const wrapper = picker.closest('.language-picker');
+  if (!wrapper) return;
+
+  wrapper.dataset.locale = code;
+  wrapper.querySelectorAll('[data-language-option]').forEach((button) => {
+    const isActive = button.dataset.languageOption === code;
+    button.classList.toggle('language-picker__button--active', isActive);
+    button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+  });
+};
+
+const renderLanguageFlagButtons = (wrapper) => {
+  const controls = wrapper.querySelector('.language-picker__flags');
+  if (!controls) return;
+
+  controls.innerHTML = '';
+
+  Object.entries(locales).forEach(([key, locale]) => {
+    const button = document.createElement('button');
+    const label = LOCALE_FLAG_LABELS[key] || locale.label || key.toUpperCase();
+    button.type = 'button';
+    button.className = 'language-picker__button';
+    button.dataset.languageOption = key;
+    button.setAttribute('aria-label', `Switch to ${label}`);
+    button.setAttribute('aria-pressed', key === activeLanguage ? 'true' : 'false');
+
+    const flag = document.createElement('span');
+    flag.className = `flag-icon flag-icon--${key}`;
+    flag.setAttribute('aria-hidden', 'true');
+
+    const text = document.createElement('span');
+    text.className = 'sr-only';
+    text.textContent = key.toUpperCase();
+
+    button.append(flag, text);
+    controls.appendChild(button);
+  });
+};
+
 const renderLanguagePickerOptions = () => {
   const picker = getLanguagePicker();
   if (!picker) return;
+  const wrapper = picker.closest('.language-picker');
 
   const current = picker.value;
   picker.innerHTML = '';
@@ -334,6 +382,11 @@ const renderLanguagePickerOptions = () => {
   if (locales[current]) {
     picker.value = current;
   }
+
+  if (wrapper) {
+    renderLanguageFlagButtons(wrapper);
+  }
+  updateLanguagePickerPresentation(picker.value || current || activeLanguage);
 };
 
 const renderTranslationLocaleOptions = () => {
@@ -348,7 +401,7 @@ const renderTranslationLocaleOptions = () => {
   Object.keys(locales).forEach((code) => {
     const option = document.createElement('option');
     option.value = code;
-    option.textContent = code;
+    option.textContent = code.toUpperCase();
     picker.appendChild(option);
   });
 
@@ -906,7 +959,16 @@ const renderStaticCopy = () => {
     });
   }
 
-  if (cache.backToTop && localeCopy.footer?.backToTop !== undefined) cache.backToTop.textContent = localeCopy.footer.backToTop;
+  if (cache.backToTop && localeCopy.footer?.backToTop !== undefined) {
+    const backToTopText = cache.backToTop.querySelector('.back-to-top__text');
+    const normalizedLabel = localeCopy.footer.backToTop.replace(/\s*[↑↗]\s*$/, '');
+    if (backToTopText) {
+      backToTopText.textContent = normalizedLabel;
+    } else {
+      cache.backToTop.textContent = localeCopy.footer.backToTop;
+    }
+    cache.backToTop.setAttribute('aria-label', normalizedLabel);
+  }
 };
 
 const renderPersonaContent = (persona) => {
@@ -980,6 +1042,7 @@ export const setLanguage = (nextLanguage) => {
   if (picker && picker.value !== nextLanguage) {
     picker.value = nextLanguage;
   }
+  updateLanguagePickerPresentation(nextLanguage);
 };
 
 export const initLanguage = async () => {
@@ -991,7 +1054,13 @@ export const initLanguage = async () => {
   const picker = getLanguagePicker();
   if (picker) {
     picker.value = activeLanguage;
+    updateLanguagePickerPresentation(activeLanguage);
     picker.addEventListener('change', (event) => setLanguage(event.target.value));
+    picker.closest('.language-picker')?.addEventListener('click', (event) => {
+      const button = event.target.closest('[data-language-option]');
+      if (!button) return;
+      setLanguage(button.dataset.languageOption);
+    });
   }
 };
 

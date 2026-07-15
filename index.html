@@ -42,13 +42,14 @@
           <li><a href="#contact" data-nav-link="contact">Contact</a></li>
         </ul>
         <div class="nav__actions">
-          <label class="language-picker" for="languagePicker">
+          <div class="language-picker">
             <span class="sr-only">Change language</span>
-            <select id="languagePicker" aria-label="Change language">
+            <select id="languagePicker" class="language-picker__select" aria-label="Change language">
               <option value="en">EN</option>
               <option value="sv">SV</option>
             </select>
-          </label>
+            <span class="language-picker__flags" aria-label="Choose language"></span>
+          </div>
           <button
             id="themeToggle"
             class="theme-toggle"
@@ -389,11 +390,13 @@
       </div>
       <div class="container footer__meta">
         <small>&copy; <span id="currentYear"></span> Thomas Rynell. Crafted in Stockholm.</small>
-        <button id="backToTop" class="btn btn--ghost btn--small" data-back-to-top>Back to top &uarr;</button>
+        <button id="backToTop" class="btn btn--ghost btn--small back-to-top" aria-label="Back to top" data-back-to-top>
+          <span class="back-to-top__text">Back to top</span>
+          <span class="back-to-top__icon" aria-hidden="true">&uarr;</span>
+        </button>
       </div>
     </footer>
 
     <script type="module" src="./src/main.js"></script>
   </body>
 </html>
-
