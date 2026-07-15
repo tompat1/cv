@@ -24,7 +24,7 @@ A single-page personal portfolio site for Thomas Rynell showcasing digital desig
 
 ### Prerequisites
 
-Ensure you have [Node.js](https://nodejs.org/) installed on your machine.
+Ensure you have [Node.js](https://nodejs.org/) 20.19 or newer installed on your machine.
 
 ### Installation
 
@@ -42,8 +42,20 @@ The following npm scripts are available:
 - `npm run dev` / `npm start`: Starts the development server using Vite.
 - `npm run build`: Builds the app for production.
 - `npm run preview`: Previews the production build locally.
+- `npm run deploy`: Builds the app and deploys `dist` with Wrangler.
 - `npm test`: Runs the test suite using Vitest.
 - `npm run test:watch`: Runs tests in watch mode.
+
+## Cloudflare Pages
+
+This site is configured as a static Vite build for Cloudflare Pages.
+
+- Framework preset: Vite
+- Build command: `npm run build`
+- Build output directory: `dist`
+- Node version: `20.19` or newer
+
+The `wrangler.toml` file sets `pages_build_output_dir = "dist"` for CLI deploys. Cloudflare Pages also copies `_headers` and `_redirects` from `public/` into the production build, adding baseline security headers, long-lived asset caching, short-lived locale caching, and an SPA fallback.
 
 ## Author
 

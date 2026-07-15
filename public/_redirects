@@ -1,0 +1,6 @@
+# Keep static asset and locale paths as-is.
+/assets/*  /assets/:splat  200
+/locales/*  /locales/:splat  200
+
+# Single-page fallback for future client-routed URLs.
+/*  /index.html  200

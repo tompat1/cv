@@ -7,9 +7,13 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "deploy": "npm run build && npx wrangler pages deploy dist",
     "start": "vite",
     "test": "vitest run",
     "test:watch": "vitest"
+  },
+  "engines": {
+    "node": ">=20.19"
   },
   "keywords": [],
   "author": "Thomas Rynell",
@@ -17,11 +21,11 @@
   "type": "module",
   "devDependencies": {
     "@testing-library/dom": "^10.4.1",
-    "jsdom": "^27.0.1",
-    "vite": "^5.4.0",
-    "vitest": "^3.2.4"
+    "jsdom": "^29.1.1",
+    "vite": "^8.1.4",
+    "vitest": "^4.1.10"
   },
   "dependencies": {
-    "dompurify": "^3.4.5"
+    "dompurify": "^3.4.12"
   }
 }

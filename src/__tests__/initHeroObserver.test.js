@@ -16,9 +16,11 @@ describe('initHeroObserver', () => {
 
   it('should not do anything if .hero element is missing', () => {
     const observeMock = vi.fn();
-    window.IntersectionObserver = vi.fn(() => ({
+    window.IntersectionObserver = vi.fn(function () {
+      return {
       observe: observeMock
-    }));
+      };
+    });
 
     initHeroObserver();
 
@@ -37,9 +39,11 @@ describe('initHeroObserver', () => {
     const hero = document.querySelector('.hero');
     const observeMock = vi.fn();
 
-    window.IntersectionObserver = vi.fn(() => ({
+    window.IntersectionObserver = vi.fn(function () {
+      return {
       observe: observeMock
-    }));
+      };
+    });
 
     initHeroObserver();
 
@@ -54,7 +58,7 @@ describe('initHeroObserver', () => {
     let observerCallback;
     const observeMock = vi.fn();
 
-    window.IntersectionObserver = vi.fn((callback) => {
+    window.IntersectionObserver = vi.fn(function (callback) {
       observerCallback = callback;
       return { observe: observeMock };
     });
@@ -74,7 +78,7 @@ describe('initHeroObserver', () => {
     let observerCallback;
     const observeMock = vi.fn();
 
-    window.IntersectionObserver = vi.fn((callback) => {
+    window.IntersectionObserver = vi.fn(function (callback) {
       observerCallback = callback;
       return { observe: observeMock };
     });
