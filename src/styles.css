@@ -1159,6 +1159,39 @@ textarea {
   line-height: 1;
 }
 
+.back-to-top {
+  position: fixed;
+  right: max(1.35rem, env(safe-area-inset-right));
+  bottom: max(1.35rem, env(safe-area-inset-bottom));
+  z-index: 160;
+  width: 3.15rem;
+  min-height: 3.15rem;
+  padding: 0;
+  border-radius: 999px;
+  border-color: var(--accent-border);
+  background: color-mix(in srgb, var(--color-bg-alt) 82%, transparent);
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(18px);
+  color: var(--accent-strong);
+}
+
+.back-to-top__text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.back-to-top__icon {
+  font-size: 1.35rem;
+  font-weight: 800;
+  transform: translateY(-1px);
+}
+
 /* Screen reader helpers */
 .sr-only {
   position: absolute;
@@ -1341,9 +1374,12 @@ textarea {
   }
 
   .persona-tab {
+    display: grid;
+    grid-template-columns: 1.42rem minmax(0, 1fr);
     min-width: 0;
     width: 100%;
-    justify-content: center;
+    align-items: center;
+    justify-content: stretch;
     gap: 0.32rem;
     min-height: 3.85rem;
     padding: 0.5rem 0.38rem;
@@ -1359,6 +1395,7 @@ textarea {
 
   .persona-tab__label {
     min-width: 0;
+    width: 100%;
     display: -webkit-box;
     overflow: hidden;
     font-size: clamp(0.68rem, 3vw, 0.78rem);
@@ -1375,6 +1412,7 @@ textarea {
   .persona-tab[data-persona-option='web-development'] .persona-tab__label::before {
     content: 'Web Dev';
     display: -webkit-box;
+    width: 100%;
     overflow: hidden;
     font-size: clamp(0.68rem, 3vw, 0.78rem);
     line-height: 1.08;
@@ -1400,6 +1438,10 @@ textarea {
     line-height: 1.05;
     overflow-wrap: anywhere;
     text-wrap: balance;
+  }
+
+  [data-hero-heading] {
+    font-size: 0.88em;
   }
 
   .hero .lead {
@@ -1507,36 +1549,10 @@ textarea {
   }
 
   .back-to-top {
-    position: fixed;
     right: max(1rem, env(safe-area-inset-right));
     bottom: max(1rem, env(safe-area-inset-bottom));
-    z-index: 160;
     width: 3.15rem;
     min-height: 3.15rem;
-    padding: 0;
-    border-radius: 999px;
-    border-color: var(--accent-border);
-    background: color-mix(in srgb, var(--color-bg-alt) 82%, transparent);
-    box-shadow: 0 16px 38px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(18px);
-    color: var(--accent-strong);
-  }
-
-  .back-to-top__text {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
-  }
-
-  .back-to-top__icon {
-    font-size: 1.35rem;
-    font-weight: 800;
-    transform: translateY(-1px);
   }
 
   .translation-manager__body {
