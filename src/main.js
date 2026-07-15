@@ -1,11 +1,130 @@
 import DOMPurify from 'dompurify';
+import { animate, inView, scroll } from 'motion';
 import './styles.css';
 
 const THEME_KEY = 'tr-theme';
 const LANGUAGE_KEY = 'tr-language';
 const DEFAULT_LOCALES = ['en', 'sv'];
+const MOTION_EASE = [0.22, 1, 0.36, 1];
+const MOTION_SPRING = { type: 'spring', stiffness: 190, damping: 24, mass: 0.7 };
+const SCROLL_REVEAL_SELECTOR = [
+  '.section__header',
+  '.card',
+  '.timeline article',
+  '.quote',
+  '.persona-cta .container',
+  '.focus-list li',
+  '.hero__stats > div'
+].join(', ');
 
 const cloneDeep = (value) => structuredClone(value);
+const animatedRevealElements = new WeakSet();
+let stopScrollProgress;
+
+const prefersReducedMotion = () =>
+  typeof window !== 'undefined' &&
+  typeof window.matchMedia === 'function' &&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const motionReady = () =>
+  typeof window !== 'undefined' &&
+  typeof window.IntersectionObserver === 'function' &&
+  !prefersReducedMotion();
+
+const getDocumentTop = (target) => {
+  if (!target) return 0;
+  const headerOffset = document.querySelector('.site-header')?.offsetHeight || 0;
+  const targetTop = target.getBoundingClientRect().top + window.scrollY;
+  return Math.max(targetTop - headerOffset - 16, 0);
+};
+
+const animateWindowScroll = (targetTop) => {
+  if (!motionReady() || targetTop === window.scrollY) {
+    window.scrollTo({ top: targetTop, behavior: 'smooth' });
+    return;
+  }
+
+  animate(window.scrollY, targetTop, {
+    duration: 0.78,
+    ease: MOTION_EASE,
+    onUpdate: (latest) => window.scrollTo(0, latest)
+  });
+};
+
+const setMotionInitialState = (element, index = 0) => {
+  element.style.opacity = '0';
+  element.style.transform = `translateY(${Math.min(28, 14 + index * 2)}px)`;
+  element.style.filter = 'blur(8px)';
+};
+
+export const observeMotionTargets = (root = document) => {
+  const elements = root.querySelectorAll(SCROLL_REVEAL_SELECTOR);
+
+  if (!motionReady()) {
+    elements.forEach((element) => {
+      element.style.opacity = '';
+      element.style.transform = '';
+      element.style.filter = '';
+    });
+    return;
+  }
+
+  elements.forEach((element, index) => {
+    if (animatedRevealElements.has(element)) return;
+    animatedRevealElements.add(element);
+    setMotionInitialState(element, index);
+
+    inView(
+      element,
+      () => {
+        animate(
+          element,
+          { opacity: 1, transform: 'translateY(0px)', filter: 'blur(0px)' },
+          {
+            duration: 0.72,
+            delay: Math.min(index * 0.035, 0.18),
+            ease: MOTION_EASE
+          }
+        );
+      },
+      { amount: 0.18, margin: '0px 0px -10% 0px' }
+    );
+  });
+};
+
+export const initScrollProgress = () => {
+  if (typeof document === 'undefined' || typeof window === 'undefined') return;
+  stopScrollProgress?.();
+  document.querySelector('.scroll-progress')?.remove();
+
+  const progress = document.createElement('div');
+  progress.className = 'scroll-progress';
+  progress.setAttribute('aria-hidden', 'true');
+  document.body.prepend(progress);
+
+  stopScrollProgress = scroll((latest) => {
+    progress.style.transform = `scaleX(${latest})`;
+  });
+};
+
+export const initSmoothAnchors = () => {
+  if (typeof document === 'undefined') return;
+
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('a[href^="#"]');
+    if (!link) return;
+
+    const hash = link.getAttribute('href');
+    if (!hash || hash === '#') return;
+
+    const target = document.querySelector(hash);
+    if (!target) return;
+
+    event.preventDefault();
+    animateWindowScroll(getDocumentTop(target));
+    history.pushState(null, '', hash);
+  });
+};
 
 const debounce = (func, wait) => {
   let timeout;
@@ -501,6 +620,17 @@ const animatePersonaPanels = () => {
   const panels = getPersonaPanels();
   if (!panels.length) return;
 
+  if (motionReady()) {
+    panels.forEach((panel, index) => {
+      animate(
+        panel,
+        { opacity: [0.82, 1], y: [14, 0], scale: [0.992, 1] },
+        { ...MOTION_SPRING, delay: Math.min(index * 0.045, 0.16) }
+      );
+    });
+    return;
+  }
+
   panels.forEach((panel) => {
     const shouldSkipHero = panel.classList.contains('hero') && !panel.classList.contains('hero--visible');
     if (shouldSkipHero) return;
@@ -787,6 +917,7 @@ const renderPersonaContent = (persona) => {
   renderTestimonial(persona.testimonial);
   renderCta(persona.cta);
   animatePersonaPanels();
+  observeMotionTargets();
 };
 
 const renderPersonaTabs = (container) => {
@@ -929,7 +1060,7 @@ export const initBackToTop = () => {
   const backToTop = document.getElementById('backToTop');
   if (!backToTop) return;
   backToTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    animateWindowScroll(0);
   });
 };
 
@@ -958,6 +1089,14 @@ export const initHeroObserver = () => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           hero.classList.add('hero--visible');
+          const heroChildren = hero.querySelectorAll('.hero__copy > *, .portrait, .focus-list');
+          if (motionReady() && heroChildren.length) {
+            animate(
+              heroChildren,
+              { opacity: [0, 1], y: [22, 0] },
+              { duration: 0.82, delay: (index) => index * 0.06, ease: MOTION_EASE }
+            );
+          }
         }
       });
     },
@@ -1159,6 +1298,9 @@ export const initApp = async () => {
   initTheme();
   await initLanguage();
   initPersonas();
+  initScrollProgress();
+  initSmoothAnchors();
+  observeMotionTargets();
   initBackToTop();
   initNavToggle();
   initHeroObserver();
@@ -1168,5 +1310,3 @@ export const initApp = async () => {
 };
 
 document.addEventListener('DOMContentLoaded', initApp);
-
-
